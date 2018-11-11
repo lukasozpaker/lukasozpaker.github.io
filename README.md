@@ -1,2 +1,2 @@
 # lukasozpaker.github.io
-Simple html website I'm using to test features
+Error 404: website is down
