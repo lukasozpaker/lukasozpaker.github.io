@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon"
+      type="image/png"
+      href="https://www.ozpaker.org/favicon.png">
+    <title>ozpaker</title>
+    <style>
+      /* ---- reset ---- */
+      *{
+        margin: 0 auto;
+      }
+      a{
+        text-decoration: none;
+        color: white;
+      }
+      .panel{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align:center;
+        font-size:2.3em;
+        z-index:2;
+        color: #eee;
+      }
+      .middle{
+        width: 100%;
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-size: 1.3em;
+        pointer-events: none;
+      }
+      .topleft{
+        position: absolute;
+        top: 0.3em;
+        left: 0.5em;
+      }
+      .bottomleft {
+        position: absolute;
+        bottom: 0.5em;
+        left: 0.5em;
+      }
+      body{
+        margin:0;
+        /*font:normal 75% Arial, Helvetica, sans-serif;*/
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x:hidden;
+        overflow-y:hidden;
+      }
+      canvas{
+        display: block;
+        vertical-align: bottom
+      }
+      /* ---- particles.js container ---- */
+      #particles-js{
+        position:absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #232741;
+        background-repeat: no-repeat;
+        background-size: 20%;
+        background-position: 50% 50%;
+        z-index:1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- particles.js container -->
+    <div id="particles-js">
+      <div class="panel">
+        <div class="topleft">
+          <p>instagram: <a href="https://www.instagram.com/lukasozpaker/">@lukasozpaker</a></p>
+        </div>
+        <div class="middle">
+          <h1>COMING SOON</h1>
+          <p id="demo">&nbsp;</p>
+        </div>
+        <div class="bottomleft">
+          <p>ozpaker.org</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS("particles-js", {
+        "particles": {
+          "number": {
+            "value": 400,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#fff"
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "polygon": {
+              "nb_sides": 5
+            },
+            "image": {
+              "src": "img/github.svg",
+              "width": 100,
+              "height": 100
+            }
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": true,
+            "anim": {
+              "enable": false,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 10,
+            "random": true,
+            "anim": {
+              "enable": false,
+              "speed": 40,
+              "size_min": 0.1,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": false,
+            "distance": 500,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 2
+          },
+          "move": {
+            "enable": true,
+            "speed": 6,
+            "direction": "bottom",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "bubble"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "repulse"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 400,
+              "line_linked": {
+                "opacity": 0.5
+              }
+            },
+            "bubble": {
+              "distance": 400,
+              "size": 4,
+              "duration": 0.3,
+              "opacity": 1,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 200,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      });
+      var count_particles, stats, update;
+      stats = new Stats;
+      stats.setMode(0);
+      stats.domElement.style.position = 'absolute';
+      stats.domElement.style.left = '0px';
+      stats.domElement.style.top = '0px';
+      document.body.appendChild(stats.domElement);
+      count_particles = document.querySelector('.js-count-particles');
+      update = function() {
+        stats.begin();
+        stats.end();
+        if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+          count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+        }
+        requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);;
+    </script>
+    <script>
+      var countDownDate = new Date("Jan 30, 2019 00:00:00").getTime();
+
+      var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
