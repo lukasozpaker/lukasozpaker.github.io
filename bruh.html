@@ -2,7 +2,107 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Bruh button</title>
+    <style>
+      html{
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+      }
+      body{
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size:1.5em;
+        padding: 5% 12.5%;
+      }
+      .bb {
+        display: inline-block;
+        padding: 0;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        border: none;
+        border-radius: 175px;
+        box-shadow: 0 10px #999;
+      }
+
+      .bb:active {
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
+
+      ::placeholder {
+        color: black;
+      }
+
+      input[type=text], select{
+        width: 25%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: none;
+        background-color: #cfd8dc;
+        color: black;
+      }
+      .button {
+        background-color: #546e7a;
+        border: none;
+        color: white;
+        padding: 12px 32px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+      }
+
+      .button:hover {
+        background-color: #29434e;
+        color: white;
+      }
+      .button:active {
+        background-color: #1c313a;
+      }
+
+      .leaderboard ol {
+        counter-reset: li;
+        list-style: none;
+        *list-style: decimal;
+      }
+
+      .leaderboard ol li {
+        position: relative;
+        padding-left: 60px;
+        min-height: 60px;
+      }
+
+      .leaderboard ol li:before {
+        content: counter(li);
+        counter-increment: li;
+        color: #fff;
+        background: #ffb300;
+        border-radius: 50%;
+        font-size: 18px;
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      ol
+      {
+        display: inline-block;
+        margin-left: 25%;
+        margin-right: 25%;
+      }
+    </style>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
     <!-- Firebase -->
@@ -12,13 +112,14 @@
 
     <audio id="bruh-audio" src="https://lukasozpaker.github.io/bruh.mp3" preload="auto"></audio>
 
-    <button type="button" onClick="onClick()">Bruh</button>
-    <p>Total bruhs: <a id="score">0</a></p>
+    <!--<button type="button" onClick="onClick()">Bruh</button> -->
+    <img class="bb" src="https://lukasozpaker.github.io/bruhbutton.png" draggable="false" onclick="onClick()" alt="Bruh">
+    <p><b>Total bruhs: <a id="score">0</a> </b></p>
 
     <input type="text" id="name" name="name" placeholder="Name" maxlength="15">
-    <button type="button" onclick="submitScore()">Submit (score will be reset)</button>
+    <button type="button" class="button" onclick="submitScore()">Submit (score will be reset)</button>
 
-    <h>
+    <h class="leaderboard">
       <ol id="leaderboard">
         <li id="one">&nbsp;</li>
         <li id="two">&nbsp;</li>
@@ -149,7 +250,7 @@
           name = sortedn[i];
           if (i+1 == sorted.length) lowest = scored; //sets the value of the lowest of top 10
           var node = document.createElement("Li");
-          var textnode = document.createTextNode(scored + " : " + name);
+          var textnode = document.createTextNode(scored + "   " + name);
           node.appendChild(textnode);
           document.getElementById("leaderboard").appendChild(node);
         }
