@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bruh button</title>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+    <!-- Firebase -->
+
+  </head>
+  <body onload="onload()">
+
+    <audio id="bruh-audio" src="https://lukasozpaker.github.io/bruh.mp3" preload="auto"></audio>
+
+    <button type="button" onClick="onClick()">Bruh</button>
+    <p>Total bruhs: <a id="score">0</a></p>
+
+    <input type="text" id="name" name="name" placeholder="Name" maxlength="15">
+    <button type="button" onclick="submitScore()">Submit (score will be reset)</button>
+
+    <h>
+      <ol id="leaderboard">
+        <li id="one">&nbsp;</li>
+        <li id="two">&nbsp;</li>
+        <li id="three">&nbsp;</li>
+        <li id="four">&nbsp;</li>
+        <li id="five">&nbsp;</li>
+        <li id="six">&nbsp;</li>
+        <li id="seven">&nbsp;</li>
+        <li id="eight">&nbsp;</li>
+        <li id="nine">&nbsp;</li>
+        <li id="ten">&nbsp;</li>
+      </ol>
+    </h>
+
+    <!-- Javascript -->
+    <script type="text/javascript">
+      var lowest = 0; //lowest value of the top 10s
+      var database;
+      var score = 0;
+      var name;
+      var large; //length of array
+      var audio = document.getElementById("bruh-audio");
+      function onClick() {
+        playa();
+        score += 1;
+        document.getElementById("score").innerHTML = score;
+      };
+
+      function submitScore() {
+        name = document.getElementById("name").value;
+        var data = {
+          name: name,
+          score: score
+        }
+        if (score <= lowest && large >= 10 || score == 0 || name.length == 0) {
+          console.log("number is too low or no name");
+        }
+        else {
+          score = 0;
+          document.getElementById("score").innerHTML = score;
+          console.log(data);
+          database = firebase.database(); //initalize database object
+          var ref = database.ref('scores');
+
+          ref.push(data);
+        }
+      }
+
+      function playa() {
+        audio.currentTime=0;
+        audio.play();
+      }
+
+
+    // Firebase -->
+
+      function onload() {
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyBHKZHnqDZBW_wj8ERHMdbMFLaLwg1O6wY",
+          authDomain: "bruh-button-6b003.firebaseapp.com",
+          databaseURL: "https://bruh-button-6b003.firebaseio.com",
+          projectId: "bruh-button-6b003",
+          storageBucket: "bruh-button-6b003.appspot.com",
+          messagingSenderId: "974073187300"
+        };
+        firebase.initializeApp(config);
+        database = firebase.database();
+
+        //pull data in
+        var ref = database.ref('scores');
+        ref.on('value', gotData, errData);
+      }
+
+      function gotData(data) {
+        //clears the list
+        while(leaderboard.firstChild ){
+          leaderboard.removeChild(leaderboard.firstChild); //clears the list
+        }
+        //console.log(data.val());
+        var scores = data.val();
+        var keys = Object.keys(scores);
+        large = keys.length;
+        //console.log(keys);
+        /*
+        for (var i = 0; i<keys.length; i++) {
+          var k = keys[i];
+          var names = scores[k].name;
+          var score = scores[k].score;
+          //console.log(names, score);
+          var node = document.createElement("Li");
+          var textnode = document.createTextNode(score + " : " + names);
+          node.appendChild(textnode);
+          document.getElementById("leaderboard").appendChild(node);
+          */
+          sort(data);
+        }
+
+      function sort(data) {
+        var sorted = [];
+        var sortedn = [];
+        var scores = data.val();
+        var keys = Object.keys(scores);
+        for (var i = 0; i<keys.length; i++) {
+          var k = keys[i];
+          sortedn.push(scores[k].name);
+          sorted.push(scores[k].score);
+        }
+        var n = sorted.length;
+        for (var i = 0; i < n-1; i++) {
+            for (var j = 0; j < n-i-1; j++) {
+                if (sorted[j] < sorted[j+1])
+                {
+                    // swap arr[j+1] and arr[i]
+                    var temp = sorted[j];
+                    var tempn = sortedn[j];
+                    sorted[j] = sorted[j+1];
+                    sortedn[j] = sortedn[j+1];
+                    sorted[j+1] = temp;
+                    sortedn[j+1] = tempn;
+                }
+            }
+        }
+        sorted = sorted.slice(0,10);
+        sortedn = sortedn.slice(0,10);
+        for (var i = 0; i<sorted.length; i++) {
+          scored = sorted[i];
+          name = sortedn[i];
+          if (i+1 == sorted.length) lowest = scored; //sets the value of the lowest of top 10
+          var node = document.createElement("Li");
+          var textnode = document.createTextNode(scored + " : " + name);
+          node.appendChild(textnode);
+          document.getElementById("leaderboard").appendChild(node);
+        }
+      }
+
+      function errData(err) {
+        console.log('Error!');
+        console.log(err);
+      }
+      //pull data in
+    </script>
+    <!-- Firebase -->
+
+  </body>
+</html>
