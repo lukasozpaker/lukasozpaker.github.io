@@ -18,8 +18,8 @@
         padding-top: 5%;
       }
       .bb {
-        display: inline-block;
-        padding: 0 0;
+        display: block;
+        margin: 0 auto;
         font-size: 24px;
         cursor: pointer;
         text-align: center;
@@ -41,7 +41,7 @@
       }
 
       input[type=text], select{
-        width: 40%;
+        width: 50%;
         padding: 12px 20px;
         margin: 8px 0;
         box-sizing: border-box;
@@ -105,7 +105,7 @@
         padding-left: 25%;
         padding-right: 25%;
       }
-      @media screen and (max-aspect-ratio: 10/15){
+      @media (max-aspect-ratio: 1/1){
         ol {
           display: block;
           padding-left: 5%;
@@ -266,7 +266,7 @@
           name = sortedn[i];
           if (i+1 == sorted.length) lowest = scored; //sets the value of the lowest of top 10
           var node = document.createElement("Li");
-          var textnode = document.createTextNode(scored + "   " + name);
+          var textnode = document.createTextNode(name + "   " + scored);
           node.appendChild(textnode);
           document.getElementById("leaderboard").appendChild(node);
         }
