@@ -105,6 +105,13 @@
         padding-left: 25%;
         padding-right: 25%;
       }
+      @media(max-width:960px){
+        ol {
+          display: block;
+          padding-left: 5%;
+          padding-right: 5%;
+        }
+      }
     </style>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
@@ -157,7 +164,7 @@
           name: name,
           score: score
         }
-        if (score <= lowest && large >= 10 || score == 0 || name.length == 0) {
+        if (score <= lowest && large >= 15 || score == 0 || name.length == 0) {
           console.log("number is too low or no name");
         }
         else {
@@ -246,8 +253,8 @@
                 }
             }
         }
-        sorted = sorted.slice(0,10);
-        sortedn = sortedn.slice(0,10);
+        sorted = sorted.slice(0,15);
+        sortedn = sortedn.slice(0,15);
         for (var i = 0; i<sorted.length; i++) {
           scored = sorted[i];
           name = sortedn[i];
