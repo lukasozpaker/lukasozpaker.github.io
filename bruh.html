@@ -105,11 +105,17 @@
         padding-left: 25%;
         padding-right: 25%;
       }
-      @media(max-width:960px){
+      @media screen and (max-aspect-ratio: 10/15){
         ol {
           display: block;
           padding-left: 5%;
           padding-right: 5%;
+        }
+        input[type=text], select{
+          width: 90%;
+        }
+        .button {
+          width: 90%;
         }
       }
     </style>
