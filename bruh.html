@@ -16,7 +16,7 @@
     <p>Total bruhs: <a id="score">0</a></p>
 
     <input type="text" id="name" name="name" placeholder="Name" maxlength="15">
-    <button type="button" onclick="submitScore()">Submit</button>
+    <button type="button" onclick="submitScore()">Submit (score will be reset)</button>
 
     <h>
       <ol id="leaderboard">
@@ -54,9 +54,11 @@
           score: score
         }
         if (score <= lowest && large >= 10 || score == 0 || name.length == 0) {
-          console.log("number is too low");
+          console.log("number is too low or no name");
         }
         else {
+          score = 0;
+          document.getElementById("score").innerHTML = score;
           console.log(data);
           database = firebase.database(); //initalize database object
           var ref = database.ref('scores');
