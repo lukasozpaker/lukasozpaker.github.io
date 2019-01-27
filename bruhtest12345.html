@@ -197,6 +197,7 @@
         var cookie = parseInt(getCookie("scorecookie"));
         if (cookie) {
           score = cookie;
+          document.getElementById("score").innerHTML = score;
         }
         // Initialize Firebase
         var config = {
