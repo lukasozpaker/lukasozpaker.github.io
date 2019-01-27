@@ -158,7 +158,7 @@
       function onClick() {
         playa();
         score += 1;
-        if (score%10 == 0) {
+        if (score%10 === 0) {
           eraseCookie('scorecookie');
           setCookie('scorecookie', score, 30);
         }
