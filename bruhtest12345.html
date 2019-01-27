@@ -194,7 +194,7 @@
     // Firebase -->
 
       function onload() {
-        var cookie = getCookie("scorecookie");
+        var cookie = parseInt(getCookie("scorecookie"));
         if (cookie) {
           score = cookie;
         }
