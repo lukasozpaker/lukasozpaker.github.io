@@ -159,7 +159,7 @@
         playa();
         score += 1;
         document.getElementById("score").innerHTML = score;
-        if (score%1000 == 0) {
+        if (score%10 == 0) {
           eraseCookie("scorecookie");
           setCookie("scorecookie", score, 7);
         }
