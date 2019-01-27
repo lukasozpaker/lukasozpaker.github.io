@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
     <title>Bruh button</title>
     <style>
       html{
@@ -159,6 +159,10 @@
         playa();
         score += 1;
         document.getElementById("score").innerHTML = score;
+        if (score%10 == 0) {
+          eraseCookie("scorecookie");
+          setCookie("scorecookie", score, 7);
+        }
       };
 
       function submitScore() {
@@ -171,6 +175,7 @@
           console.log("number is too low or no name");
         }
         else {
+          eraseCookie("scorecookie");
           score = 0;
           document.getElementById("score").innerHTML = score;
           console.log(data);
@@ -190,6 +195,11 @@
     // Firebase -->
 
       function onload() {
+        var cookie = parseInt(getCookie("scorecookie"));
+        if (cookie) {
+          score = cookie; //add some sort of security so that the cookie can't just be written
+          document.getElementById("score").innerHTML = score;
+        }
         // Initialize Firebase
         var config = {
           apiKey: "AIzaSyBHKZHnqDZBW_wj8ERHMdbMFLaLwg1O6wY",
@@ -274,8 +284,32 @@
         console.log(err);
       }
       //pull data in
-    </script>
-    <!-- Firebase -->
+      function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+      function eraseCookie(name) {
+        document.cookie = name+'=; Max-Age=-99999999;';
+      }
+      </script>
+      <!-- Firebase -->
 
   </body>
 </html>
