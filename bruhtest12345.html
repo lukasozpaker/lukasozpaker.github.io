@@ -175,6 +175,7 @@
           console.log("number is too low or no name");
         }
         else {
+          eraseCookie("scorecookie");
           score = 0;
           document.getElementById("score").innerHTML = score;
           console.log(data);
@@ -196,7 +197,7 @@
       function onload() {
         var cookie = parseInt(getCookie("scorecookie"));
         if (cookie) {
-          score = cookie;
+          score = cookie; //add some sort of security so that the cookie can't just be written
           document.getElementById("score").innerHTML = score;
         }
         // Initialize Firebase
