@@ -150,33 +150,31 @@
           border-radius: 20px;
         }
       }
-      /* The alert message box */
       .alert {
-        background-color: #f44336; /* Red */
-        color: white;
-        /* margin-bottom: 15px; */
-        font-size: 20px;
-        padding-top: 9px;
-        padding-bottom: 9px;
+        padding-top: 0.5em;
+        padding-bottom: 0.65em;
+        padding-left: 45px;
         padding-right: 20px;
-        padding-left: 20px;
-        border-radius: 5px 5px 5px 5px;
+
+        background-color: #f44336;
+        color: white;
+        border-radius: 5px;
+        font-size: 0.7em;
       }
 
-      /* The close button */
       .closebtn {
-        /* margin-left: 15px; */
+        margin-left: 15px;
         color: white;
         font-weight: bold;
         float: right;
-        vertical-align: center;
-        font-size: 22px;
-        line-height: 1;
+        font-size: 25px;
         cursor: pointer;
+        transition: 0.2s;
 
+
+        line-height: 20px;
       }
 
-      /* When moving the mouse over the close button */
       .closebtn:hover {
         color: black;
       }
@@ -192,13 +190,13 @@
 
     <div class="alert">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-      SERVER CURRENTLY DOWN FOR MAINTENANCE
+      Server Down For Maintenance
     </div>
     <!--<button type="button" onClick="onClick()">Bruh</button> -->
     <img class="bb" src="https://lukasozpaker.github.io/bruhbutton.png" draggable="false" onclick="onClick()" alt="Bruh">
     <p><b>Total bruhs: <a id="score">0</a> </b></p>
 
-    <input type="text" id="name" name="name" placeholder="Name">
+    <input autocomplete="off" type="text" id="name" name="name" placeholder="Name">
     <button type="button" class="button" onclick="submitScore()">Submit Score (will reset score)</button>
 
     <h class="leaderboard">
