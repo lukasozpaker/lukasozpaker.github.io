@@ -36,7 +36,7 @@
         border: none;
         border-radius: 175px;
         box-shadow: 0 10px #999;
-        padding-top: 5%;
+        margin-top: 5%;
       }
 
       .bb:active {
@@ -155,7 +155,6 @@
         padding-bottom: 0.65em;
         padding-left: 45px;
         padding-right: 20px;
-
         background-color: #f44336;
         color: white;
         border-radius: 5px;
@@ -167,14 +166,33 @@
         color: white;
         font-weight: bold;
         float: right;
-        font-size: 22px;
+        font-size: 25px;
         cursor: pointer;
         transition: 0.2s;
-        line-height: 105%;
+        line-height: 76%;
       }
 
       .closebtn:hover {
         color: black;
+      }
+
+      .footer {
+        left: 0;
+        bottom: 0;
+        background-color: #f44336;
+        color: white;
+        text-align: center;
+        font-size: 0.7em;
+        padding: 0.25em;
+        overflow: auto;
+      }
+      .vers {
+        float: left;
+        padding-left: 10px;
+      }
+      .info {
+        float: right;
+        padding-right: 10px;
       }
       </style>
     <!-- Firebase -->
@@ -188,7 +206,7 @@
 
     <div class="alert">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-      Server Down For Maintenance
+      <span>Server Down For Maintenance</span>
     </div>
     <!--<button type="button" onClick="onClick()">Bruh</button> -->
     <img class="bb" src="https://lukasozpaker.github.io/bruhbutton.png" draggable="false" onclick="onClick()" alt="Bruh">
@@ -211,7 +229,11 @@
         <li id="ten">&nbsp;</li>
       </ol>
     </h>
+    <div class="footer">
+      <span class="info">Lukas Ozpaker 2019</span>
+      <span class="vers">Version 0.8.1</span>
 
+    </div>
     <!-- Javascript -->
     <script type="text/javascript">
       var lowest = 0; //lowest value of the top 10s
