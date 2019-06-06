@@ -152,21 +152,26 @@
       }
       /* The alert message box */
       .alert {
-        padding: 20px;
         background-color: #f44336; /* Red */
         color: white;
-        margin-bottom: 15px;
+        /* margin-bottom: 15px; */
         font-size: 20px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        padding-right: 20px;
+        padding-left: 20px;
+        border-radius: 5px 5px 5px 5px;
       }
 
       /* The close button */
       .closebtn {
-        margin-left: 15px;
+        /* margin-left: 15px; */
         color: white;
         font-weight: bold;
         float: right;
+        vertical-align: center;
         font-size: 22px;
-        line-height: 20px;
+        line-height: 1;
         cursor: pointer;
 
       }
@@ -187,7 +192,7 @@
 
     <div class="alert">
       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-      server down for maintenance.
+      SERVER CURRENTLY DOWN FOR MAINTENANCE
     </div>
     <!--<button type="button" onClick="onClick()">Bruh</button> -->
     <img class="bb" src="https://lukasozpaker.github.io/bruhbutton.png" draggable="false" onclick="onClick()" alt="Bruh">
