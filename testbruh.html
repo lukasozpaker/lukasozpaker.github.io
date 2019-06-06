@@ -13,9 +13,8 @@
     /* TODO: divide each score on the score board with a dash or something */
     /* TODO: combat raw score hack, then auto-clicker */
     /* TODO: make sure all main browsers/platforms support it well */
-
-
     /* TODO: make database robust, 15 character names not allowed */
+
       html{
         -webkit-tap-highlight-color: rgba(0,0,0,0);
 
@@ -25,7 +24,7 @@
         text-align: center;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size:1.5em;
-        padding-top: 5%;
+        /* padding-top: 5%; */
       }
       .bb {
         font-size: 24px;
@@ -37,6 +36,7 @@
         border: none;
         border-radius: 175px;
         box-shadow: 0 10px #999;
+        padding-top: 5%;
       }
 
       .bb:active {
@@ -150,7 +150,32 @@
           border-radius: 20px;
         }
       }
-    </style>
+      /* The alert message box */
+      .alert {
+        padding: 20px;
+        background-color: #f44336; /* Red */
+        color: white;
+        margin-bottom: 15px;
+        font-size: 20px;
+      }
+
+      /* The close button */
+      .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+
+      }
+
+      /* When moving the mouse over the close button */
+      .closebtn:hover {
+        color: black;
+      }
+      </style>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
     <!-- Firebase -->
@@ -160,6 +185,10 @@
 
     <audio id="bruh-audio" src="https://lukasozpaker.github.io/bruh.mp3" preload="auto"></audio>
 
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      server down for maintenance.
+    </div>
     <!--<button type="button" onClick="onClick()">Bruh</button> -->
     <img class="bb" src="https://lukasozpaker.github.io/bruhbutton.png" draggable="false" onclick="onClick()" alt="Bruh">
     <p><b>Total bruhs: <a id="score">0</a> </b></p>
