@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <audio id="bruh-audio" src="https://lukasozpaker.github.io/bruh.mp3" preload="auto"></audio>
     <style>
+      html{
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+      *:focus {
+        outline: 0;
+        outline: none;
+      }
       body{
         padding: 0;
         margin: 0;
@@ -92,7 +99,7 @@
         background-color: white;
         transition: 0.3s;
         border-radius: 30px;
-        margin-bottom: 2em;
+        margin-bottom: 1.5em;
         display: table;
         width: 100%;
       }
@@ -129,7 +136,6 @@
         text-align: center;
         padding: 0.25em;
         overflow: auto;
-        margin-top: 3em;
       }
       .vers {
         float: left;
@@ -162,7 +168,7 @@
       </div>
     </header>
     <div id="projects">
-      <a class="card" id="p1" href="javascript:delay('https://www.ozpaker.org/bruh')" onclick="bruh()">
+      <a class="card" id="p1" href="https://www.ozpaker.org/bruh">
         <p class="tcard">
           Bruh Button
         </p>
@@ -183,14 +189,7 @@
       <span class="vers">Version 1.0.0</span>
     </footer>
     <script type="text/javascript">
-      var audio = document.getElementById("bruh-audio");
-      function bruh() {
-        audio.currentTime=0;
-        audio.play();
-      }
-      function delay (URL) {
-        setTimeout( function() { window.location = URL }, 350 ); /*ms*/
-      }
-      </script>
+
+    </script>
   </body>
 </html>
