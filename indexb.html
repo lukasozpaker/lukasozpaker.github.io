@@ -8,7 +8,6 @@
     <link href='https://fonts.googleapis.com/css?family=Carrois%20Gothic%20SC' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
 
-    <!-- TODO: add @lukasozpaker to the social media buttons. so you don't have to click to find it -->
     <!-- TODO: add one more project -->
     <!-- TODO: add a coming soon to area wars online -->
     <!-- TODO: add some sort of js background animations to make it look more interesting-->
@@ -41,18 +40,28 @@
       }
       #header{
         background-color: rgba(70,10,20,0.7);
-        padding-left: 5%;
-        padding-right: 5%;
+        /* padding-left: 5%;
+        padding-right: 5%; */
       }
       #name{
         font-family: 'Carrois Gothic SC';
         font-size: 1em;
+        /* letter-spacing: 1.5em;
+        margin-left: 1.5em; */
+        padding-top: 10%;
+        padding-bottom: 5%;
+        /* padding: 10% 5% 5% 5%; top left bottom right */
+      }
+      .names{
         letter-spacing: 1.5em;
-        margin-right: -1.5em;
-        padding: 10% 5% 5% 5%; /*top left bottom right*/
+        padding-left: 1.5em;
+        overflow-wrap: break-word;
+        font-size: 30px;
       }
       #text{
         font-family: 'Consolas', Tahoma, Geneva, Verdana, sans-serif;
+        padding-left: 5%;
+        padding-right: 5%;
         padding-bottom: 0.5em;
       }
       #at{
@@ -115,7 +124,8 @@
         padding-left: 1em;
         padding-right: 1em;
         padding-top: 1.5em;
-        font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif;
+        /* font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif; */
+        font-family: 'Carrois Gothic SC';
         font-weight: bold;
       }
       .card{
@@ -134,6 +144,7 @@
         vertical-align: middle;
         font-size: 2.5em;
         border-radius: 20px;
+        padding: 0.5em;
       }
       #p1{
         background-color: rgba(153,0,0,1);
@@ -171,7 +182,7 @@
         float: right;
         padding-right: 10px;
       }
-      @media screen and (min-aspect-ratio: 1/1),  (max-device-aspect-ratio: 1/1){
+      @media screen and (max-aspect-ratio: 1/1),  (max-device-aspect-ratio: 1/1){
 
       }
       @media screen and (max-aspect-ratio: 10/15),  (max-device-aspect-ratio: 10/15){
@@ -181,10 +192,10 @@
   </head>
   <body onload="onload()">
     <header id="header">
-      <div id="name">
-        <h1>LUKAS</h1>
-        <h1>ozpaker</h1>
-      </div>
+      <h1 id="name">
+        <span class="names">lukas</span>
+        <span class="names">ozpaker</span>
+      </h1>
       <p id="text">Projects. This is a test of the project and a paragraph to
          see how the html and css scales on the site. Projects are below including
        the bruh button. </p>
@@ -198,17 +209,17 @@
     <div id="projects">
       <a class="card" id="p1" href="https://www.ozpaker.org/bruh">
         <p class="tcard">
-           Bruh Button
+           bruh button
         </p>
       </a>
       <a class="card" id="p2">
         <p class="tcard">
-          Area Wars Online
+          area wars online
         </p>
       </a>
       <a class="card" id="p3" href="https://play.google.com/store/apps/details?id=org.ozpaker.minimalgradecalculator">
         <p class="tcard">
-          Minimal Grade Calculator
+          minimal grade calculator
         </p>
       </a>
     </div>
