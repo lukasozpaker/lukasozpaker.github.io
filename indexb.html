@@ -44,7 +44,8 @@
         background-color: rgba(70,10,20,0.7);
         /* padding-left: 5%;
         padding-right: 5%; */
-        background: linear-gradient(180deg, rgba(118,25,52,1), rgba(60, 56, 77, 1));
+        /* background: linear-gradient(180deg, rgba(118,25,52,1), rgba(60, 56, 77, 1)); */
+        background: linear-gradient(180deg, rgba(118,25,52,1), rgba(0, 10, 18, 0));
       }
       #name{
         font-family: 'Carrois Gothic SC';
@@ -189,8 +190,16 @@
         float: right;
         padding-right: 10px;
       }
-      @media screen and (max-aspect-ratio: 1/1),  (max-device-aspect-ratio: 1/1){
-
+      @media screen and (min-aspect-ratio: 1/1){
+        .names{
+          /* letter-spacing: 1.5em;
+          padding-left: 1.5em; */
+          font-size: 50px;
+          letter-spacing: 1em;
+          padding-left: 1em;
+          overflow-wrap: break-word;
+          text-transform: lowercase;
+        }
       }
       @media screen and (max-aspect-ratio: 10/15),  (max-device-aspect-ratio: 10/15){
 
