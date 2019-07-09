@@ -49,17 +49,16 @@
       }
       #name{
         font-family: 'Carrois Gothic SC';
-        /* letter-spacing: 1.5em;
-        margin-left: 1.5em; */
         padding-top: 10%;
         padding-bottom: 5%;
+        text-shadow: 0 0 40px rgba(255,255,255,0.75);
         /* padding: 10% 5% 5% 5%; top left bottom right */
       }
       .names{
         /* letter-spacing: 1.5em;
         padding-left: 1.5em; */
-        letter-spacing: 6vw;
-        padding-left: 6vw;
+        letter-spacing: 0.5em;
+        padding-left: 0.5em;
         overflow-wrap: break-word;
         font-size: 35px;
       }
@@ -80,30 +79,30 @@
         padding-bottom: 0.25em;
       }
       .fa {
-        padding: 12px;
-        font-size: 25px;
-        width: 25px;
+        padding: 10px;
+        font-size: 30px;
+        width: 30px;
         text-align: center;
         text-decoration: none;
         border-radius: 50%;
         -webkit-transition-duration: 0.1s; /* Safari */
         transition-duration: 0.1s;
         /* box-shadow: 0 0 60px rgba(150,150,150,0.4); */
+        position: sticky;
       }
       .fa:hover{
-        padding: 16px;
+        padding: 15px;
+        box-shadow: 0 0 60px rgba(255,255,255,0.4);
       }
       .fa-instagram {
-        /* background: #38499C; */
         background: rgba(214, 36, 159, 1);
         /* background: radial-gradient(circle at 30% 107%, #fdf497 5%, #fd5949 45%, #d6249f 70%, #285AEB 100%); */
         color: white;
       }
       .fa-instagram:hover{
-        /* padding: 20px; */
-        /* background-color: rgba(56,73,156,0.5); */
-        background: rgba(214, 36, 159, 0.5);
-        /* background: radial-gradient(circle at 30% 107%, #fdf49780 5%, #fd594980 45%, #d6249f80 70%, #285AEB80 100%); */
+        /* background: rgba(214, 36, 159, 0.5); */
+        background: white;
+        color: black;
       }
       .fa-twitter {
         background: rgba(83, 109, 254, 1);
@@ -112,22 +111,22 @@
         margin-right: 5%;
       }
       .fa-twitter:hover{
-        /* padding: 20px; */
-        background: rgba(83, 109, 254, 0.5);
+        /* background: rgba(83, 109, 254, 0.5); */
+        background: white;
+        color: black;
       }
       .fa-snapchat-ghost {
-        /* background: #FFD62A; */
         background: rgba(255, 160, 0, 1);
         color: white;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
       }
       .fa-snapchat-ghost:hover{
-        /* padding: 20px; */
-        /* background-color: rgba(255,214,42,0.5); */
-        background: rgba(255, 160, 0, 0.5);
+        /* background: rgba(255, 160, 0, 0.5); */
+        background: white;
+        text-shadow: none;
+        color: black;
       }
-
 
       /*panels*/
       #projects{
@@ -149,32 +148,44 @@
         width: 100%;
         /* box-shadow: 0 0 40px rgba(255,255,255,0.2); */
       }
+      .card:hover{
+        color: rgba(0,0,0,1);
+        background-color: rgba(255,255,255,1) !important;
+        height: 15em;
+        box-shadow: 0 0 40px rgba(255,255,255,0.5);
+      }
+      .type{
+        position: absolute;
+        margin: 0;
+        padding-top: 15px;
+        padding-left: 20px;
+      }
       .tcard{
         text-align: center;
         display: table-cell;
         vertical-align: middle;
-        font-size: 2.25em;
+        font-size: 2em;
         border-radius: 20px;
         padding: 0.5em;
       }
       #p1{
         background-color: rgba(153,0,0,1);
       }
-      #p1:active{
+      /* #p1:active{
         background-color: rgba(153, 0, 0, 0.5);
-      }
+      } */
       #p2{
         background-color: rgba(35,20,100,1);
       }
-      #p2:active{
+      /* #p2:active{
         background-color: rgba(35,20,100,0.5);
-      }
+      } */
       #p3{
         background-color: rgba(100,100,130,1);
       }
-      #p3:active{
+      /* #p3:active{
         background-color: rgba(100,100,130,0.5);
-      }
+      } */
       footer {
         /* font-family: 'Consolas', Tahoma, Geneva, Verdana, sans-serif; */
         font-family: 'Inconsolata', Tahoma, Geneva, Verdana, sans-serif;
@@ -230,16 +241,25 @@
     </header>
     <div id="projects">
       <a class="card" id="p1" href="https://www.ozpaker.org/bruh">
+        <p class="type">
+          web
+        </p>
         <p class="tcard">
            bruh button
         </p>
       </a>
       <a class="card" id="p2">
+        <p class="type">
+          web
+        </p>
         <p class="tcard">
           area wars online
         </p>
       </a>
       <a class="card" id="p3" href="https://play.google.com/store/apps/details?id=org.ozpaker.minimalgradecalculator">
+        <p class="type">
+          android
+        </p>
         <p class="tcard">
           minimal grade calculator
         </p>
