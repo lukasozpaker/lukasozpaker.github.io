@@ -45,13 +45,14 @@
         /* padding-left: 5%;
         padding-right: 5%; */
         /* background: linear-gradient(180deg, rgba(118,25,52,1), rgba(60, 56, 77, 1)); */
-        background: linear-gradient(180deg, rgba(118,25,52,1), rgba(0, 10, 18, 0));
+        /* background: linear-gradient(180deg, rgba(118,25,52,1), rgba(0, 10, 18, 0)); */
+        background: linear-gradient(180deg, rgba(60, 56, 77, 1), rgba(0, 10, 18, 0));
       }
       #name{
-        font-family: 'Carrois Gothic SC';
+        font-family: Carrois Gothic SC, Montserrat, arial, sans-serif;
         padding-top: 10%;
         padding-bottom: 5%;
-        text-shadow: 0 0 40px rgba(255,255,255,0.75);
+        text-shadow: 0 0 40px rgba(255,255,255,0.5);
         /* padding: 10% 5% 5% 5%; top left bottom right */
       }
       .names{
@@ -64,19 +65,19 @@
       }
       #text{
         /* font-family: 'Consolas', Tahoma, Geneva, Verdana, sans-serif; */
-        font-family: 'Inconsolata', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: Inconsolata, Tahoma, Geneva, Verdana, sans-serif;
         padding-left: 5%;
         padding-right: 5%;
         padding-bottom: 0.5em;
       }
       #at{
-        font-family: 'DM Sans';
+        font-family: DM Sans, Inconsolata, Tahoma, Geneva, Verdana, sans-serif;
         font-weight: bold;
         padding-bottom: 0.75em;
         font-size: 1.1em;
       }
       #icons{
-        padding-bottom: 0.25em;
+        padding-bottom: 1em;
       }
       .fa {
         padding: 10px;
@@ -88,10 +89,9 @@
         -webkit-transition-duration: 0.1s; /* Safari */
         transition-duration: 0.1s;
         /* box-shadow: 0 0 60px rgba(150,150,150,0.4); */
-        position: sticky;
       }
       .fa:hover{
-        padding: 15px;
+        /* padding: 15px; */
         box-shadow: 0 0 60px rgba(255,255,255,0.4);
       }
       .fa-instagram {
@@ -132,27 +132,26 @@
       #projects{
         padding-left: 0.75em;
         padding-right: 0.75em;
-        padding-top: 1.5em;
-        /* font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif; */
-        font-family: 'Carrois Gothic SC';
+        padding-top: 0.75em;
+        font-family: Carrois Gothic SC, Montserrat, arial, sans-serif;
         font-weight: bold;
       }
       .card{
         text-align: center;
         height: 10em;
-        background-color: white;
-        transition: 0.3s;
+        background-color: rgb(255,255,255);
+        -webkit-transition-duration: 0.3s; /* Safari */
+        transition-duration: 0.3s;
         border-radius: 20px;
         margin-bottom: 1em;
         display: table;
         width: 100%;
-        /* box-shadow: 0 0 40px rgba(255,255,255,0.2); */
       }
       .card:hover{
         color: rgba(0,0,0,1);
         background-color: rgba(255,255,255,1) !important;
-        height: 15em;
-        box-shadow: 0 0 40px rgba(255,255,255,0.5);
+        /* height: 15em; */
+        box-shadow: 0 0 40px rgba(255,255,255,0.4);
       }
       .type{
         position: absolute;
@@ -171,24 +170,15 @@
       #p1{
         background-color: rgba(153,0,0,1);
       }
-      /* #p1:active{
-        background-color: rgba(153, 0, 0, 0.5);
-      } */
       #p2{
         background-color: rgba(35,20,100,1);
       }
-      /* #p2:active{
-        background-color: rgba(35,20,100,0.5);
-      } */
       #p3{
         background-color: rgba(100,100,130,1);
       }
-      /* #p3:active{
-        background-color: rgba(100,100,130,0.5);
-      } */
       footer {
         /* font-family: 'Consolas', Tahoma, Geneva, Verdana, sans-serif; */
-        font-family: 'Inconsolata', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: Inconsolata, Tahoma, Geneva, Verdana, sans-serif;
         left: 0;
         bottom: 0;
         /* background-color: rgba(70,10,20,0.7); */
@@ -205,22 +195,12 @@
         float: right;
         padding-right: 10px;
       }
-      @media screen and (min-aspect-ratio: 1/1){
-        /* #name{
-          padding-top: 4em;
-          padding-bottom: 2em;
-        }
-        .names{
-          font-size: 5vw;
-          letter-spacing: 1em;
-          padding-left: 1em;
-          overflow-wrap: break-word;
-          text-transform: lowercase;
-        } */
-      }
-      @media screen and (max-aspect-ratio: 10/15),  (max-device-aspect-ratio: 10/15){
+      /* @media screen and (min-aspect-ratio: 1/1){
 
-      }
+      } */
+      /* @media screen and (max-aspect-ratio: 10/15),  (max-device-aspect-ratio: 10/15){
+
+      } */
     </style>
   </head>
   <body onload="onload()">
