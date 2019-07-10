@@ -16,6 +16,10 @@
     <!-- TODO: make buttons more interesting -->
     <!-- TODO: come up with a favicon, fix the bruh button favicon location -->
     <style>
+      /* ::selection{
+        color:#fff;
+        background-color:#5624f2;
+      } */
       html{
         -webkit-tap-highlight-color: rgba(0,0,0,0);
       }
@@ -42,8 +46,6 @@
       }
       #header{
         background-color: rgba(70,10,20,0.7);
-        /* padding-left: 5%;
-        padding-right: 5%; */
         /* background: linear-gradient(180deg, rgba(118,25,52,1), rgba(60, 56, 77, 1)); */
         /* background: linear-gradient(180deg, rgba(118,25,52,1), rgba(0, 10, 18, 0)); */
         background: linear-gradient(180deg, rgba(60, 56, 77, 1), rgba(0, 10, 18, 0));
@@ -136,7 +138,8 @@
       .card{
         text-align: center;
         height: 10em;
-        background-color: rgb(255,255,255);
+        background-color: rgba(255,255,255,0.1);
+        color: rgb(255,255,255);
         -webkit-transition-duration: 0.3s; /* Safari */
         transition-duration: 0.3s;
         border-radius: 20px;
@@ -169,16 +172,16 @@
         background-color: rgba(153,0,0,1);
       }
       #p2{
-        color: rgb(0,0,0)
+
       }
       #p3{
         background-color: rgba(100,100,130,1);
       }
       #p4 {
-        color: rgb(0,0,0);
+
       }
       #p5 {
-        color: rgb(0,0,0);
+
       }
       footer {
         font-family: Inconsolata, Consolas, Tahoma, Geneva, Verdana, sans-serif;
