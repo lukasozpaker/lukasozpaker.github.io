@@ -20,10 +20,10 @@
     <!-- TODO: make buttons more interesting -->
     <!-- TODO: come up with a favicon, fix the bruh button favicon location -->
     <style>
-      /* ::selection{
-        color:#fff;
-        background-color:#5624f2;
-      } */
+      ::selection{
+        color:#000;
+        background-color:rgba(255,255,255,0.99);
+      }
       html{
         -webkit-tap-highlight-color: rgba(0,0,0,0);
       }
@@ -122,7 +122,7 @@
       }
       .fa-snapchat-ghost {
         background: rgba(255, 160, 0, 1);
-        box-shadow: 0 0 60px rgba(255, 160, 0, 0.5);
+        box-shadow: 0 0 60px rgba(255, 160, 0, 0.55);
         color: rgb(255,255,255);
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
@@ -140,6 +140,12 @@
         padding-top: 0.75em;
         font-family: Carrois Gothic SC, Montserrat, arial, sans-serif;
         font-weight: bold;
+        /* the entire grid */
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(27.5em, 1fr));
+        grid-auto-rows: auto;
+        grid-column-gap: 1em;
+        /* the entire grid */
       }
       .card{
         text-align: center;
@@ -210,12 +216,11 @@
         float: right;
         padding-right: 10px;
       }
-      /* @media screen and (min-aspect-ratio: 1/1){
-
-      } */
-      /* @media screen and (max-aspect-ratio: 10/15),  (max-device-aspect-ratio: 10/15){
-
-      } */
+      @media screen and (max-width: 35em) {
+        #projects{
+          grid-template-columns: 100%;
+        }
+      }
     </style>
   </head>
   <body onload="onload()">
@@ -277,8 +282,8 @@
       </a>
     </div>
     <footer id="footer">
-      <span class="info">Lukas Ozpaker 2019</span>
       <span class="vers">1.0.0</span>
+      <span class="info">Lukas Ozpaker 2019</span>
     </footer>
     <script type="text/javascript">
 
