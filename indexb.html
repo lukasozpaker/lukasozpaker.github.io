@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Carrois%20Gothic%20SC' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
-
     <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet'>
 
-    <!-- TODO: add one more project -->
     <!-- TODO: add a coming soon to area wars online -->
     <!-- TODO: add some sort of js background animations to make it look more interesting-->
     <!-- TODO: make buttons more interesting -->
-    <!-- TODO: come up with a favicon, fix the bruh button favicon location -->
     <style>
+    ol, ul {
+      decoration:none;
+    }
       ::selection{
         color:#000;
         background-color:rgba(255,255,255,0.99);
@@ -90,12 +90,14 @@
         text-decoration: none;
         border-radius: 50%;
         -webkit-transition-duration: 0.1s; /* Safari */
-        transition-duration: 0.1s;
+        transition: all 0.1s ease;
         /* box-shadow: 0 0 60px rgba(150,150,150,0.4); */
       }
       .fa:hover{
         /* padding: 15px; */
         box-shadow: 0 0 60px rgba(255,255,255,0.4);
+        -webkit-transition-duration: 0.1s; /* Safari */
+        transition: all 0.1s ease;
       }
       .fa-instagram {
         background: rgba(214, 36, 159, 1);
@@ -110,7 +112,7 @@
       }
       .fa-twitter {
         background: rgba(83, 109, 254, 1);
-        box-shadow: 0 0 60px rgba(83, 109, 254, 0.75);
+        box-shadow: 0 0 60px rgba(83, 109, 254, 0.8);
         color: white;
         margin-left: 5%;
         margin-right: 5%;
@@ -153,8 +155,8 @@
         background-color: rgba(255,255,255,0.1);
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
         color: rgb(255,255,255);
-        -webkit-transition-duration: 0.1s; /* Safari */
-        transition-duration: 0.1s;
+        -webkit-transition-duration: 0.2s; /* Safari */
+        transition: all 0.2s ease;
         border-radius: 20px;
         margin-bottom: 1em;
         display: table;
@@ -165,6 +167,9 @@
         background-color: rgba(255,255,255,1);
         /* height: 15em; */
         box-shadow: 0 0 30px rgba(255,255,255,0.5);
+        -webkit-transition-duration: 0.2s; /* Safari */
+        transition: all 0.2s ease;
+        border-radius: 0;
       }
       .type{
         position: absolute;
@@ -183,14 +188,14 @@
       }
       #p1{
         background-color: rgb(173, 20, 87);
-        box-shadow: 0 0 20px rgba(173, 20, 87, 0.75);
+        box-shadow: 0 0 20px rgba(173, 20, 87, 0.8);
       }
       #p2{
 
       }
       #p3{
         background-color: rgb(92, 107, 192);
-        box-shadow: 0 0 20px rgba(92, 107, 192, 0.5);
+        box-shadow: 0 0 20px rgba(92, 107, 192, 0.6);
       }
       #p4 {
 
@@ -223,7 +228,7 @@
       }
     </style>
   </head>
-  <body onload="onload()">
+  <body>
     <header id="header">
       <h1 id="name">
         <span class="names">LUKAS</span>
