@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Who's not following you?</title>
+    </head>
+    <style>
+      html, body {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+      }
+      ul {
+        text-align: center;
+        list-style: none;
+        padding-left: 25%;
+        padding-right: 25%;
+      }
+      textarea {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        resize: none;
+        height: 15em;
+        width: 100%;
+      }
+      .submit {
+        width: 100%;
+        height: 5em;
+      }
+  </style>
+  <body>
+    <div>
+      <p>Sign in if necessary. Click on each link, press "view more" as many times as necessary then copy and paste it into each respective field.</p>
+      <a href="https://www.instagram.com/accounts/access_tool/accounts_you_follow" target="_blank">Accounts you follow:</a>
+      <textarea id="youfollow"></textarea>
+      <a href="https://www.instagram.com/accounts/access_tool/accounts_following_you" target="_blank">Accounts following you:</a>
+      <textarea id="followingyou"></textarea>
+      <input type="submit" class="submit" value="Analyze" onclick="analyze()">
+      <div id="data"></div>
+      <div id="list"></div>
+    </div>
+    <script type="text/javascript">
+
+      var notfollowing = [];
+
+      function analyze() {
+        // var lines = document.getElementById('textareaId').innerHTML.split('\n');
+        // for(var i = 0;i < lines.length;i++){
+        //   //code here using lines[i] which will give you each line
+        // }
+        var youfollow = document.getElementById("youfollow");
+        var arrayOfyoufollow = youfollow.value.split("\n");
+
+        var followingyou = document.getElementById("followingyou");
+        var arrayOffollowingyou = followingyou.value.split("\n");
+
+        for(var i=0;i<arrayOffollowingyou.length;i++) {
+          var match = false;
+          for (var j=0;j<arrayOfyoufollow.length;j++) {
+            if (arrayOffollowingyou[i] == arrayOfyoufollow[j]) {
+              match = true;
+              arrayOffollowingyou.splice(i,1);
+              arrayOfyoufollow.splice(j,1);
+              i--;
+              j--;
+            }
+          }
+        }
+        console.log(arrayOfyoufollow);
+        for(var i=0;i<arrayOfyoufollow.length;i++) {
+          if (arrayOfyoufollow[i] != "") notfollowing.push(arrayOfyoufollow[i]);
+        }
+        console.log(notfollowing);
+
+        list();
+      }
+
+      function makeUL(array) {
+        // Create the list element:
+        var list = document.createElement('ul');
+
+        for(var i = 0; i < array.length; i++) {
+          // Create the list item:
+          var item = document.createElement('li');
+
+          // Set its contents:
+          item.appendChild(document.createTextNode(array[i]));
+
+          // Add it to the list:
+          list.appendChild(item);
+        }
+
+        // Finally, return the constructed list:
+        return list;
+      }
+
+      function list() {
+        document.getElementById('list').innerHTML = "";
+        // Add the contents of options[0] to #list:
+        document.getElementById('data').innerHTML = notfollowing.length + " accounts are not following you back";
+        if(notfollowing.length == 1) document.getElementById('data').innerHTML = notfollowing.length + " account is not following you back";
+        document.getElementById('list').appendChild(makeUL(notfollowing));
+        notfollowing = [];
+      }
+    </script>
+  </body>
+</html>
