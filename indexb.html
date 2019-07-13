@@ -154,7 +154,7 @@
         transition: all 0.2s ease;
         border-radius: 20px;
         margin-bottom: 1em;
-        display: table;
+        /* old card center display: table; */
         width: 100%;
       }
       #projects > a:hover{
@@ -166,6 +166,18 @@
         transition: all 0.2s ease;
         border-radius: 0;
       }
+      #projects > a:hover .tcard{
+        -webkit-transition-duration: 0.2s; /* Safari */
+        transition: all 0.2s ease;
+        transform: translateY(-65%);
+        color: #000;
+      }
+      #projects > a:hover .underneath{
+        -webkit-transition-duration: 0.2s; /* Safari */
+        transition: all 0.2s ease;
+        opacity: 1;
+        color: #000;
+      }
       .type{
         position: absolute;
         margin: 0;
@@ -174,12 +186,19 @@
         font-size: 1em;
       }
       .tcard{
-        text-align: center;
+        /* old card center text-align: center;
         display: table-cell;
-        vertical-align: middle;
+        vertical-align: middle; */
+        margin: 0;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
         font-size: 2em;
         border-radius: 20px;
         padding: 0.5em;
+      }
+      .underneath {
+        opacity: 0;
       }
       #p1{
         background-color: rgb(173, 20, 87);
@@ -247,44 +266,27 @@
     </header>
     <div id="projects">
       <a class="card" id="p1" href="https://www.ozpaker.org/bruh">
-        <p class="type">
-          web
-        </p>
-        <p class="tcard">
-           bruh button
-        </p>
+        <p class="type">web</p>
+        <p class="tcard">bruh button</p>
+        <p class="underneath">a button for bruh moments</p>
       </a>
       <a class="card" id="p2" href="https://www.ozpaker.org/instagram">
-        <p class="type">
-          web
-        </p>
-        <p class="tcard">
-          instagram follow back
-        </p>
+        <p class="type">web</p>
+        <p class="tcard">instagram follow back</p>
+        <p class="underneath">who's not following you back?</p>
       </a>
       <a class="card" id="p3" href="https://play.google.com/store/apps/details?id=org.ozpaker.minimalgradecalculator">
-        <p class="type">
-          android
-        </p>
-        <p class="tcard">
-          minimal grade calculator
-        </p>
+        <p class="type">android</p>
+        <p class="tcard">minimal grade calculator</p>
+        <p class="underneath">calculate you grades</p>
       </a>
       <!-- <a class="card" id="p4">
-        <p class="type">
-          ad
-        </p>
-        <p class="tcard">
-          ad prompt
-        </p>
+        <p class="type">ad</p>
+        <p class="tcard">ad prompt</p>
       </a>
       <a class="card" id="p5">
-        <p class="type">
-          web
-        </p>
-        <p class="tcard">
-          area wars online
-        </p>
+        <p class="type">web</p>
+        <p class="tcard">area wars online</p>
       </a> -->
     </div>
     <footer id="footer">
