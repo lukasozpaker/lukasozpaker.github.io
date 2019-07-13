@@ -13,13 +13,8 @@
     <link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet'>
 
-    <!-- TODO: add a coming soon to area wars online -->
-    <!-- TODO: add some sort of js background animations to make it look more interesting-->
-    <!-- TODO: make buttons more interesting -->
+    <!-- TODO: add js background-->
     <style>
-    ol, ul {
-      decoration:none;
-    }
       ::selection{
         color:#000;
         background-color:rgba(255,255,255,0.99);
@@ -191,18 +186,19 @@
         box-shadow: 0 0 20px rgba(173, 20, 87, 0.8);
       }
       #p2{
-
+        background-color: rgba(255, 145, 0, 0.95);
+        box-shadow: 0 0 20px rgba(255, 145, 0, 0.5);
       }
       #p3{
         background-color: rgb(92, 107, 192);
         box-shadow: 0 0 20px rgba(92, 107, 192, 0.6);
       }
-      #p4 {
+      /* #p4 {
 
       }
       #p5 {
 
-      }
+      } */
       footer {
         font-family: Inconsolata, Consolas, Tahoma, Geneva, Verdana, sans-serif;
         left: 0;
@@ -224,6 +220,11 @@
       @media screen and (max-width: 35em) {
         #projects{
           grid-template-columns: 100%;
+        }
+      }
+      @media screen and (min-width: 90em) {
+        #projects{
+          grid-template-columns: 1fr 1fr 1fr;
         }
       }
     </style>
@@ -253,12 +254,12 @@
            bruh button
         </p>
       </a>
-      <a class="card" id="p2">
+      <a class="card" id="p2" href="https://www.ozpaker.org/instagram">
         <p class="type">
           web
         </p>
         <p class="tcard">
-          area wars online
+          instagram follow back
         </p>
       </a>
       <a class="card" id="p3" href="https://play.google.com/store/apps/details?id=org.ozpaker.minimalgradecalculator">
@@ -269,7 +270,7 @@
           minimal grade calculator
         </p>
       </a>
-      <a class="card" id="p4">
+      <!-- <a class="card" id="p4">
         <p class="type">
           ad
         </p>
@@ -279,12 +280,12 @@
       </a>
       <a class="card" id="p5">
         <p class="type">
-          project
+          web
         </p>
         <p class="tcard">
-          project
+          area wars online
         </p>
-      </a>
+      </a> -->
     </div>
     <footer id="footer">
       <span class="vers">1.0.0</span>
