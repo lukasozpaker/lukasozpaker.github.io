@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,6 +52,7 @@
         background: #ffffff;
         margin-bottom: 2rem;
         box-shadow: 0 0 12px rgba(21, 21, 23, 0.3);
+		padding-bottom: 1rem;
       }
       .post{
         margin: auto;
@@ -75,7 +77,6 @@
         display: block;
         margin: auto;
         width: 90%;
-        border-radius: 16px;
       }
       .image{
 
@@ -108,12 +109,25 @@
       .bar{
         display: block;
         margin: auto;
-        width: 90%;
+        width: 80%;
+        padding: 0;
+      }
+      .hbar{
+        display: block;
+        margin: auto;
+        width: 80%;
         padding: 0;
       }
       .icons{
-        width: 3em;
-        height: 3em;
+        width: 2.5em;
+        height: 2.5em;
+        padding: 0;
+        float: left;
+        display: block;
+      }
+      .hicons{
+        width: 3.5em;
+        height: 3.5em;
         padding: 0;
         float: left;
         display: block;
@@ -146,6 +160,61 @@
         float: right;
         padding-right: 10px;
       }
+      #share{
+        height:2.25em;
+        width: 2.25em;
+        margin: 0.2em 0.25em 0.3em 0.25em;
+      }
+      #heart{
+
+      }
+      #facebook{
+        margin: auto;
+        height:2em;
+        width: 2em;
+      }
+      #twitter{
+        height:2em;
+        width: 2em;
+        margin: auto;
+      }
+      #instagram{
+        height:1.75em;
+        width: 2em;
+        margin: auto;
+      }
+      #snapchat{
+        height:2em;
+        width: 2em;
+        margin: auto;
+      }
+      #linkedin{
+        height:2em;
+        width: 2em;
+        margin: auto;
+      }
+      #email{
+        height:2em;
+        width: 2em;
+        margin: auto;
+      }
+      /*hide the inputs/checkmarks and submenu*/
+      input{
+        display: none;
+      }
+      ul.submenu {
+        display: none;
+      }
+      /*position the label*/
+      label {
+        position: relative;
+        display: block;
+        cursor: pointer;
+      }
+      /*show the submenu when input is checked*/
+      input:checked~ul.submenu {
+        display: block;
+      }
       @media screen and (max-width: 50em) {
 
       }
@@ -161,7 +230,15 @@
     <header>
       <div class="headercontainer">
         <div class="title">ICONS</div>
-        <img class="key" src="Website Development\icon-location.svg">
+        <div class="hbar">
+          <ul>
+            <li class="link"><a href="#"><img class="hicons" src="Website Development\icon-folder.svg"></a></li>
+            <li class="link"><a href="#"><img class="hicons" src="Website Development\icon-house.svg"></a></li>
+            <li class="link"><a href="#"><img class="hicons" src="Website Development\icon-pen.svg"></a></li>
+
+          </ul>
+        </div>
+        <img class="key" src="">
       </div>
       <div id="postcont">
         <div class="post">
@@ -170,14 +247,43 @@
             <img class="x" src="Website Development\icon-x.svg">
           </div>
           <div class="image"><img src="https://via.placeholder.com/600"></div>
-          <div class="caption"><p contenteditable="true">This is test text lorem ipsum dolor</p></div>
+          <div class="caption"><p><!--contenteditable="true"--> This is test text lorem ipsum dolor</p></div>
           <div class="bar">
             <ul>
-              <li class="link"><a href="#"><img class="icons" src="Website Development\icon-pen.svg"></a></li>
-              <li class="link"><a href="#"><img class="icons" src="Website Development\icon-trash.svg"></a></li>
-              <li class="link"><a href="#"><img class="icons" src="Website Development\icon-share.svg"></a></li>
-              <li class="link"><a href="#"><img class="icons" src="Website Development\icon-like.svg"></a></li>
-              <li class="link"><a href="#"><img class="icons" src="Website Development\icon-dislike.svg"></a></li>
+              <li class="link">
+                <a href="#">
+                  <img class="icons" id="heart" src="Website Development\icon-heart.svg">
+                </a>
+              </li>
+              <label for="check01">
+                <li class="link">
+
+                  <img class="icons" id="share" src="Website Development\icon-share.svg">
+
+                </li>
+              </label>
+              <li class="link">
+                <a href="#">
+                  <img class="icons" src="Website Development\icon-like.svg">
+                </a>
+              </li>
+              <li class="link">
+                <a href="#">
+                  <img class="icons" src="Website Development\icon-dislike.svg">
+                </a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="bar">
+            <input id="check01" type="checkbox" name="menu" />
+            <ul class="submenu">
+              <li><img class="icons" id="facebook" src="Website Development\icon-facebook.svg"></li>
+              <li><img class="icons" id="twitter" src="Website Development\icon-twitter.svg"></li>
+              <li><img class="icons" id="instagram" src="Website Development\icon-insta.svg"></li>
+              <li><img class="icons" id="snapchat" src="Website Development\icon-snap.svg"></li>
+              <li><img class="icons" id="linkedin" src="Website Development\icon-linkedin.svg"></li>
+              <li><img class="icons" id="email" src="Website Development\icon-mail.svg"></li>
             </ul>
           </div>
         </div>
@@ -188,20 +294,46 @@
           </div>
           <div class="video">
             <img src="https://via.placeholder.com/600">
-              <img class="playicon" src="Website Development\icon-youtube.svg"></img>
-            </img>
-          </div>
-          <div class="caption"><p contenteditable="true">This is test text lorem ipsum dolor</p></div>
+            <img class="playicon" src="Website Development\icon-youtube.svg"></img>
+          </img>
+        </div>
+        <div class="caption"><p contenteditable="true">This is test text lorem ipsum dolor</p></div>
+        <div class="bar">
+          <ul>
+            <li class="link">
+              <a href="#">
+                <img class="icons" id="heart" src="Website Development\icon-heart.svg">
+              </a>
+            </li>
+            <label for="check02">
+              <li class="link">
+                <img class="icons" id="share" src="Website Development\icon-share.svg">
+              </li>
+            </label>
+            <li class="link">
+              <a href="#">
+                <img class="icons" src="Website Development\icon-like.svg">
+              </a>
+            </li>
+            <li class="link">
+              <a href="#">
+                <img class="icons" src="Website Development\icon-dislike.svg">
+              </a>
+            </li>
+          </ul>
           <div class="bar">
-            <ul>
-              <li class="link"><a href="#"><img class="icons" src="Website Development\icon-pen.svg"></a></li>
-              <li class="link"><a href="#"><img class="icons" src="Website Development\icon-trash.svg"></a></li>
-              <li class="link"><a href="#"><img class="icons" src="Website Development\icon-share.svg"></a></li>
-              <li class="link"><a href="#"><img class="icons" src="Website Development\icon-like.svg"></a></li>
-              <li class="link"><a href="#"><img class="icons" src="Website Development\icon-dislike.svg"></a></li>
+            <input id="check02" type="checkbox" name="menu" />
+            <ul class="submenu">
+              <li><img class="icons" id="facebook" src="Website Development\icon-facebook.svg"></li>
+              <li><img class="icons" id="twitter" src="Website Development\icon-twitter.svg"></li>
+              <li><img class="icons" id="instagram" src="Website Development\icon-insta.svg"></li>
+              <li><img class="icons" id="snapchat" src="Website Development\icon-snap.svg"></li>
+              <li><img class="icons" id="linkedin" src="Website Development\icon-linkedin.svg"></li>
+              <li><img class="icons" id="email" src="Website Development\icon-mail.svg"></li>
             </ul>
           </div>
         </div>
+      </div>
       </div>
     </header>
 
