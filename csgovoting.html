@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans:700&display=swap" rel="stylesheet">
+    <title>CSGO map voting</title>
+    <style>
+      @font-face {
+        font-family: GilroyLight;
+        src: url("https://www.ozpaker.org/Gilroy-Light.otf") format("opentype");
+      }
+      @font-face {
+        font-family: GilroyBold;
+        src: url("https://www.ozpaker.org/Gilroy-ExtraBold.otf") format("opentype");
+      }
+      ::selection{
+        color: #ffffff;
+        background-color: rgba(0,10,18,0.99);
+      }
+      html{
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+      body{
+        margin: 0;
+      }
+      *{
+        transition: ease-out 0.3s;
+      }
+      *:focus {
+        outline: none;
+        outline: 0;
+        border: 4px solid #404044;;
+        border-radius: 2px;
+      }
+      *:focus::placeholder {
+        color: transparent;
+        transition: ease-out 0.3s;
+      }
+      a{
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      #wrapper{
+        font-family: 'GilroyBold', 'Arial', monospace;
+
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -70%);
+        left: 50%;
+        width: 80%;
+        display: block;
+      }
+      #welcome{
+        text-align: center;
+        padding: 2em;
+        font-size: 24px;
+      }
+      input {
+        font-family: 'GilroyLight', 'Arial', monospace;
+        border: none;
+        width: 100%;
+        height: 50px;
+        font-size: 40px;
+        text-align: center;
+        margin: 0;
+        box-sizing: border-box;
+        padding: 1em;
+        border: 4px solid #707075;
+      }
+      ::placeholder{
+        text-align: center;
+      }
+
+
+      /*
+      * CSGO map form
+      *
+      */
+
+      #form{
+        display: none;
+      }
+      ul {
+        list-style-type: none;
+      }
+
+      li {
+        display: inline-block;
+      }
+
+      input[type="checkbox"][id^="map"] {
+        display: none;
+      }
+
+      label {
+        border: 1px solid #fff;
+        padding: 10px;
+        display: block;
+        position: relative;
+        margin: 10px;
+        cursor: pointer;
+      }
+
+      label:before {
+        background-color: white;
+        color: white;
+        content: " ";
+        display: block;
+        border-radius: 50%;
+        position: absolute;
+        top: 0.6em;
+        left: 16.5vw;
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        line-height: 28px;
+        transition-duration: 0.4s;
+        transform: scale(0);
+        z-index: 30;
+      }
+
+      label img {
+        height: 16em;
+        width: 18.2vw;
+        transition-duration: 0.2s;
+        transform-origin: 50% 50%;
+      }
+
+      :checked + label:before {
+        content: "✓";
+        background-color: #404044;
+        transform: scale(1.2);
+      }
+
+      :checked + label img {
+        transform: scale(0.9);
+        z-index: -1;
+      }
+
+      </style>
+  </head>
+  <body>
+
+    <div id="wrapper">
+      <header id="welcome">WELCOME TO THE CSGO ONLINE VOTING SYSTEM</header>
+      <input id="password" type="password" placeholder="Password" />
+    </div>
+
+    <div id="form">
+      <ul>
+        <li><input type="checkbox" id="map0" />
+          <label for="map0"><img src="https://via.placeholder.com/500x500?text=Placeholder" /></label>
+        </li>
+        <li><input type="checkbox" id="map1" />
+          <label for="map1"><img src="https://via.placeholder.com/500x500?text=Placeholder" /></label>
+        </li>
+        <li><input type="checkbox" id="map2" />
+          <label for="map2"><img src="https://via.placeholder.com/500x500?text=Placeholder" /></label>
+        </li>
+        <li><input type="checkbox" id="map3" />
+          <label for="map3"><img src="https://via.placeholder.com/500x500?text=Placeholder" /></label>
+        </li>
+        <li><input type="checkbox" id="map4" />
+          <label for="map4"><img src="https://via.placeholder.com/500x500?text=Placeholder" /></label>
+        </li>
+        <li><input type="checkbox" id="map5" />
+          <label for="map5"><img src="https://via.placeholder.com/500x500?text=Placeholder" /></label>
+        </li>
+        <li><input type="checkbox" id="map6" />
+          <label for="map6"><img src="https://via.placeholder.com/500x500?text=Placeholder" /></label>
+        </li>
+        <li><input type="checkbox" id="map7" />
+          <label for="map7"><img src="https://via.placeholder.com/500x500?text=Placeholder" /></label>
+        </li>
+        <li><input type="checkbox" id="map8" />
+          <label for="map8"><img src="https://via.placeholder.com/500x500?text=Placeholder" /></label>
+        </li>
+        <li><input type="checkbox" id="map9" />
+          <label for="map9"><img src="https://via.placeholder.com/500x500?text=Placeholder" /></label>
+        </li>
+        <li><input type="checkbox" id="map10" />
+          <label for="map10"><img src="https://via.placeholder.com/500x500?text=0" /></label>
+        </li>
+      </ul>
+
+    </div>
+
+    <script type="text/javascript">
+    //goes to
+    //clickable 'radio button' map images
+    //revote during next day 12am
+
+    // Get the input field
+    var password = document.getElementById("password");
+    var portal = document.getElementById("wrapper");
+    var form = document.getElementById("form");
+
+
+    var maps = [false, false, false, false, false, false, false, false, false, false];
+    // Execute a function when the user releases a key on the keyboard
+    //TODO: the style.display is broken, fix later
+    document.addEventListener("keyup", function(event) {
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13 && portal.style.display !== "none") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        console.log(password.value);
+        console.log("LOGIN SUCCESSFUL");
+        if (password.value === "test") {
+          portal.style.display = "none";
+          form.style.display = "block";
+        }
+      }
+      else if (event.keyCode === 13 && form.style.display !== "none") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        console.log("FORM COMPLETED");
+        maps[0] = document.getElementById('map0').checked;
+        maps[1] = document.getElementById('map1').checked;
+        maps[2] = document.getElementById('map2').checked;
+        maps[3] = document.getElementById('map3').checked;
+        maps[4] = document.getElementById('map4').checked;
+        maps[5] = document.getElementById('map5').checked;
+        maps[6] = document.getElementById('map6').checked;
+        maps[7] = document.getElementById('map7').checked;
+        maps[8] = document.getElementById('map8').checked;
+        maps[9] = document.getElementById('map9').checked;
+        maps[10] = document.getElementById('map10').checked;
+
+        results = [{"id":password.value,},
+          {"map0":maps[0], "map1":maps[1], "map2":maps[2], "map3":maps[3],
+        "map4":maps[4], "map5":maps[5], "map6":maps[6], "map7":maps[7],
+        "map8":maps[8], "map9":maps[9], "map10":maps[10]}
+      ];
+
+        console.log(results);
+      }
+    });
+
+    // [0] agency
+    // [1] anubis
+    // [2] cache
+    // [3] dust II
+    // [4] inferno
+    // [5] mirage
+    // [6] nuke
+    // [7] office
+    // [8] overpass
+    // [9] train
+    // [10] vertigo
+
+
+
+
+    </script>
+  </body>
+</html>
