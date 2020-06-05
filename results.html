@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <!--------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <!--------------------------------------------->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/sha256.min.js"></script>
+    <!--------------------------------------------->
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans:700&display=swap" rel="stylesheet">
+    <!--------------------------------------------->
+    <title>CSGO map voting</title>
+    <style>
+      @font-face {
+        font-family: GilroyLight;
+        src: url("https://www.ozpaker.org/Gilroy-Light.otf") format("opentype");
+      }
+      @font-face {
+        font-family: GilroyBold;
+        src: url("https://www.ozpaker.org/Gilroy-ExtraBold.otf") format("opentype");
+      }
+      @font-face {
+        font-family: ObjectSans;
+        src: url("https://www.ozpaker.org/ObjectSans-Regular.otf") format("opentype");
+      }
+      ::selection{
+        color: #ffffff;
+        background-color: rgba(0,10,18,0.99);
+      }
+      html{
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+      body{
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      *{
+        transition: ease-out 0.3s;
+      }
+      *:focus {
+        outline: none;
+        outline: 0;
+        border: 4px solid #404044;;
+        border-radius: 2px;
+      }
+      *:focus::placeholder {
+        color: transparent;
+        transition: ease-out 0.3s;
+      }
+      a{
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+      ul {
+        list-style-type: none;
+        margin: auto;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        font-family: 'ObjectSans', 'Arial', monospace;
+        color: #26a69a;
+      }
+
+      li {
+        display: inline-block;
+        margin: auto;
+      }
+      #numvotes {
+        color: #26a69a;
+        font-family: 'ObjectSans', 'Arial', monospace;
+      }
+
+      /*
+      * CSGO results
+      *
+      */
+
+      #form {
+        display: block;
+        padding-left: 1.5em;
+        padding-right: 2.5em;
+        padding-bottom: 2em;
+      }
+      #title{
+        font-family: 'GilroyBold', 'Arial', monospace;
+        text-align: center;
+        padding-top: 1.5em;
+        padding-bottom: 1em;
+        font-size: 24px;
+      }
+      #results{
+        margin: auto;
+        max-width: 35em;
+        max-height: 50em;
+      }
+
+      #footer {
+        margin-top: auto;
+        bottom: 0;
+        height: 2em;
+        font-family: 'ObjectSans', 'Arial', monospace;
+        width: 100%;
+        text-align: center;
+
+        padding-bottom: 1.5em;
+        overflow: auto;
+        letter-spacing: 0.05em;
+        font-size: 0.9em;
+      }
+      .vers {
+        float: left;
+        padding-left: 3.5em;
+      }
+      .info {
+        float: right;
+        padding-right: 3.5em;
+      }
+      </style>
+  </head>
+  <body>
+
+    <div id="form">
+      <header id="title">MAP RESULTS</header>
+      <canvas id="results"></canvas>
+      <div>
+        <header id="title">VOTES COUNTED: <p id="numvotes"></p><header>
+        <header id="title">TODAY'S MAPS<header>
+        <ul id="list">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <span class="vers">BETA 0 . 9</span>
+      <span class="info">LUKAS OZPAKER 2020</span>
+    </footer>
+
+    <script type="text/javascript">
+
+    console.log(true+true+true-false);
+
+    var hash848f106ca0039acc36440ad1e97f9014546435954b808f78cee0be5daa029e35 = [true, false, false, false, false, false, false, true, false, true, false];
+    var hash1 = [true, false, false, false, false, false, false, true, false, false, false];
+    var hash2 = [false, false, false, false, false, false, false, true, false, false, false];
+    var hash3 = [true, false, false, false, false, false, false, false, false, false, false];
+    var hash4 = [true, false, false, false, false, false, false, false, false, false, false];
+
+    var mapVotes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    for(let i=0;i<mapVotes.length;i++) {
+      mapVotes[i] =
+      hash848f106ca0039acc36440ad1e97f9014546435954b808f78cee0be5daa029e35[i] +
+      hash1[i] +
+      hash2[i] +
+      hash3[i] +
+      hash4[i];
+    }
+
+    var mapNames = ['Mirage','Inferno','Overpass','Vertigo','Nuke', 'Train',
+    'Dust II', 'Anubis', 'Cache', 'Agency', 'Office'];
+
+
+
+    var indexes = [];
+    for(let i=0;i<mapVotes.length;i++){
+      if (mapVotes[i] >= 3) {
+        indexes.push(i);
+      }
+    }
+
+    var li = document.getElementById("list").getElementsByTagName("li");
+    for (let i = 0, len = li.length; i < len; i++) {
+      if(indexes[i] != undefined) {
+        li[i].innerHTML = mapNames[indexes[i]];
+      }
+    }
+
+
+    // [0] mirage
+    // [1] inferno
+    // [2] overpass
+    // [3] vertigo
+    // [4] nuke
+    // [5] train
+    // [6] dust II
+    // [7] anubis
+    // [8] cache
+    // [9] agency
+    // [10] office
+
+
+    var ctx = document.getElementById('results').getContext('2d');
+    Chart.defaults.global.defaultFontFamily = 'ObjectSans';
+    var chart = new Chart(ctx, {
+      type: 'horizontalBar',
+      data: {
+        labels: mapNames,
+        datasets: [{
+          label: ' Number of Votes',
+          maxBarThickness: 50,
+          minBarLength: 3,
+          hoverBorderColor: "#000000",
+          data: [mapVotes[0],
+                mapVotes[1],
+                mapVotes[2],
+                mapVotes[3],
+                mapVotes[4],
+                mapVotes[5],
+                mapVotes[6],
+                mapVotes[7],
+                mapVotes[8],
+                mapVotes[9],
+                mapVotes[10]],
+
+          backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 3
+        }]
+      },
+
+      options: {
+        aspectRatio: 0.7,
+        maintainAspectRatio: true,
+        tooltips: {enabled: false},
+        scales: {
+          xAxes: [{
+            ticks: {
+              beginAtZero: true,
+              stepSize: 1,
+              max: 5
+            }
+          }],
+          yAxes: [{
+            ticks: {
+
+            },
+            gridLines: {
+              display:false
+            }
+          }]
+        },
+        layout: {
+          padding: {
+            left: 12
+          }
+        }
+      }
+    });
+
+
+  </script>
+</body>
+</html>
