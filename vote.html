@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width" />
     <!--------------------------------------------->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <!--------------------------------------------->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/sha256.min.js"></script>
@@ -148,7 +147,6 @@
       #footer {
         display: none;
         font-family: 'ObjectSans', monospace;
-        width: 100%;
 
         left: 0;
         bottom: 0;
@@ -161,11 +159,11 @@
       }
       .vers {
         float: left;
-        padding-left: 3em;
+        padding-left: 3.5em;
       }
       .info {
         float: right;
-        padding-right: 3em;
+        padding-right: 3.5em;
       }
       </style>
   </head>
@@ -262,7 +260,7 @@
             window.setTimeout(function(){
               portal.style.display = "none";
               form.style.display = "block";
-              footer.style.display = "relative";
+              footer.style.display = "block";
             }, 600);
           }
         }
@@ -329,6 +327,7 @@
         console.log(results);
       }
     });//TODO: final results screen + database link
+    //TODO: why doesn't footer show
 
     // [0] mirage
     // [1] inferno
