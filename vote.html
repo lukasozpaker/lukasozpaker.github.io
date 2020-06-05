@@ -38,8 +38,9 @@
       }
       *{
         transition: ease-out 0.3s;
+        box-sizing: border-box;
       }
-      *:focus {
+      input:focus {
         outline: none;
         outline: 0;
         border: 4px solid #404044;;
@@ -51,8 +52,9 @@
       }
       a{
         text-decoration: none;
-        color: inherit;
-        display: block;
+        color: #26a69a;
+        font-family: 'GilroyBold', monospace;
+        font-size: 14px;
       }
 
       #wrapper{
@@ -70,7 +72,7 @@
         font-size: 24px;
       }
       input {
-        font-family: 'GilroyLight', 'Arial', monospace;
+        font-family: 'GilroyLight', 'ObjectSans', 'Arial', monospace;
         border: none;
         width: 100%;
         height: 50px;
@@ -165,6 +167,13 @@
         float: right;
         padding-right: 3.5em;
       }
+      #title {
+        font-family: 'ObjectSans', 'Arial', monospace;
+        text-align: center;
+        padding: 0;
+        margin-top: 0.25em;
+        font-size: 18px;
+      }
       </style>
   </head>
   <body>
@@ -172,46 +181,48 @@
     <div id="wrapper">
       <header id="welcome">WELCOME TO THE CSGO ONLINE VOTING SYSTEM</header>
       <input id="password" type="password" placeholder="Password" />
+      <a href="https://www.ozpaker.org/results">VIEW RESULTS</a>
     </div>
 
     <div id="form">
       <header id="title">MAP POOL</header>
       <ul>
         <li><input type="checkbox" id="map0" />
-          <label for="map0"><img src="G:/files/1.gif" /></label>
+          <label for="map0"><img src="https://i.redd.it/b32uegcv66jz.jpg" /></label>
+          <header id="title">MIRAGE<header>
         </li>
         <li><input type="checkbox" id="map1" />
-          <label for="map1"><img src="G:/files/2.jpg" /></label>
+          <label for="map1"><img src="https://i.redd.it/10zd55ckhba01.jpg" /></label>
         </li>
         <li><input type="checkbox" id="map2" />
-          <label for="map2"><img src="G:/files/3.gif" /></label>
+          <label for="map2"><img src="https://i.redd.it/opk068upvac41.jpg" /></label>
         </li>
         <li><input type="checkbox" id="map3" />
-          <label for="map3"><img src="G:/files/4.jpg" /></label>
+          <label for="map3"><img src="https://pbs.twimg.com/media/ESXzzjrWAAYfr6B.jpg" /></label>
         </li>
         <li><input type="checkbox" id="map4" />
-          <label for="map4"><img src="G:/files/5.gif" /></label>
+          <label for="map4"><img src="https://i.imgur.com/HjHQyTK.jpg" /></label>
         </li>
         <li><input type="checkbox" id="map5" />
-          <label for="map5"><img src="G:/files/12.jpg" /></label>
+          <label for="map5"><img src="https://epicplayz.pl/uploads/FrogMan/696.jpg" /></label>
         </li>
         <li><input type="checkbox" id="map6" />
-          <label for="map6"><img src="G:/files/14.gif" /></label>
+          <label for="map6"><img src="https://pbs.twimg.com/media/DMhBxDnW4AE9BYa.jpg" /></label>
         </li>
         <li><input type="checkbox" id="map7" />
-          <label for="map7"><img src="G:/files/8.jpg" /></label>
+          <label for="map7"><img src="https://vignette.wikia.nocookie.net/cswikia/images/5/54/De_anubis.png/revision/latest?cb=20200401081330" /></label>
         </li>
         <li><input type="checkbox" id="map8" />
-          <label for="map8"><img src="G:/files/13.gif" /></label>
+          <label for="map8"><img src="https://pbs.twimg.com/media/DF-4aUSXsAAIO30.jpg" /></label>
         </li>
         <li><input type="checkbox" id="map9" />
-          <label for="map9"><img src="G:/files/10.jpg" /></label>
+          <label for="map9"><img src="https://assets.change.org/photos/3/bs/mf/GpbSMfhlnssoRFi-800x450-noPad.jpg?1526853546" /></label>
         </li>
         <li><input type="checkbox" id="map10" />
-          <label for="map10"><img src="G:/files/11.gif" /></label>
+          <label for="map10"><img src="https://files.gamebanana.com/bitpit/2012-03-23_00001.jpg" /></label>
         </li>
         <li><input type="checkbox" id="map11" />
-          <label for="map11"><img src="G:/files/16.gif" /></label>
+          <label for="map11"><img src="https://lh3.googleusercontent.com/zLeSc-zaKaFOtUt_afLp1zItMKd1JeT-ESg78VWXd6BLVQTxKgKkQKEL2YEQFNjaby3fF0Y_5ZMiQai66oSJoeWL23vbsnk19p0ku4b0eAldi--n3FpYSUBSD_ofPPzXnss5cG7byG1jt6ZtiNZgSvnjLBEvqP_Rp1b1nE16s7sAK5PxK_TqZy3Rm0pZTolwFgcVBFWUju9Aja-v8g20g4G8gqC0f_Vw77oEle6t4fsTnfyjdaW6JflDPE9ZLo880qrP7vNDmtab_gnTaWoc3RC7Zg8wVin-3GEHdTsPlHvFtAKO_tUt8ABBJuutIaYBtyq5jWbpR9yh7dEy2yUrpeg8rHsdjQCi7l0a20Fp5qfQRXVZrxW2Mu4AiD38ZpIAx4N9wagbeJ4q5WllfKMI64idc7awv25vC9XzM7dAUNMmj5qemyKlqQsadrwiOevtBpNuHBKP-cIOcGUYU4gvOdJ_bP9oDS7mEpjICq8xaqC8y4JDT6KDNZ8VBrF6gOI6Gh-4d49_WrcLanMqIPQEISFEQADuNcvtiU2345QB_BTsFGvv3aw0j9ffsexQX0Z3jxh9SZy10J3EkDxbjao62HCFOJmOS7RDStpaqDA0TdPfABQFYJiIAjc1rQsfXEm9xJkc4XIBGc9Op3Z2kX_z7eiQIZSLq7pvNtPJxLQQDNxTzT2kcug_i7y_PTCZ4UY=w696-h927-no?authuser=0" /></label>
         </li>
       </ul>
 
@@ -233,10 +244,14 @@
     var form = document.getElementById("form");
     var footer = document.getElementById("footer");
 
-
+//lukas, paul, can, esteban, felix
     var maps = [false, false, false, false, false, false, false, false, false, false];
     var hashes = [
-      "848f106ca0039acc36440ad1e97f9014546435954b808f78cee0be5daa029e35"
+      "848f106ca0039acc36440ad1e97f9014546435954b808f78cee0be5daa029e35",
+      "8ce1870c006c8f442f6e0dacfaa3a29b505c2e8404e52aa44f8a8e85ddda2155",
+      "fefb9f65c96af4a6201570fbdd04892b659c4af6b500ff6e730404c82147d607",
+      "6f6b9c42907f57f1e42ec10b72c9fa3f8f1fa615557d283ed03ab1e106049a63",
+      "7ef1cb0d6e975181c6d98abfc08d9ea358f4d4b55b25d8b966ed9ee56adaa99a"
     ];
     // Execute a function when the user releases a key on the keyboard
     //TODO: the style.display is broken, fix later
@@ -318,7 +333,17 @@
           maps[wildcardmap] = true;
         }
 
-        results = [{"id":password.value,},
+        //hash;
+        //maps;
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        console.log(year +" " + month + " "+ day);
+
+
+
+        results = [{"hash":hash,},
           {"map0":maps[0], "map1":maps[1], "map2":maps[2], "map3":maps[3],
         "map4":maps[4], "map5":maps[5], "map6":maps[6], "map7":maps[7],
         "map8":maps[8], "map9":maps[9], "map10":maps[10]}
@@ -326,8 +351,7 @@
 
         console.log(results);
       }
-    });//TODO: final results screen + database link
-    //TODO: why doesn't footer show
+    });
 
     // [0] mirage
     // [1] inferno
@@ -340,10 +364,6 @@
     // [8] cache
     // [9] agency
     // [10] office
-
-
-
-
     </script>
   </body>
 </html>
