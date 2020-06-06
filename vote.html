@@ -12,6 +12,36 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans:700&display=swap" rel="stylesheet">
     <!--------------------------------------------->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDxRuAt_L1zkTJpvDYif9m-tIS8PkiLDes",
+      authDomain: "csgo-map-voting.firebaseapp.com",
+      databaseURL: "https://csgo-map-voting.firebaseio.com",
+      projectId: "csgo-map-voting",
+      storageBucket: "csgo-map-voting.appspot.com",
+      messagingSenderId: "1001879866807",
+      appId: "1:1001879866807:web:0f1047a91176114f13ac32",
+      measurementId: "G-3Q3GYRPTLS"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    var database = firebase.firestore();
+    var auth = firebase.auth();
+    </script>
+    <!--------------------------------------------->
+    <!--------------------------------------------->
+    <!--------------------------------------------->
     <title>CSGO map voting</title>
     <style>
       @font-face {
@@ -173,7 +203,7 @@
         text-align: center;
         padding: 0.5em;
         font-size: 16px;
-        background-color: #404044;
+        background-color: #212121;
       }
       </style>
   </head>
@@ -246,25 +276,30 @@
     </footer>
 
     <script type="text/javascript">
-    //goes to
-    //clickable 'radio button' map images
-    //revote during next day 12am
 
-    // Get the input field
     var password = document.getElementById("password");
     var portal = document.getElementById("wrapper");
     var form = document.getElementById("form");
     var footer = document.getElementById("footer");
-
-//lukas, paul, can, esteban, felix
     var maps = [false, false, false, false, false, false, false, false, false, false];
-    var hashes = [
-      "848f106ca0039acc36440ad1e97f9014546435954b808f78cee0be5daa029e35",
-      "8ce1870c006c8f442f6e0dacfaa3a29b505c2e8404e52aa44f8a8e85ddda2155",
-      "796e43a5a8cdb73b92b5f59eb50610cea3efa8ce229cd7f0557983091b2b4552",
-      "6f6b9c42907f57f1e42ec10b72c9fa3f8f1fa615557d283ed03ab1e106049a63",
-      "7ef1cb0d6e975181c6d98abfc08d9ea358f4d4b55b25d8b966ed9ee56adaa99a"
-    ];
+    var hashes = [];
+    var id;
+    var hash;
+
+
+    database.collection('accounts').get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data().hash);
+            id = doc.id;
+            hashes.push(doc.data().hash);
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+
+
     // Execute a function when the user releases a key on the keyboard
     //TODO: the style.display is broken, fix later
     document.addEventListener("keyup", function(event) {
@@ -275,7 +310,7 @@
         // Trigger the button element with a click
         console.log("LOGIN INITIATED");
         console.log(password.value);
-        var hash = CryptoJS.SHA256(password.value).toString(CryptoJS.enc.Hex);
+        hash = CryptoJS.SHA256(password.value).toString(CryptoJS.enc.Hex);
         var correct = false;
         console.log(hash);
 
@@ -344,38 +379,37 @@
           maps[toBeReplaced] = false;
           maps[wildcardmap] = true;
         }
+        //-------------------------------------
+        //          END OF DATA ENTRY
+        //------------------------------------
+        var date = firebase.firestore.Timestamp.fromDate(new Date());
 
-        //hash;
-        //maps;
-        var date = new Date();
-        var year = date.getFullYear();
-        var month = date.getMonth() + 1;
-        var day = date.getDate();
-        console.log(year +" " + month + " "+ day);
+        var accountRef = database.collection('accounts').doc(id);
 
+        // Set the "capital" field of the city 'DC'
+        return accountRef.update({
+          maps: maps,
+          time: date
+        })
+        .then(function() {
+          console.log("Document successfully updated!");
+          window.location.href = "https://www.ozpaker.org/results";
+        })
+        .catch(function(error) {
+          // The document probably doesn't exist.
+          console.error("Error updating document: ", error);
+          alert("Error updating server: ", error);
+        });
 
-
-        results = [{"hash":hash,},
-          {"map0":maps[0], "map1":maps[1], "map2":maps[2], "map3":maps[3],
-        "map4":maps[4], "map5":maps[5], "map6":maps[6], "map7":maps[7],
-        "map8":maps[8], "map9":maps[9], "map10":maps[10]}
-      ];
-
-        console.log(results);
+        /*
+        var account = {
+          hash: hash,
+          maps: maps,
+          time: date
+        }
+        */
       }
     });
-
-    // [0] mirage
-    // [1] inferno
-    // [2] overpass
-    // [3] vertigo
-    // [4] nuke
-    // [5] train
-    // [6] dust II
-    // [7] anubis
-    // [8] cache
-    // [9] agency
-    // [10] office
     </script>
   </body>
 </html>
