@@ -205,6 +205,70 @@
         font-size: 16px;
         background-color: #212121;
       }
+      #submit {
+        display: block;
+        margin: auto;
+        padding: 1em 2em 1em 2em;
+        cursor: pointer;
+        margin-bottom: 3em;
+        margin-top: 1em;
+      }
+
+      .buttonfx{
+        color: black; /* button text color */
+        outline: none;
+        background: transparent;
+        border: none;
+        border-bottom: 4px solid #eee;
+        letter-spacing: 0.0625em;
+        padding: 8px 10px;
+        font-size: 20px;
+        font-family: 'GilroyBold', 'Arial', monospace;
+        line-height: 2;
+        position: relative;
+        display: inline-block;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        text-decoration: none; /* remove underline if using A instead of BUTTON tag */
+        overflow: hidden;
+        transition: all .5s;
+      }
+      /* //// Default effect: Slide from Top  //// */
+      .buttonfx:before,
+      .buttonfx:after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        background: #259f6c; /* onhover background color */
+        z-index: -1;
+        transform: translate3D(0,-100%,0); /* move elements above button so they don't appear initially */
+        transition: all .5s;
+      }
+      .buttonfx:before{
+        background: #fafcd6; /* button default background color */
+        z-index: -2;
+        transform: translate3D(0,0,0);
+      }
+      .buttonfx:hover{
+        color: white;
+      }
+      .buttonfx:hover:after{
+        transform: translate3D(0,0,0);
+        transition: all .5s;
+      }
+
+      /* //// Double Take  //// */
+      .doubletake{border: 1px solid #cccccc;}
+      .doubletake:before,.doubletake:after{width: 200%;background: #259f6c;transform-origin: 0 bottom;transform: translate3D(-50%,0,0) rotate(-50deg);}
+      .doubletake:before{opacity: .4;}
+      .doubletake:hover:before,.doubletake:hover:after{transform: rotate(0deg);transition: all .25s;}
+      .doubletake:hover:after{transition-delay: .25s;}
+
       </style>
   </head>
   <body>
@@ -263,15 +327,16 @@
           <header id="title">OFFICE<header>
         </li>
         <li><input type="checkbox" id="map11" />
-          <label for="map11"><img src="https://lh3.googleusercontent.com/zLeSc-zaKaFOtUt_afLp1zItMKd1JeT-ESg78VWXd6BLVQTxKgKkQKEL2YEQFNjaby3fF0Y_5ZMiQai66oSJoeWL23vbsnk19p0ku4b0eAldi--n3FpYSUBSD_ofPPzXnss5cG7byG1jt6ZtiNZgSvnjLBEvqP_Rp1b1nE16s7sAK5PxK_TqZy3Rm0pZTolwFgcVBFWUju9Aja-v8g20g4G8gqC0f_Vw77oEle6t4fsTnfyjdaW6JflDPE9ZLo880qrP7vNDmtab_gnTaWoc3RC7Zg8wVin-3GEHdTsPlHvFtAKO_tUt8ABBJuutIaYBtyq5jWbpR9yh7dEy2yUrpeg8rHsdjQCi7l0a20Fp5qfQRXVZrxW2Mu4AiD38ZpIAx4N9wagbeJ4q5WllfKMI64idc7awv25vC9XzM7dAUNMmj5qemyKlqQsadrwiOevtBpNuHBKP-cIOcGUYU4gvOdJ_bP9oDS7mEpjICq8xaqC8y4JDT6KDNZ8VBrF6gOI6Gh-4d49_WrcLanMqIPQEISFEQADuNcvtiU2345QB_BTsFGvv3aw0j9ffsexQX0Z3jxh9SZy10J3EkDxbjao62HCFOJmOS7RDStpaqDA0TdPfABQFYJiIAjc1rQsfXEm9xJkc4XIBGc9Op3Z2kX_z7eiQIZSLq7pvNtPJxLQQDNxTzT2kcug_i7y_PTCZ4UY=w696-h927-no?authuser=0" /></label>
+          <label for="map11"><img src="https://cdn.dribbble.com/users/2697666/screenshots/8153661/media/7b89ef7026b0c29cd0245d61aecbd646.png" /></label>
           <header id="title">WILDCARD<header>
         </li>
       </ul>
+      <button class="buttonfx doubletake" id="submit" onclick="submit()">SUBMIT</button>
 
     </div>
 
     <footer id="footer">
-      <span class="vers">BETA 0 . 9</span>
+      <span class="vers">BETA 0.9</span>
       <span class="info">LUKAS OZPAKER 2020</span>
     </footer>
 
@@ -338,83 +403,86 @@
         }
       }
       else if (event.keyCode === 13 && form.style.display !== "none") {
-        // Cancel the default action, if needed
-        event.preventDefault();
-        // Trigger the button element with a click
-        console.log("FORM COMPLETED");
-        maps[0] = document.getElementById('map0').checked;
-        maps[1] = document.getElementById('map1').checked;
-        maps[2] = document.getElementById('map2').checked;
-        maps[3] = document.getElementById('map3').checked;
-        maps[4] = document.getElementById('map4').checked;
-        maps[5] = document.getElementById('map5').checked;
-        maps[6] = document.getElementById('map6').checked;
-        maps[7] = document.getElementById('map7').checked;
-        maps[8] = document.getElementById('map8').checked;
-        maps[9] = document.getElementById('map9').checked;
-        maps[10] = document.getElementById('map10').checked;
-
-        if(document.getElementById('map11').checked) {
-          var indexes = [];
-          var wildcardmap;
-          for(let i=0;i<maps.length;i++){
-            if (maps[i]) {
-              indexes.push(i);
-            }
-          }
-
-          if(indexes[0] == undefined) {
-            console.log("No maps chosen");
-            wildcardmap = Math.floor(Math.random() * 11);
-          }
-          else {
-            console.log("selected: " + indexes);
-            //index of the map pick that is going to change
-            var metaindex =  Math.floor(Math.random() * indexes.length);
-            var toBeReplaced = indexes[metaindex];
-            console.log("toBeReplaced: " + toBeReplaced);
-
-            //index of a random map that wasn't already picked (can't be the one replaced either)
-            wildcardmap = Math.floor(Math.random() * 11); //returns a random integer from 0 to 10
-            while (indexes.includes(wildcardmap)) {
-              wildcardmap = Math.floor(Math.random() * 11);
-            }
-          }
-          console.log("wildcardMap: " + wildcardmap);
-
-          maps[toBeReplaced] = false;
-          maps[wildcardmap] = true;
-        }
-        //-------------------------------------
-        //          END OF DATA ENTRY
-        //------------------------------------
-
-        var accountRef = database.collection('accounts').doc(uid[index]);
-
-        // Set the "capital" field of the city 'DC'
-        return accountRef.update({
-          maps: maps,
-          time: date
-        })
-        .then(function() {
-          console.log("Document successfully updated!");
-          window.location.href = "https://www.ozpaker.org/results";
-        })
-        .catch(function(error) {
-          // The document probably doesn't exist.
-          console.error("Error updating document: ", error);
-          alert("Error updating server: ", error);
-        });
-
-        /*
-        var account = {
-          hash: hash,
-          maps: maps,
-          time: date
-        }
-        */
+        submit();
       }
     });
+    function submit(){
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      console.log("FORM COMPLETED");
+      maps[0] = document.getElementById('map0').checked;
+      maps[1] = document.getElementById('map1').checked;
+      maps[2] = document.getElementById('map2').checked;
+      maps[3] = document.getElementById('map3').checked;
+      maps[4] = document.getElementById('map4').checked;
+      maps[5] = document.getElementById('map5').checked;
+      maps[6] = document.getElementById('map6').checked;
+      maps[7] = document.getElementById('map7').checked;
+      maps[8] = document.getElementById('map8').checked;
+      maps[9] = document.getElementById('map9').checked;
+      maps[10] = document.getElementById('map10').checked;
+
+      if(document.getElementById('map11').checked) {
+        var indexes = [];
+        var wildcardmap;
+        for(let i=0;i<maps.length;i++){
+          if (maps[i]) {
+            indexes.push(i);
+          }
+        }
+
+        if(indexes[0] == undefined) {
+          console.log("No maps chosen");
+          wildcardmap = Math.floor(Math.random() * 11);
+        }
+        else {
+          console.log("selected: " + indexes);
+          //index of the map pick that is going to change
+          var metaindex =  Math.floor(Math.random() * indexes.length);
+          var toBeReplaced = indexes[metaindex];
+          console.log("toBeReplaced: " + toBeReplaced);
+
+          //index of a random map that wasn't already picked (can't be the one replaced either)
+          wildcardmap = Math.floor(Math.random() * 11); //returns a random integer from 0 to 10
+          while (indexes.includes(wildcardmap)) {
+            wildcardmap = Math.floor(Math.random() * 11);
+          }
+        }
+        console.log("wildcardMap: " + wildcardmap);
+
+        maps[toBeReplaced] = false;
+        maps[wildcardmap] = true;
+      }
+      //-------------------------------------
+      //          END OF DATA ENTRY
+      //------------------------------------
+
+      var accountRef = database.collection('accounts').doc(uid[index]);
+
+      // Set the "capital" field of the city 'DC'
+      return accountRef.update({
+        maps: maps,
+        time: date
+      })
+      .then(function() {
+        console.log("Document successfully updated!");
+        window.location.href = "https://www.ozpaker.org/results";
+      })
+      .catch(function(error) {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+        alert("Error updating server: ", error);
+      });
+
+      /*
+      var account = {
+        hash: hash,
+        maps: maps,
+        time: date
+      }
+      */
+    }
     </script>
   </body>
 </html>
