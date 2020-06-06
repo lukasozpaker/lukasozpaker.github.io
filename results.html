@@ -13,6 +13,33 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans:700&display=swap" rel="stylesheet">
     <!--------------------------------------------->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDxRuAt_L1zkTJpvDYif9m-tIS8PkiLDes",
+      authDomain: "csgo-map-voting.firebaseapp.com",
+      databaseURL: "https://csgo-map-voting.firebaseio.com",
+      projectId: "csgo-map-voting",
+      storageBucket: "csgo-map-voting.appspot.com",
+      messagingSenderId: "1001879866807",
+      appId: "1:1001879866807:web:0f1047a91176114f13ac32",
+      measurementId: "G-3Q3GYRPTLS"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    var database = firebase.firestore();
+    </script>
+    <!--------------------------------------------->
+    <!--------------------------------------------->
+    <!--------------------------------------------->
     <title>CSGO map voting</title>
     <style>
       @font-face {
@@ -74,7 +101,7 @@
       }
       #numvotes {
         color: #26a69a;
-        font-family: 'ObjectSans', 'Arial', monospace;
+        font-family: 'GilroyBold', 'Arial', monospace;
       }
 
       /*
@@ -88,10 +115,24 @@
         padding-right: 2.5em;
         padding-bottom: 2em;
       }
-      #title{
+      #title0{
         font-family: 'GilroyBold', 'Arial', monospace;
         text-align: center;
         padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        font-size: 28px;
+      }
+      #title1{
+        font-family: 'GilroyBold', 'Arial', monospace;
+        text-align: center;
+        padding-top: 1.5em;
+        padding-bottom: 1em;
+        font-size: 24px;
+      }
+      #title2{
+        font-family: 'GilroyBold', 'Arial', monospace;
+        text-align: center;
+        padding-top: 0.25em;
         padding-bottom: 1em;
         font-size: 24px;
       }
@@ -127,11 +168,11 @@
   <body>
 
     <div id="form">
-      <header id="title">MAP RESULTS</header>
+      <header id="title0">MAP RESULTS</header>
       <canvas id="results"></canvas>
       <div>
-        <header id="title">VOTES COUNTED: <p id="numvotes"></p><header>
-        <header id="title">TODAY'S MAPS<header>
+        <header id="title1">VOTES COUNTED: <p id="numvotes"></p><header>
+        <header id="title2">TODAY'S MAPS<header>
         <ul id="list">
           <li></li>
           <li></li>
@@ -154,129 +195,174 @@
     </footer>
 
     <script type="text/javascript">
-
-    console.log(true+true+true-false);
-
-    var hash848f106ca0039acc36440ad1e97f9014546435954b808f78cee0be5daa029e35 = [true, false, false, false, false, false, false, true, false, true, false];
-    var hash1 = [true, false, false, false, false, false, false, true, false, false, false];
-    var hash2 = [false, false, false, false, false, false, false, true, false, false, false];
-    var hash3 = [true, false, false, false, false, false, false, false, false, false, false];
-    var hash4 = [true, false, false, false, false, false, false, false, false, false, false];
-
+    //5x11 array
+    var mapPicks;
+    var times;
+    var voted; // boolean array see if user voted
+    var numvotes; // number of votes today
+    var date;
+    var day;
     var mapVotes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    for(let i=0;i<mapVotes.length;i++) {
-      mapVotes[i] =
-      hash848f106ca0039acc36440ad1e97f9014546435954b808f78cee0be5daa029e35[i] +
-      hash1[i] +
-      hash2[i] +
-      hash3[i] +
-      hash4[i];
-    }
-
     var mapNames = ['Mirage','Inferno','Overpass','Vertigo','Nuke', 'Train',
     'Dust II', 'Anubis', 'Cache', 'Agency', 'Office'];
+    var todayMapIndexes; //index of maps to be played today
+
+    // PULL DATA HERE
+    //weird data pull because firebase is asynchronous
+    database.collection('accounts').onSnapshot(function(querySnapshot){
+      times = [];
+      mapPicks = [];
+      querySnapshot.forEach(function(doc) {
+        mapPicks.push(doc.data().maps);
+        times.push(doc.data().time);
+        //HAPPENS FIRST
+      });
+      //HAPPENS SECOND
+      main();
+    });
 
 
+    function main() {
+      voted = [];
+      numvotes = 0;
+      date = new Date();
+      day = date.getDate();
+      mapVotes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      todayMapIndexes = [];
+      resetinnerHTML();
 
-    var indexes = [];
-    for(let i=0;i<mapVotes.length;i++){
-      if (mapVotes[i] >= 3) {
-        indexes.push(i);
+      //gets which users voted
+      for(let i=0;i<times.length;i++) {
+        if(day == times[i].toDate().getDate()) {
+          voted.push(true);
+        }
+        else voted.push(false);
       }
-    }
 
-    var li = document.getElementById("list").getElementsByTagName("li");
-    for (let i = 0, len = li.length; i < len; i++) {
-      if(indexes[i] != undefined) {
-        li[i].innerHTML = mapNames[indexes[i]];
+      //counts number of users who voted
+      for(let i=0;i<voted.length;i++) {
+        if(voted[i]) numvotes++;
       }
-    }
 
-
-    // [0] mirage
-    // [1] inferno
-    // [2] overpass
-    // [3] vertigo
-    // [4] nuke
-    // [5] train
-    // [6] dust II
-    // [7] anubis
-    // [8] cache
-    // [9] agency
-    // [10] office
-
-
-    var ctx = document.getElementById('results').getContext('2d');
-    Chart.defaults.global.defaultFontFamily = 'ObjectSans';
-    var chart = new Chart(ctx, {
-      type: 'horizontalBar',
-      data: {
-        labels: mapNames,
-        datasets: [{
-          label: ' Number of Votes',
-          maxBarThickness: 50,
-          minBarLength: 3,
-          hoverBorderColor: "#000000",
-          data: [mapVotes[0],
-                mapVotes[1],
-                mapVotes[2],
-                mapVotes[3],
-                mapVotes[4],
-                mapVotes[5],
-                mapVotes[6],
-                mapVotes[7],
-                mapVotes[8],
-                mapVotes[9],
-                mapVotes[10]],
-
-          backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 3
-        }]
-      },
-
-      options: {
-        aspectRatio: 0.7,
-        maintainAspectRatio: true,
-        tooltips: {enabled: false},
-        scales: {
-          xAxes: [{
-            ticks: {
-              beginAtZero: true,
-              stepSize: 1,
-              max: 5
-            }
-          }],
-          yAxes: [{
-            ticks: {
-
-            },
-            gridLines: {
-              display:false
-            }
-          }]
-        },
-        layout: {
-          padding: {
-            left: 12
+      //i is the user, j traverses array
+      //fills mapVotes 1d array with combined votes, chart data
+      for(let i=0;i<mapPicks.length;i++) {
+        for(let j=0;j<mapPicks[i].length;j++) {
+          if (voted[i]){
+            mapVotes[j] += mapPicks[i][j];
           }
         }
       }
-    });
+
+      //fill an array with today's map picks (majority of votes) will change as answers roll in
+      for(let i=0;i<mapVotes.length;i++){
+        if (mapVotes[i] > numvotes/2.0) {
+          todayMapIndexes.push(i);
+        }
+      }
+
+      //updates inner html, changes with snapshot
+      document.getElementById("numvotes").innerHTML = numvotes;
+      var li = document.getElementById("list").getElementsByTagName("li");
+      for (let i=0, len = li.length; i < len; i++) {
+        if(Array.isArray(todayMapIndexes) && todayMapIndexes.length){
+          if(todayMapIndexes[i] != undefined) {
+            li[i].innerHTML = mapNames[todayMapIndexes[i]];
+            console.log(mapNames[todayMapIndexes[i]]);
+          }
+        }
+      }
+
+      // [0] mirage
+      // [1] inferno
+      // [2] overpass
+      // [3] vertigo
+      // [4] nuke
+      // [5] train
+      // [6] dust II
+      // [7] anubis
+      // [8] cache
+      // [9] agency
+      // [10] office
+
+      var ctx = document.getElementById('results').getContext('2d');
+      Chart.defaults.global.defaultFontFamily = 'ObjectSans';
+      var chart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+          labels: mapNames,
+          datasets: [{
+            label: ' Number of Votes',
+            maxBarThickness: 50,
+            minBarLength: 3,
+            hoverBorderColor: "#000000",
+            data: [mapVotes[0],
+                  mapVotes[1],
+                  mapVotes[2],
+                  mapVotes[3],
+                  mapVotes[4],
+                  mapVotes[5],
+                  mapVotes[6],
+                  mapVotes[7],
+                  mapVotes[8],
+                  mapVotes[9],
+                  mapVotes[10]],
+
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 3
+          }]
+        },
+
+        options: {
+          aspectRatio: 0.7,
+          maintainAspectRatio: true,
+          tooltips: {enabled: false},
+          scales: {
+            xAxes: [{
+              ticks: {
+                beginAtZero: true,
+                stepSize: 1,
+                max: 5
+              }
+            }],
+            yAxes: [{
+              ticks: {
+
+              },
+              gridLines: {
+                display:false
+              }
+            }]
+          },
+          layout: {
+            padding: {
+              left: 12
+            }
+          }
+        }
+      });
+    } //main() function closer
+    function resetinnerHTML() {
+      var li = document.getElementById("list").getElementsByTagName("li");
+      for (let i=0, len = li.length; i < len; i++) {
+            li[i].innerHTML = '';
+        }
+    }
 
 
   </script>
