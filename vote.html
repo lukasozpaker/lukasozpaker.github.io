@@ -286,6 +286,8 @@
     var uid = []; //user id
     var index; //index user's uid
     var hash;
+    var date = firebase.firestore.Timestamp.fromDate(new Date());
+    var lastUpdateDate;
 
 
     database.collection('accounts').get().then(function(querySnapshot) {
@@ -294,6 +296,7 @@
             console.log(doc.id, " => ", doc.data().hash);
             uid.push(doc.id);
             hashes.push(doc.data().hash);
+            lastUpdateDate = doc.data().time;
         });
     })
     .catch(function(error) {
@@ -385,7 +388,6 @@
         //-------------------------------------
         //          END OF DATA ENTRY
         //------------------------------------
-        var date = firebase.firestore.Timestamp.fromDate(new Date());
 
         var accountRef = database.collection('accounts').doc(uid[index]);
 
