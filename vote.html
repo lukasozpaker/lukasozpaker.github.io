@@ -283,7 +283,8 @@
     var footer = document.getElementById("footer");
     var maps = [false, false, false, false, false, false, false, false, false, false];
     var hashes = [];
-    var id;
+    var uid = []; //user id
+    var index; //index user's uid
     var hash;
 
 
@@ -291,7 +292,7 @@
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data().hash);
-            id = doc.id;
+            uid.push(doc.id);
             hashes.push(doc.data().hash);
         });
     })
@@ -316,6 +317,8 @@
 
         for(let i=0;i<hashes.length;i++) {
           if (hash === hashes[i]) {
+            index = i;
+            console.log("index" + index);
             console.log("LOGIN SUCCESSFUL");
             document.getElementById('password').style.border = '4px solid #26a69a';
             correct = true;
@@ -384,7 +387,7 @@
         //------------------------------------
         var date = firebase.firestore.Timestamp.fromDate(new Date());
 
-        var accountRef = database.collection('accounts').doc(id);
+        var accountRef = database.collection('accounts').doc(uid[index]);
 
         // Set the "capital" field of the city 'DC'
         return accountRef.update({
