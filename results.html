@@ -195,7 +195,7 @@
     </footer>
 
     <script type="text/javascript">
-    
+
     var mapPicks; //5x11 array
     var times;
     var voted; // boolean array see if user voted
@@ -206,6 +206,78 @@
     var mapNames = ['Mirage','Inferno','Overpass','Vertigo','Nuke', 'Train',
     'Dust II', 'Anubis', 'Cache', 'Agency', 'Office'];
     var todayMapIndexes; //index of maps to be played today
+
+    var ctx = document.getElementById('results').getContext('2d');
+    Chart.defaults.global.defaultFontFamily = 'ObjectSans';
+    var chart = new Chart(ctx, {
+      type: 'horizontalBar',
+      data: {
+        labels: mapNames,
+        datasets: [{
+          label: ' Number of Votes',
+          maxBarThickness: 50,
+          minBarLength: 3,
+          hoverBorderColor: "#000000",
+          data: [mapVotes[0],
+                mapVotes[1],
+                mapVotes[2],
+                mapVotes[3],
+                mapVotes[4],
+                mapVotes[5],
+                mapVotes[6],
+                mapVotes[7],
+                mapVotes[8],
+                mapVotes[9],
+                mapVotes[10]],
+
+          backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 3
+        }]
+      },
+
+      options: {
+        aspectRatio: 0.7,
+        maintainAspectRatio: true,
+        tooltips: {enabled: false},
+        scales: {
+          xAxes: [{
+            ticks: {
+              beginAtZero: true,
+              stepSize: 1,
+              max: 5
+            }
+          }],
+          yAxes: [{
+            ticks: {
+
+            },
+            gridLines: {
+              display:false
+            }
+          }]
+        },
+        layout: {
+          padding: {
+            left: 12
+          }
+        }
+      }
+    });
 
     // PULL DATA HERE
     //weird data pull because firebase is asynchronous
@@ -285,77 +357,7 @@
       // [9] agency
       // [10] office
 
-      var ctx = document.getElementById('results').getContext('2d');
-      Chart.defaults.global.defaultFontFamily = 'ObjectSans';
-      var chart = new Chart(ctx, {
-        type: 'horizontalBar',
-        data: {
-          labels: mapNames,
-          datasets: [{
-            label: ' Number of Votes',
-            maxBarThickness: 50,
-            minBarLength: 3,
-            hoverBorderColor: "#000000",
-            data: [mapVotes[0],
-                  mapVotes[1],
-                  mapVotes[2],
-                  mapVotes[3],
-                  mapVotes[4],
-                  mapVotes[5],
-                  mapVotes[6],
-                  mapVotes[7],
-                  mapVotes[8],
-                  mapVotes[9],
-                  mapVotes[10]],
-
-            backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 3
-          }]
-        },
-
-        options: {
-          aspectRatio: 0.7,
-          maintainAspectRatio: true,
-          tooltips: {enabled: false},
-          scales: {
-            xAxes: [{
-              ticks: {
-                beginAtZero: true,
-                stepSize: 1,
-                max: 5
-              }
-            }],
-            yAxes: [{
-              ticks: {
-
-              },
-              gridLines: {
-                display:false
-              }
-            }]
-          },
-          layout: {
-            padding: {
-              left: 12
-            }
-          }
-        }
-      });
+      updateConfigAsNewObject(chart);
     } //main() function closer
     function resetinnerHTML() {
       var li = document.getElementById("list").getElementsByTagName("li");
@@ -363,7 +365,47 @@
             li[i].innerHTML = '';
         }
     }
+    function updateConfigAsNewObject(chart) {
+      chart.data = {
+        labels: mapNames,
+        datasets: [{
+          label: ' Number of Votes',
+          maxBarThickness: 50,
+          minBarLength: 3,
+          hoverBorderColor: "#000000",
+          data: [mapVotes[0],
+                mapVotes[1],
+                mapVotes[2],
+                mapVotes[3],
+                mapVotes[4],
+                mapVotes[5],
+                mapVotes[6],
+                mapVotes[7],
+                mapVotes[8],
+                mapVotes[9],
+                mapVotes[10]],
 
+          backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 3
+        }]
+      };
+      chart.update();
+    }
 
   </script>
 </body>
