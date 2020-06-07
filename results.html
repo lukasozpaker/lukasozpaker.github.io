@@ -166,6 +166,9 @@
         float: right;
         padding-right: 3.5em;
       }
+      @media (prefers-color-scheme: dark) {
+
+      }
       </style>
   </head>
   <body>
@@ -270,6 +273,7 @@
     // PULL DATA HERE
     //weird data pull because firebase is asynchronous
     database.collection('accounts').onSnapshot(function(querySnapshot){
+      //have to clear array every time because of live data
       times = [];
       mapPicks = [];
       querySnapshot.forEach(function(doc) {
