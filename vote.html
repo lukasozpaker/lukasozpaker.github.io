@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" sizes="24x24" href="https://img.icons8.com/dusk/24/000000/counter-strike.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://img.icons8.com/dusk/32/000000/counter-strike.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="https://img.icons8.com/dusk/64/000000/counter-strike.png">
     <!--------------------------------------------->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--------------------------------------------->
@@ -349,8 +352,9 @@
     var uid = []; //user id
     var index; //index user's uid
     var hash;
-    var date = firebase.firestore.Timestamp.fromDate(new Date());
-    var lastUpdateDate;
+    var date = new Date();
+    var day = date.getDate();
+    var time;
 
 
     database.collection('accounts').get().then(function(querySnapshot) {
@@ -359,7 +363,7 @@
             console.log(doc.id, " => ", doc.data().hash);
             uid.push(doc.id);
             hashes.push(doc.data().hash);
-            lastUpdateDate = doc.data().time;
+            time = doc.data().time;
         });
     })
     .catch(function(error) {
@@ -384,7 +388,7 @@
         for(let i=0;i<hashes.length;i++) {
           if (hash === hashes[i]) {
             index = i;
-            console.log("index" + index);
+            console.log("Hash index: " + index);
             console.log("LOGIN SUCCESSFUL");
             document.getElementById('password').style.border = '4px solid #26a69a';
             correct = true;
@@ -463,21 +467,28 @@
 
       var accountRef = database.collection('accounts').doc(uid[index]);
 
-      // Set the "capital" field of the city 'DC'
-      return accountRef.update({
-        maps: maps,
-        time: date
-      })
-      .then(function() {
-        console.log("Document successfully updated!");
+      //only allow one submission a day
+      //check if the day of submission is not the date of last submission
+      //not greater because if month changes, day is less, but it happens later
+      if(day != time.toDate().getDate()) {
+        return accountRef.update({
+          maps: maps,
+          time: date
+        })
+        .then(function() {
+          console.log("Document successfully updated!");
+          window.location.href = "https://www.ozpaker.org/results";
+        })
+        .catch(function(error) {
+          // The document probably doesn't exist.
+          console.error("Error updating document: ", error);
+          alert("Error updating server: ", error);
+        });
+      }
+      else {
+        alert("You already voted today\nRedirecting to the results");
         window.location.href = "https://www.ozpaker.org/results";
-      })
-      .catch(function(error) {
-        // The document probably doesn't exist.
-        console.error("Error updating document: ", error);
-        alert("Error updating server: ", error);
-      });
-
+      }
       /*
       var account = {
         hash: hash,
@@ -486,6 +497,7 @@
       }
       */
     }
+
     </script>
   </body>
 </html>
