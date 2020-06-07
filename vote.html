@@ -270,6 +270,9 @@
       .doubletake:hover:before,.doubletake:hover:after{transform: rotate(0deg);transition: all .25s;}
       .doubletake:hover:after{transition-delay: .25s;}
 
+      @media (prefers-color-scheme: dark) {
+
+      }
       </style>
   </head>
   <body>
@@ -354,7 +357,7 @@
     var hash;
     var date = new Date();
     var day = date.getDate();
-    var time;
+    var times = [];
 
 
     database.collection('accounts').get().then(function(querySnapshot) {
@@ -363,7 +366,7 @@
             console.log(doc.id, " => ", doc.data().hash);
             uid.push(doc.id);
             hashes.push(doc.data().hash);
-            time = doc.data().time;
+            times.push(doc.data().time);
         });
     })
     .catch(function(error) {
@@ -390,6 +393,8 @@
             index = i;
             console.log("Hash index: " + index);
             console.log("LOGIN SUCCESSFUL");
+            console.log("Client Day: " + day);
+            console.log("Server Day: " + times[index].toDate().getDate());
             document.getElementById('password').style.border = '4px solid #26a69a';
             correct = true;
             window.setTimeout(function(){
@@ -470,7 +475,7 @@
       //only allow one submission a day
       //check if the day of submission is not the date of last submission
       //not greater because if month changes, day is less, but it happens later
-      if(day != time.toDate().getDate()) {
+      if(day != times[index].toDate().getDate()) {
         return accountRef.update({
           maps: maps,
           time: date
