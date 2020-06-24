@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" sizes="24x24" href="https://img.icons8.com/dusk/24/000000/counter-strike.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://img.icons8.com/dusk/32/000000/counter-strike.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="https://img.icons8.com/dusk/64/000000/counter-strike.png">
+    <!--------------------------------------------->
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans:700&display=swap" rel="stylesheet">
+    <!--------------------------------------------->
+    <title>Fullscreen Color</title>
+    <style>
+      @font-face {
+        font-family: GilroyLight;
+        src: url("https://www.ozpaker.org/Gilroy-Light.otf") format("opentype");
+      }
+      @font-face {
+        font-family: GilroyBold;
+        src: url("https://www.ozpaker.org/Gilroy-ExtraBold.otf") format("opentype");
+      }
+      @font-face {
+        font-family: ObjectSans;
+        src: url("https://www.ozpaker.org/ObjectSans-Regular.otf") format("opentype");
+      }
+      ::selection{
+        color: #ffffff;
+        background-color: #707075;
+      }
+      html{
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+      body{
+        margin: 0;
+        background-color: #000000;
+      }
+      *{
+        transition: ease-out 0.3s;
+        box-sizing: border-box;
+      }
+      *:focus {
+        outline: none;
+        outline: 0;
+      }
+      *:focus::placeholder {
+        color: transparent;
+        transition: ease-out 0.3s;
+      }
+
+      #wrapper{
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        width: 40%;
+      }
+      input {
+        font-family: 'ObjectSans', 'ObjectSans', 'Arial', monospace;
+        border: none;
+        width: 100%;
+        height: 30vw;
+        font-size: 20px;
+        text-align: center;
+        margin: 0;
+        box-sizing: border-box;
+        padding: 1em;
+        background-color: #000000;
+        color: #ffffff;
+      }
+      input:hover {
+        background-color: #000000;
+        color: #ffffff;
+      }
+
+      ::placeholder{
+        text-align: center;
+        mix-blend-mode: difference;
+        color: #ffffff;
+      }
+
+      </style>
+  </head>
+  <body id="body">
+
+    <div id="wrapper">
+      <input id="color" type="text" placeholder="enter color" onfocusout="clear()" />
+    </div>
+
+    <script type="text/javascript">
+
+    var color;
+    var background = document.getElementById("body");
+    var input = document.getElementById("color");
+
+    document.getElementById("color").addEventListener("keyup", function(event) {
+      color = document.getElementById("color").value.toLowerCase();
+      if(color.includes(",")) {
+        color = "rgb(" + color + ")";
+      }
+      else if (color.length == 6 && color != "purple" && color != "violet" && color != "yellow"
+      && color != "orange" && color != "indigo" && color != "silver") {
+        color = "#" + color;
+      }
+      setColor(color);
+      console.log(color);
+    });
+
+    function setColor(color) {
+      background.style.backgroundColor = color;
+      input.style.backgroundColor = color;
+    }
+
+    document.getElementById("color").addEventListener("focusout", function(event){
+      if(document.getElementById("color").value != "") {
+        document.getElementById("color").placeholder = document.getElementById("color").value;
+        document.getElementById("color").value = "";
+      }
+    });
+
+
+
+    </script>
+  </body>
+</html>
