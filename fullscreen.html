@@ -63,7 +63,6 @@
         background-color: #000000;
         color: #ffffff;
       }
-
       ::placeholder{
         text-align: center;
         color: #ffffff;
@@ -72,49 +71,83 @@
       }
       #fullscreen {
         float: right;
+        margin-top: 0.5em;
+        margin-right: 0.5em;
         color: #ffffff;
         cursor: pointer;
         text-shadow: 0px 0px 5px #000000;
+        -webkit-user-select: none;  /* Chrome all / Safari all */
+        -moz-user-select: none;     /* Firefox all */
+        -ms-user-select: none;      /* IE 10+ */
+        user-select: none;          /* Likely future */
       }
 
       </style>
   </head>
   <body id="body">
-    <i id="fullscreen" class="material-icons" onclick="openFullscreen()" style="font-size:30px">fullscreen</i>
+    <i id="fullscreen" class="material-icons" onclick="fullscreenControl()" style="font-size:30px">fullscreen</i>
     <div id="wrapper">
-      <input id="color" type="text" placeholder="enter color" onfocusout="clear()" />
+      <input id="color" type="text" placeholder="enter color"/>
     </div>
 
     <script type="text/javascript">
-
     var color;
     var background = document.getElementById("body");
     var input = document.getElementById("color");
-
+    var fullscreen = false;
     var elem = document.documentElement;
-    function openFullscreen() {
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.mozRequestFullScreen) { /* Firefox */
-        elem.mozRequestFullScreen();
-      } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-        elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) { /* IE/Edge */
-        elem.msRequestFullscreen();
+
+    function fullscreenControl() {
+      if(fullscreen == false) {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+          fullscreen = true;
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+          elem.mozRequestFullScreen();
+          fullscreen = true;
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+          elem.webkitRequestFullscreen();
+          fullscreen = true;
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+          elem.msRequestFullscreen();
+          fullscreen = true;
+        }
+      }
+      else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+          fullscreen = false;
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+          document.mozCancelFullScreen();
+          fullscreen = false;
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+          document.webkitExitFullscreen();
+          fullscreen = false;
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+          document.msExitFullscreen();
+          fullscreen = false;
+        }
       }
     }
 
     document.getElementById("color").addEventListener("keyup", function(event) {
-      color = document.getElementById("color").value.toLowerCase();
-      if(color.includes(",") && color.substring(0,1) != "r") {
-        color = "rgb(" + color + ")";
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+        document.getElementById("color").blur();
+        console.log("enter");
       }
-      else if (color.length == 6 && color != "purple" && color != "violet" && color != "yellow"
-      && color != "orange" && color != "indigo" && color != "silver") {
-        color = "#" + color;
+      else {
+        color = document.getElementById("color").value.toLowerCase();
+        if(color.includes(",") && color.substring(0,1) != "r") {
+          color = "rgb(" + color + ")";
+        }
+        else if (color.length == 6 && color != "purple" && color != "violet" && color != "yellow"
+        && color != "orange" && color != "indigo" && color != "silver") {
+          color = "#" + color;
+        }
+        setColor(color);
+        console.log(color);
       }
-      setColor(color);
-      console.log(color);
     });
 
     function setColor(color) {
