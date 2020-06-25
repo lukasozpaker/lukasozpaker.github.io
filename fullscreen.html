@@ -6,6 +6,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/index/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/index/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/index/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--------------------------------------------->
     <title>Fullscreen Color</title>
     <style>
@@ -43,7 +44,7 @@
         top: 50%;
         transform: translate(-50%, -50%);
         left: 50%;
-        width: 40%;
+        width: 100%;
       }
       input {
         font-family: 'ObjectSans', 'ObjectSans', 'Arial', monospace;
@@ -56,7 +57,7 @@
         box-sizing: border-box;
         background-color: #000000;
         color: #ffffff;
-        text-shadow: 0px 0px 10px #000000;
+        text-shadow: 0px 0px 5px #000000;
       }
       input:hover {
         background-color: #000000;
@@ -66,13 +67,20 @@
       ::placeholder{
         text-align: center;
         color: #ffffff;
-        text-shadow: 0px 0px 10px #000000;
+        text-shadow: 0px 0px 5px #000000;
+        overflow: visible;
+      }
+      #fullscreen {
+        float: right;
+        color: #ffffff;
+        cursor: pointer;
+        text-shadow: 0px 0px 5px #000000;
       }
 
       </style>
   </head>
   <body id="body">
-
+    <i id="fullscreen" class="material-icons" onclick="openFullscreen()" style="font-size:30px">fullscreen</i>
     <div id="wrapper">
       <input id="color" type="text" placeholder="enter color" onfocusout="clear()" />
     </div>
@@ -83,9 +91,22 @@
     var background = document.getElementById("body");
     var input = document.getElementById("color");
 
+    var elem = document.documentElement;
+    function openFullscreen() {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.mozRequestFullScreen) { /* Firefox */
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE/Edge */
+        elem.msRequestFullscreen();
+      }
+    }
+
     document.getElementById("color").addEventListener("keyup", function(event) {
       color = document.getElementById("color").value.toLowerCase();
-      if(color.includes(",")) {
+      if(color.includes(",") && color.substring(0,1) != "r") {
         color = "rgb(" + color + ")";
       }
       else if (color.length == 6 && color != "purple" && color != "violet" && color != "yellow"
