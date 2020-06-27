@@ -9,8 +9,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/index/favicon-16x16.png">
     <link rel="manifest" href="/index/site.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Carrois%20Gothic%20SC' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=DM+Sans' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Long+Cang&display=swap" rel="stylesheet">
 
@@ -44,18 +44,11 @@
         color: inherit;
         display: block;
       }
-      #header{
-        /* background-color: rgba(70,10,20,0.7); */
-        /* background: linear-gradient(180deg, rgba(118,25,52,1), rgba(60, 56, 77, 1)); */
-        /* background: linear-gradient(180deg, rgba(118,25,52,1), rgba(0, 10, 18, 0)); */
-        /* background: linear-gradient(180deg, rgba(60, 56, 77, 1),  rgba(0, 10, 18, 0)); */
-      }
       #name{
-        font-family: Carrois Gothic SC, Montserrat, arial, sans-serif;
+        font-family: "Carrois Gothic SC", "DM Sans", Montserrat, Roboto, Arial, sans-serif;
         padding-top: 10%;
         padding-bottom: 5%;
         text-shadow: 0 0 40px rgba(0,10,18,0.2);
-        /* padding: 10% 5% 5% 5%; top left bottom right */
       }
       .names{
         letter-spacing: 0.5em;
@@ -64,32 +57,24 @@
         font-size: 35px;
       }
       #text{
-        font-family: Inconsolata, Consolas, Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Inconsolata", Consolas, Tahoma, Geneva, Verdana, sans-serif;
         padding-left: 10%;
         padding-right: 10%;
         padding-bottom: 0.5em;
       }
       #at{
         font-family: 'Long Cang', cursive;
-        /* font-family: DM Sans, Inconsolata, Tahoma, Geneva, Verdana, sans-serif;
-        font-weight: bold; */
         padding-bottom: 0em;
         font-size: 1.4em;
       }
       #icons{
         padding-top: 0.75em;
         padding-bottom: 0.75em;
-        /* background-color: rgba(60, 56, 77, 1);
-        border-radius: 40px;
-        width: 16rem; */
         margin: 0 auto;
         cursor: default;
         max-width: 30em;
       }
       .fa {
-        /* padding: 10px;
-        font-size: 30px;
-        width: 30px; */
         padding: 11px;
         font-size: 28px;
         width: 28px;
@@ -100,69 +85,72 @@
         transition: all 0.2s ease;
         box-shadow: 0 0 20px rgba(0,10,18,0.25);
       }
-      /* .fa:hover{
-        // padding: 15px; //
-        // box-shadow: 0 0 60px rgba(255,255,255,0.4); //
-        -webkit-transition-duration: 0.1s;
-        transition: all 0.1s ease;
-        // border-radius: 0; //
-      } */
       .fa-instagram {
         padding: 11.5px;
         font-size: 27px;
         width: 27px;
         color: rgba(214, 36, 159, 1);
-        /* box-shadow: 0 0 60px rgba(214, 36, 159, 0.75); */
-        /* background: radial-gradient(circle at 30% 107%, #fdf497 5%, #fd5949 45%, #d6249f 70%, #285AEB 100%); */
         background: #ffffff;
-
       }
       .fa-instagram:hover{
-        background: rgba(214, 36, 159, 1);
-        box-shadow: 0 0 20px rgba(214, 36, 159, 0.75);
-        /* background: radial-gradient(circle at 30% 107%, #fdf497 5%, #fd5949 45%, #d6249f 70%, #285AEB 100%); */
         color: #ffffff;
-        transform: translateY(-2px);
+        background: rgba(214, 36, 159, 0.75);
+        animation: instagram 1.5s ease-in-out infinite alternate;
+      }
+      @keyframes instagram {
+        0% {
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+        }
+        100% {
+          text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
+        }
       }
       .fa-twitter {
         color: rgba(83, 109, 254, 1);
-        /* box-shadow: 0 0 60px rgba(83, 109, 254, 0.8); */
         background: #ffffff;
         margin-left: 5%;
         margin-right: 5%;
       }
       .fa-twitter:hover{
-        /*background: rgba(83, 109, 254, 0.5);*/
-        box-shadow: 0 0 20px rgba(83, 109, 254, 0.8);
-        background: rgba(83, 109, 254, 1);
+        background: rgba(83, 109, 254, 0.75);
         color: #ffffff;
-        transform: translateY(-2px);
+        animation: twitter 1.5s ease-in-out infinite alternate;
+      }
+      @keyframes twitter {
+        0% {
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+        }
+        100% {
+          text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+        }
       }
       .fa-snapchat-ghost {
-        /* padding: 10.5px;
-        font-size: 29px;
-        width: 29px; */
         padding: 11.5px;
         font-size: 27px;
         width: 27px;
         color: rgba(255, 160, 0, 1);
-        /* box-shadow: 0 0 60px rgba(255, 160, 0, 0.55); */
         background: #ffffff;
         text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 -1px #333;
       }
       .fa-snapchat-ghost:hover{
-        /*background: rgba(255, 160, 0, 0.5);*/
-        box-shadow: 0 0 20px rgba(255, 160, 0, 0.8);
-        background: rgba(255, 160, 0, 1);
+        background: rgba(255, 160, 0, 0.75);
         color: #ffffff;
-        transform: translateY(-2px);
+        animation: snapchat 1.5s ease-in-out infinite alternate;
+      }
+      @keyframes snapchat {
+        0% {
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffbf00, 0 0 70px #ffbf00, 0 0 80px #ffbf00, 0 0 100px #ffbf00, 0 0 150px #ffbf00;
+        }
+        100% {
+          text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffbf00, 0 0 35px #ffbf00, 0 0 40px #ffbf00, 0 0 50px #ffbf00, 0 0 75px #ffbf00;
+        }
       }
       /*panels*/
       #projects{
         padding-left: 0.75em;
         padding-right: 0.75em;
         padding-top: 1.25em;
-        font-family: Carrois Gothic SC, Montserrat, arial, sans-serif;
+        font-family: "Carrois Gothic SC", "DM Sans", Montserrat, arial, sans-serif;
         font-weight: bold;
         /* the entire grid */
         display: grid;
@@ -289,7 +277,60 @@
           background-color: #000a12;
         }
         #name{
-          text-shadow: 0 0 40px rgba(255,255,255,0.5);
+          /* text-shadow: 0 0 40px rgba(255,255,255,0.5); */
+          /* text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FA1C16;
+          color: #FED128; */
+          animation: neon 5s ease infinite;
+          -moz-animation: neon 5s ease infinite;
+          -webkit-animation: neon 5s ease infinite;
+        }
+
+        @keyframes neon {
+          0% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+          15% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+          20% {
+            text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B;
+            color: #806914;
+          }
+          30% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+          70% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+          73% {
+            text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B;
+            color: #806914;
+          }
+          75% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+          90% {
+            text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B;
+            color: #806914;
+          }
+          95% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+          100% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+
+        }
+        #at {
+          text-shadow: 0 0 1vw #ccc, 0 0 3vw #ccc, 0 0 10vw #ccc, 0 0 10vw #ccc, 0 0 .4vw #ccc;
+          color: #ddd;
         }
         .card{
           background-color: rgba(255,255,255,0.1);
@@ -297,21 +338,19 @@
           color: #ffffff;
         }
         .fa {
-          box-shadow: 0 0 35px rgba(207,216,220,0.3);
+
         }
         .fa-instagram {
           background: rgb(0,10,18);
+          font-size: 25px;
         }
         .fa-twitter {
           background: rgb(0,10,18);
+          font-size: 27px;
         }
         .fa-snapchat-ghost {
           background: rgb(0,10,18);
-        }
-        .fa-snapchat-ghost:hover{
-          box-shadow: 0 0 60px rgba(255, 160, 0, 0.55);
-          background: rgba(255, 160, 0, 1);
-          color: #ffffff;
+          font-size: 25px;
         }
         #projects > a:hover{
           color: #000a12;
@@ -377,7 +416,7 @@
       </a> -->
     </div>
     <footer id="footer">
-      <span class="vers">1.0.5</span>
+      <span class="vers">1.2.1</span>
       <span class="info">Lukas Ozpaker 2020</span>
     </footer>
     <script type="text/javascript">
