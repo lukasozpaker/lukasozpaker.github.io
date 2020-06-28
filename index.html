@@ -87,7 +87,7 @@
       }
       .fa-instagram {
         padding: 11.5px;
-        font-size: 27px;
+        font-size: 26px;
         width: 27px;
         color: rgba(214, 36, 159, 1);
         background: #ffffff;
@@ -130,7 +130,7 @@
         width: 27px;
         color: rgba(255, 160, 0, 1);
         background: #ffffff;
-        text-shadow: -1px 0 #333, 0 1px #333, 1px 0 #333, 0 -1px #333;
+
       }
       .fa-snapchat-ghost:hover{
         background: rgba(255, 160, 0, 0.75);
@@ -165,11 +165,10 @@
         background-color: rgba(255,255,255,0.1);
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
         color: #ffffff;
-        -webkit-transition-duration: 0.2s; /* Safari */
+        -webkit-transition-duration: 0.2s; /* safari */
         transition: all 0.2s ease;
-        border-radius: 20px;
+        border-radius: 25px;
         margin-bottom: 1em;
-        /* old card center display: table; */
         width: 100%;
       }
       #projects > a:hover{
@@ -177,18 +176,18 @@
         background-color: #000a12;
         box-shadow: 0 0 30px rgba(0,10,18,0.5);
         /* height: 15em; */
-        -webkit-transition-duration: 0.2s; /* Safari */
+        -webkit-transition-duration: 0.2s; /* safari */
         transition: all 0.2s ease;
         border-radius: 0;
       }
       #projects > a:hover .tcard{
-        -webkit-transition-duration: 0.2s; /* Safari */
+        -webkit-transition-duration: 0.2s; /* safari */
         transition: all 0.2s ease;
         transform: translateY(-10%);
         color: #ffffff;
       }
       #projects > a:hover .underneath{
-        -webkit-transition-duration: 0.2s; /* Safari */
+        -webkit-transition-duration: 0.2s; /* safari */
         transition: all 0.2s ease;
         opacity: 1;
         color: #ffffff;
@@ -201,9 +200,6 @@
         font-size: 1em;
       }
       .tcard{
-        /* old card center text-align: center;
-        display: table-cell;
-        vertical-align: middle; */
         margin: 0;
         position: relative;
         font-size: 2em;
@@ -212,24 +208,23 @@
         padding-left: 0.2em;
         padding-right: 0.2em;
         padding-bottom: 0;
-        /* line-height: 0.8em; */
       }
       .underneath {
         padding: 0;
         margin: 0;
         opacity: 0;
-        /* transform: translateY(-80%); */
       }
       #p1{
         background-color: rgb(173, 20, 87);
         box-shadow: 0 0 20px rgba(173, 20, 87, 0.7);
+        /* grid-column: 1 / -1; */
       }
       #p2{
         background-color: rgba(255, 145, 0, 0.95);
         box-shadow: 0 0 20px rgba(255, 145, 0, 0.5);
       }
       #p3{
-        background-color: rgb(92, 107, 192);
+        background-color: rgb(92, 107, 220);
         box-shadow: 0 0 20px rgba(92, 107, 192, 0.6);
       }
       #p4{
@@ -244,7 +239,6 @@
         font-family: Inconsolata, Consolas, Tahoma, Geneva, Verdana, sans-serif;
         left: 0;
         bottom: 0;
-        /* background-color: rgba(70,10,20,0.7); */
         text-align: center;
         padding: 0.5em 1em 1.25em 1em;
         overflow: auto;
@@ -346,7 +340,7 @@
         }
         .fa-twitter {
           background: rgb(0,10,18);
-          font-size: 27px;
+          font-size: 27.5px;
         }
         .fa-snapchat-ghost {
           background: rgb(0,10,18);
@@ -366,13 +360,14 @@
       }
     </style>
   </head>
-  <body>
+  <body id="body">
+
     <header id="header">
       <h1 id="name">
         <span class="names">LUKAS</span>
         <span class="names">OZPAKER</span>
       </h1>
-      <p id="text">list of current projects</p>
+      <p id="text">Currently released projects</p>
       <p id="at">@lukasozpaker</p>
       <div id="icons">
         <a href="https://www.instagram.com/lukasozpaker/" class="fa fa-instagram"></a>
@@ -409,18 +404,26 @@
       <!-- <a class="card" id="p4">
         <p class="type">ad</p>
         <p class="tcard">ad prompt</p>
-      </a>
-      <a class="card" id="p5">
-        <p class="type">web</p>
-        <p class="tcard">area wars online</p>
       </a> -->
     </div>
     <footer id="footer">
-      <span class="vers">1.2.1</span>
+      <span class="vers">1.2.2</span>
       <span class="info">Lukas Ozpaker 2020</span>
     </footer>
-    <script type="text/javascript">
+    <audio id="hoversound" src="https://web-cdn.with.in/WEBPLAYER/v1/audio/hover-96k.mp3"></audio>
 
+
+    <script type="text/javascript">
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      }
+      else {
+      }
+
+      var hover = document.getElementById("hoversound");
+      function hoverOn() {
+        hover.play();
+      }
     </script>
+
   </body>
 </html>
