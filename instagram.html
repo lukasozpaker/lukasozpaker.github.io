@@ -6,10 +6,40 @@
     <title>Who's not following you?</title>
     </head>
     <style>
+      @font-face {
+        font-family: GilroyLight;
+        src: url("https://www.ozpaker.org/Gilroy-Light.otf") format("opentype");
+      }
+      @font-face {
+        font-family: GilroyBold;
+        src: url("https://www.ozpaker.org/Gilroy-ExtraBold.otf") format("opentype");
+      }
+      @font-face {
+        font-family: ObjectSans;
+        src: url("https://www.ozpaker.org/ObjectSans-Regular.otf") format("opentype");
+      }
+      ::selection{
+        color: #ffffff;
+        background-color: rgba(0,10,18,0.99);
+      }
+      *:focus {
+        outline: none;
+        outline: 0;
+      }
       html, body {
         padding: 0;
         margin: 0;
         text-align: center;
+        font-family: 'Roboto', 'Arial', monospace;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+      h1 {
+        font-family: GilroyBold, 'Roboto', 'Arial', monospace;
+      }
+      p {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 1em;
       }
       ul {
         text-align: center;
@@ -18,26 +48,85 @@
         padding-right: 25%;
       }
       textarea {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
+        display: block;
+        margin: auto;
         resize: none;
         height: 15em;
-        width: 100%;
+        width: 90%;
+        margin-bottom: 1em;
       }
-      .submit {
-        width: 100%;
+      #submit {
+        display: block;
+        margin: auto;
+        width: 80%;
         height: 5em;
+        font-size: 1em;
+        font-family: 'GilroyBold', 'GilroyLight', 'Roboto', 'Arial', monospace;
+        margin-top: 1em;
       }
+      .buttonfx{
+        color: black; /* button text color */
+        outline: none;
+        background: transparent;
+        border: none;
+        border-bottom: 4px solid #eee;
+        letter-spacing: 0.0625em;
+        padding: 8px 10px;
+        font-size: 20px;
+        font-family: 'GilroyBold', 'Arial', monospace;
+        line-height: 2;
+        position: relative;
+        display: inline-block;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        text-decoration: none; /* remove underline if using A instead of BUTTON tag */
+        overflow: hidden;
+        transition: all .5s;
+      }
+      /* //// Default effect: Slide from Top  //// */
+      .buttonfx:before,
+      .buttonfx:after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        background: #26a69a; /* onhover background color */
+        z-index: -1;
+        transform: translate3D(0,-100%,0); /* move elements above button so they don't appear initially */
+        transition: all .5s;
+      }
+      .buttonfx:before{
+        background: #fafcd6; /* button default background color */
+        z-index: -2;
+        transform: translate3D(0,0,0);
+      }
+      .buttonfx:hover{
+        color: white;
+      }
+      .buttonfx:hover:after{
+        transform: translate3D(0,0,0);
+        transition: all .5s;
+      }
+
+      /* //// Curtain Down  //// */
+      .curtainup{transform-style: preserve-3d;border: 1px solid #000a12;}
+      .curtainup:before,.curtainup:after{transform-origin: center center;transform: scale(1,0);}
+      .curtainup:hover:before,.curtainup:hover:after{transform: scale(1);border-radius: 0;}
+
   </style>
   <body>
     <div>
+      <h1>Who's not following you back on INSTAGRAM?</h1>
       <p>Sign in if necessary. Click on each link, press "view more" as many times as necessary then copy and paste it into each respective field.</p>
       <a href="https://www.instagram.com/accounts/access_tool/accounts_you_follow" target="_blank">Accounts you follow:</a>
       <textarea id="youfollow"></textarea>
       <a href="https://www.instagram.com/accounts/access_tool/accounts_following_you" target="_blank">Accounts following you:</a>
       <textarea id="followingyou"></textarea>
-      <input type="submit" class="submit" value="Analyze" onclick="analyze()">
+      <button type="submit" id="submit" class="buttonfx curtainup" onclick="analyze()">Analyze</button>
       <div id="data"></div>
       <div id="list"></div>
     </div>
