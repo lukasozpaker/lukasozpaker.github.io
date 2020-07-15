@@ -23,6 +23,7 @@
         padding-top: 2em;
         padding-left: 2em;
       }
+
       ul {
         list-style-type: none;
         margin: auto;
@@ -120,14 +121,18 @@
       // Number 13 = "Enter" key
       if (event.keyCode === 13) {
         log.push(">" + document.getElementById("input").value);
-
-
-
         command = log[log.length-1].substring(1);
+
+
 
         if(command.substring(0,3).includes("cls")) {
           log = [];
           document.getElementById("log").textContent = log;
+        }
+        else if(command.substring(0,3).includes("get")) {
+          if(command.includes("location")) {
+            getLocation();
+          }
         }
         else if(command.substring(0,5).includes("print")) {
           if(command.includes("raw log")) {
@@ -135,10 +140,12 @@
           }
         }
         else if(command.substring(0,4).includes("help")) {
-          push("find");
+          push("'get location':::::fetches latitude and longitude for current or estimated location");
+          push("'print raw log'::::prints the raw array of command and output data");
+          push("'test':::::::::::::tests output system");
         }
         else if(command.substring(0,4).includes("test")) {
-          push("test successful");
+          push("output working: test successful");
         }
         else {
           push("");
@@ -146,10 +153,7 @@
 
 
         document.getElementById("input").value = "";
-
-
         console.log("enter");
-
       }
       //else is without enter
       else {
@@ -158,6 +162,20 @@
     });
 
 
+
+
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(savePosition);
+      } else {
+        alert("Geolocation is not supported by client.");
+      }
+    }
+    function savePosition(position) {
+      push("Latitude: " + position.coords.latitude);
+      push("Longitude " + position.coords.longitude);
+    }
 
     function push(value) {
       log.push(value);
