@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/index/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/index/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/index/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--------------------------------------------->
+    <title>Terminal</title>
+    <style>
+      ::selection{
+        color: #000000;
+        background-color: rgba(255,255,255,0.99);
+      }
+      html{
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+      body{
+        margin: 0;
+        background-color: #000000;
+        padding-top: 2em;
+        padding-left: 2em;
+      }
+      ul {
+        list-style-type: none;
+        margin: auto;
+        padding: 0;
+        color: #26a69a;
+      }
+
+      *{
+        transition: ease-out 0.3s;
+        box-sizing: border-box;
+        outline: none;
+        outline: 0;
+        cursor: default;
+      }
+      #container{
+        overflow-wrap: break-word;
+      }
+      #log {
+        font-family: 'Consolas', 'Menlo', monospace;
+        font-size: 16px;
+        color: #ffffff;
+        width: 100%;
+      }
+      input {
+        font-family: 'Consolas', 'Menlo', monospace;
+        font-size: 16px;
+        border: none;
+        width: 40%;
+        text-align: left;
+        margin: 0;
+        box-sizing: border-box;
+        background-color: #000000;
+        color: #ffffff;
+        width: 100%;
+        margin-left:0;
+        padding-left:0;
+      }
+      #inputline{
+        color: #ffffff;
+        font-family: 'Consolas', 'Menlo', monospace;
+        font-size: 16px;
+        width: 100%;
+        display: flex;
+      }
+      #output {
+        color: #ffffff;
+        font-family: 'Consolas', 'Menlo', monospace;
+        font-size: 16px;
+      }
+      #prompt{
+        user-select: none;
+        font-size: 16px;
+        margin: auto;
+        margin-right:0;
+        padding-right:0;
+      }
+
+      #fullscreen {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0.25em;
+        color: #ffffff;
+
+        cursor: pointer;
+        -webkit-user-select: none;  /* Chrome all / Safari all */
+        -moz-user-select: none;     /* Firefox all */
+        -ms-user-select: none;      /* IE 10+ */
+        user-select: none;          /* Likely future */
+      }
+      </style>
+  </head>
+  <body id="body">
+    <i id="fullscreen" class="material-icons" onclick="fullscreenControl()" style="font-size:30px">fullscreen</i>
+    <div id="container">
+      <ul id="log"></ul>
+      <div id="inputline">
+        <div id="prompt"></div>
+        <input id="input" autofocus />
+      </div>
+    </div>
+
+
+    <script type="text/javascript">
+    var input;
+    var fullscreen = false;
+    var elem = document.documentElement;
+    var prompt = document.getElementById("prompt");
+    var command;
+    var log = [];
+    var string;
+
+    prompt.textContent = "‎‎‎‎‎>";
+    document.getElementById("input").addEventListener("keydown", function(event) {
+      // Number 13 = "Enter" key
+      if (event.keyCode === 13) {
+        log.push(">" + document.getElementById("input").value);
+
+
+
+        command = log[log.length-1].substring(1);
+
+        if(command.substring(0,3).includes("cls")) {
+          log = [];
+          document.getElementById("log").textContent = log;
+        }
+        else if(command.substring(0,5).includes("print")) {
+          if(command.includes("raw log")) {
+            push(log);
+          }
+        }
+        else if(command.substring(0,4).includes("help")) {
+          push("find");
+        }
+        else if(command.substring(0,4).includes("test")) {
+          push("test successful");
+        }
+        else {
+          push("");
+        }
+
+
+        document.getElementById("input").value = "";
+
+
+        console.log("enter");
+
+      }
+      //else is without enter
+      else {
+        console.log(input);
+      }
+    });
+
+
+
+    function push(value) {
+      log.push(value);
+      document.getElementById("log").innerHTML = "";
+      for (var i = 0; i < log.length; i++)
+      {
+        logList = "<li>" + log[i] + "</li>";
+        document.getElementById("log").innerHTML += logList;
+      }
+      //document.getElementById("log").textContent = log;
+    }
+    //restore focus to input line
+    document.getElementById("body").addEventListener("focusout", function(event){
+      document.getElementById("input").focus();
+    });
+
+    //fullscreen controls
+    function fullscreenControl() {
+      if(fullscreen == false) {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+          fullscreen = true;
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+          elem.mozRequestFullScreen();
+          fullscreen = true;
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+          elem.webkitRequestFullscreen();
+          fullscreen = true;
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+          elem.msRequestFullscreen();
+          fullscreen = true;
+        }
+      }
+      else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+          fullscreen = false;
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+          document.mozCancelFullScreen();
+          fullscreen = false;
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+          document.webkitExitFullscreen();
+          fullscreen = false;
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+          document.msExitFullscreen();
+          fullscreen = false;
+        }
+      }
+    }
+
+    </script>
+  </body>
+</html>
