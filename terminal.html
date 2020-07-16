@@ -173,18 +173,7 @@
 
 
 
-    function push(value) {
-      log.push(value);
-    }
-    function update() {
-      document.getElementById("log").innerHTML = "";
-      for (var i = 0; i < log.length; i++)
-      {
-        logList = "<li>" + log[i] + "</li>";
-        document.getElementById("log").innerHTML += logList;
-      }
-      //document.getElementById("log").textContent = log;
-    }
+
 
 
 
@@ -210,6 +199,20 @@
     document.getElementById("body").addEventListener("focusout", function(event){
       document.getElementById("input").focus();
     });
+
+    //command and update functions
+    function push(value) {
+      log.push(value);
+    }
+    function update() {
+      document.getElementById("log").innerHTML = "";
+      for (var i = 0; i < log.length; i++)
+      {
+        logList = "<li>" + log[i] + "</li>";
+        document.getElementById("log").innerHTML += logList;
+      }
+      //document.getElementById("log").textContent = log;
+    }
 
     //fullscreen controls
     function fullscreenControl() {
