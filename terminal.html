@@ -130,7 +130,7 @@
           document.getElementById("log").textContent = log;
         }
         else if(command.substring(0,3).includes("get")) {
-          if(command.includes("location")) {
+          if(command.includes("loc")) {
             getLocation();
           }
         }
@@ -140,17 +140,15 @@
           }
         }
         else if(command.substring(0,4).includes("help")) {
-          push("'get location':::::fetches latitude and longitude for current or estimated location");
-          push("'print raw log'::::prints the raw array of command and output data");
-          push("'test':::::::::::::tests output system");
+          push("get location..........fetches latitude and longitude for current or estimated location");
+          push("print raw log.........prints the raw array of command and output data");
+          push("test..................tests output system");
+          push("cls...................clear the console");
         }
         else if(command.substring(0,4).includes("test")) {
           push("output working: test successful");
         }
-        else {
-          push("");
-        }
-
+        update();
 
         document.getElementById("input").value = "";
         console.log("enter");
@@ -165,20 +163,15 @@
 
 
 
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(savePosition);
-      } else {
-        alert("Geolocation is not supported by client.");
-      }
-    }
-    function savePosition(position) {
-      push("Latitude: " + position.coords.latitude);
-      push("Longitude " + position.coords.longitude);
-    }
+
+
+
+
 
     function push(value) {
       log.push(value);
+    }
+    function update() {
       document.getElementById("log").innerHTML = "";
       for (var i = 0; i < log.length; i++)
       {
@@ -187,6 +180,27 @@
       }
       //document.getElementById("log").textContent = log;
     }
+
+
+
+
+
+
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(savePosition);
+        update();
+      } else {
+        push("Geolocation is not supported by client.");
+      }
+    }
+    function savePosition(position) {
+      push("Latitude: " + position.coords.latitude);
+      push("Longitude " + position.coords.longitude);
+    }
+
+
     //restore focus to input line
     document.getElementById("body").addEventListener("focusout", function(event){
       document.getElementById("input").focus();
