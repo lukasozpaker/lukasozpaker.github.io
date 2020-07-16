@@ -133,6 +133,9 @@
           if(command.includes("loc")) {
             getLocation();
           }
+          if(command.includes("ver")) {
+            push("Version: 1.01.01")
+          }
         }
         else if(command.substring(0,5).includes("print")) {
           if(command.includes("raw log")) {
@@ -141,9 +144,11 @@
         }
         else if(command.substring(0,4).includes("help")) {
           push("get location..........fetches latitude and longitude for current or estimated location");
+          push("get version...........get the current terminal version");
           push("print raw log.........prints the raw array of command and output data");
           push("test..................tests output system");
           push("cls...................clear the console");
+
         }
         else if(command.substring(0,4).includes("test")) {
           push("output working: test successful");
