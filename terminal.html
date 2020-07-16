@@ -94,6 +94,12 @@
         -ms-user-select: none;      /* IE 10+ */
         user-select: none;          /* Likely future */
       }
+      @media print {
+        * {
+          color: #000000 !important;
+          background: #ffffff !important;
+        }
+      }
       </style>
   </head>
   <body id="body">
@@ -112,45 +118,62 @@
     var fullscreen = false;
     var elem = document.documentElement;
     var prompt = document.getElementById("prompt");
-    var command;
     var log = [];
-    var string;
+    var commands = [];
 
     prompt.textContent = "‎‎‎‎‎>";
     document.getElementById("input").addEventListener("keydown", function(event) {
       // Number 13 = "Enter" key
       if (event.keyCode === 13) {
         log.push(">" + document.getElementById("input").value);
-        command = log[log.length-1].substring(1);
+        //takes log, gets lastest entry from log.push and sorts into array seperated by spaces
+        commands = log[log.length-1].substring(1).split(" ");
 
-
-
-        if(command.substring(0,3).includes("cls")) {
+        if(commands[0].includes("cls")) {
           log = [];
           document.getElementById("log").textContent = log;
         }
-        else if(command.substring(0,3).includes("get")) {
-          if(command.includes("loc")) {
+        else if(commands[0].includes("get") && commands[1] != null) {
+          if(commands[1].includes("loc")) {
             getLocation();
           }
-          else if(command.includes("ver")) {
+          else if(commands[1].includes("ver")) {
             push("Version: 1.01.03")
           }
         }
-        else if(command.substring(0,5).includes("print")) {
-          if(command.includes("log")) {
+        else if(commands[0].includes("view") && commands[1] != null) {
+          if(commands[1].includes("log")) {
             push(log);
           }
         }
-        else if(command.substring(0,4).includes("help")) {
+        else if(commands[0].includes("red") && commands[1] != null) {
+          if(commands[1].includes("http")) {
+            window.location.href = commands[1];
+          }
+          else {
+            window.location.href = "https://" + commands[1];
+          }
+          //window.location.replace(command.substring(5));
+          push("redirecting...");
+        }
+        else if(commands[0].includes("print")) {
+          window.print();
+        }
+        else if(commands[0].includes("ref")) {
+          location.reload();
+        }
+        else if(commands[0].includes("test")) {
+          push("output working: test successful");
+        }
+        else if(commands[0].includes("help")) {
           push("get location..........fetches latitude and longitude for current or estimated location");
           push("get version...........get the current terminal version");
-          push("print log.............prints the raw array of command and output data");
+          push("view log..............prints the raw array of command and output data");
           push("test..................tests output system");
+          push("print.................opens a print dialogue for terminal")
           push("cls...................clear the console");
-        }
-        else if(command.substring(0,4).includes("test")) {
-          push("output working: test successful");
+          push("redirect [url]........redirect terminal to another website");
+          push("refresh...............reload the page");
         }
 
 
@@ -160,9 +183,9 @@
         document.getElementById("input").value = "";
         console.log("enter");
       }
-      //else is without enter
+      //else can be used to view text while typing wo enter
       else {
-        console.log(input);
+
       }
     });
 
