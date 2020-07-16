@@ -127,7 +127,7 @@
       if (event.keyCode === 13) {
         log.push(">" + document.getElementById("input").value);
         //takes log, gets lastest entry from log.push and sorts into array seperated by spaces
-        commands = log[log.length-1].substring(1).split(" ");
+        commands = log[log.length-1].substring(1).toLowerCase().split(" ");
 
         if(commands[0].includes("cls")) {
           log = [];
@@ -138,7 +138,7 @@
             getLocation();
           }
           else if(commands[1].includes("ver")) {
-            push("Version: 1.01.03")
+            push("VERSION: 1.02.00")
           }
         }
         else if(commands[0].includes("view") && commands[1] != null) {
@@ -146,7 +146,7 @@
             push(log);
           }
         }
-        else if(commands[0].includes("red") && commands[1] != null) {
+        else if(commands[0].includes("red") && commands[1] != null && commands[1].length > 0) {
           if(commands[1].includes("http")) {
             window.location.href = commands[1];
           }
@@ -154,7 +154,7 @@
             window.location.href = "https://" + commands[1];
           }
           //window.location.replace(command.substring(5));
-          push("redirecting...");
+          push("LOADING PAGE");
         }
         else if(commands[0].includes("print")) {
           window.print();
@@ -163,17 +163,17 @@
           location.reload();
         }
         else if(commands[0].includes("test")) {
-          push("output working: test successful");
+          push("OUTPUT WORKING: TEST SUCCESSFUL");
         }
         else if(commands[0].includes("help")) {
-          push("get location..........fetches latitude and longitude for current or estimated location");
-          push("get version...........get the current terminal version");
-          push("view log..............prints the raw array of command and output data");
-          push("test..................tests output system");
-          push("print.................opens a print dialogue for terminal")
-          push("cls...................clear the console");
-          push("redirect [url]........redirect terminal to another website");
-          push("reload................reload the page");
+          push("GET LOCATION..........fetches latitude and longitude for current or estimated location");
+          push("GET VERSION...........get the current terminal version");
+          push("VIEW LOG..............prints the raw array of command and output data");
+          push("TEST..................tests output system");
+          push("PRINT.................opens a print dialogue for terminal")
+          push("CLS...................clear the console");
+          push("REDIRECT [URL]........redirect terminal to another website");
+          push("RELOAD................reload the page");
         }
 
 
@@ -210,12 +210,12 @@
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(savePosition);
       } else {
-        push("Geolocation is not supported by client.");
+        push("GEOLOCATION IS NOT SUPPORTED BY CLIENT");
       }
     }
     function savePosition(position) {
-      push("Latitude: " + position.coords.latitude);
-      push("Longitude " + position.coords.longitude);
+      push("LATITUDE: " + position.coords.latitude);
+      push("LONGITUDE " + position.coords.longitude);
       update();
     }
 
