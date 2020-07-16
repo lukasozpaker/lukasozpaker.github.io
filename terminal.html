@@ -138,7 +138,7 @@
             getLocation();
           }
           else if(commands[1].includes("ver")) {
-            push("VERSION: 1.02.00")
+            push("Version: 1.02.00")
           }
         }
         else if(commands[0].includes("view") && commands[1] != null) {
@@ -154,7 +154,6 @@
             window.location.href = "https://" + commands[1];
           }
           //window.location.replace(command.substring(5));
-          push("LOADING PAGE");
         }
         else if(commands[0].includes("print")) {
           window.print();
@@ -163,17 +162,17 @@
           location.reload();
         }
         else if(commands[0].includes("test")) {
-          push("OUTPUT WORKING: TEST SUCCESSFUL");
+          push("Output working: test successful");
         }
         else if(commands[0].includes("help")) {
-          push("GET LOCATION..........fetches latitude and longitude for current or estimated location");
-          push("GET VERSION...........get the current terminal version");
-          push("VIEW LOG..............prints the raw array of command and output data");
-          push("TEST..................tests output system");
-          push("PRINT.................opens a print dialogue for terminal")
-          push("CLS...................clear the console");
-          push("REDIRECT [URL]........redirect terminal to another website");
-          push("RELOAD................reload the page");
+          push("get location..........fetches latitude and longitude for current or estimated location");
+          push("get version...........get the current terminal version");
+          push("view log..............prints the raw array of command and output data");
+          push("test..................tests output system");
+          push("print.................opens a print dialogue for terminal")
+          push("cls...................clear the console");
+          push("redirect [url]........redirect terminal to another url");
+          push("reload................reload the page");
         }
 
 
