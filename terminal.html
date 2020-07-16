@@ -134,7 +134,7 @@
             getLocation();
           }
           else if(command.includes("ver")) {
-            push("Version: 1.01.02")
+            push("Version: 1.01.03")
           }
         }
         else if(command.substring(0,5).includes("print")) {
@@ -193,6 +193,7 @@
     function savePosition(position) {
       push("Latitude: " + position.coords.latitude);
       push("Longitude " + position.coords.longitude);
+      update();
     }
 
 
