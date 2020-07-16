@@ -186,7 +186,6 @@
     function getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(savePosition);
-        update();
       } else {
         push("Geolocation is not supported by client.");
       }
