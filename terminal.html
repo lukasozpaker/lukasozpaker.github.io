@@ -155,6 +155,46 @@
           }
           //window.location.replace(command.substring(5));
         }
+        else if(commands[0].includes("search") && commands[1] != null && commands[1].length > 0) {
+          var query = "";
+          //google
+          if(commands[1].includes("google") && commands[2] != null && commands[2].length > 0) {
+            if(commands[2].includes("images") && commands[3] != null && commands[3].length > 0) {
+              for(let i=3;i<commands.length;i++) {
+                query += commands[i] + " ";
+              }
+              window.location.href = "https://www.google.com/search?tbm=isch&q=" + query;
+            }
+            else {
+              for(let i=2;i<commands.length;i++) {
+                query += commands[i] + " ";
+              }
+              window.location.href = "https://www.google.com/search?q=" + query;
+            }
+          }
+
+          //bing
+          else if(commands[1].includes("bing") && commands[2] != null && commands[2].length > 0) {
+            if(commands[2].includes("images") && commands[3] != null && commands[3].length > 0) {
+              for(let i=3;i<commands.length;i++) {
+                query += commands[i] + " ";
+              }
+              window.location.href = "https://www.bing.com/images/search?q=" + query;
+            }
+            else {
+              for(let i=2;i<commands.length;i++) {
+                query += commands[i] + " ";
+              }
+              window.location.href = "https://www.bing.com/search?q=" + query;
+            }
+          }
+          else {
+            for(let i=1;i<commands.length;i++) {
+              query += commands[i] + " ";
+            }
+            window.location.href = "https://www.google.com/search?q=" + query;
+          }
+        }
         else if(commands[0].includes("print")) {
           window.print();
         }
@@ -165,14 +205,19 @@
           push("Output working: test successful");
         }
         else if(commands[0].includes("help")) {
-          push("get location..........fetches latitude and longitude for current or estimated location");
-          push("get version...........get the current terminal version");
-          push("view log..............prints the raw array of command and output data");
-          push("test..................tests output system");
-          push("print.................opens a print dialogue for terminal")
-          push("cls...................clear the console");
-          push("redirect [url]........redirect terminal to another url");
-          push("reload................reload the page");
+          push("cls.............................clear the console");
+          push("get location....................fetches latitude and longitude for current or estimated location");
+          push("get version.....................get the current terminal version");
+          push("print...........................opens a print dialogue for terminal");
+          push("redirect [url]..................redirect terminal to another url");
+          push("reload..........................reload the page");
+          push("search [query]..................searches question on google by default");
+          push("search bing [query].............searches question on bing");
+          push("search bing images [query]......searches question on bing");
+          push("search google [query]...........searches question on google");
+          push("search google images [query]....searches question on google");
+          push("test............................tests output system");
+          push("view log........................prints the raw array of command and output data");
         }
 
 
