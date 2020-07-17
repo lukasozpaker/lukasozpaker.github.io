@@ -149,7 +149,7 @@
             getLocation();
           }
           else if(commands[1].includes("ver")) {
-            push("Version: 1.05.00")
+            push("Version: 1.05.01")
           }
         }
         else if(commands[0].includes("view") && commands[1] != null) {
@@ -309,30 +309,38 @@
         if (elem.requestFullscreen) {
           elem.requestFullscreen();
           fullscreen = true;
+          document.getElementById("fullscreen").innerText = "fullscreen_exit";
         } else if (elem.mozRequestFullScreen) { /* Firefox */
           elem.mozRequestFullScreen();
           fullscreen = true;
+          document.getElementById("fullscreen").innerText = "fullscreen_exit";
         } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
           elem.webkitRequestFullscreen();
           fullscreen = true;
+          document.getElementById("fullscreen").innerText = "fullscreen_exit";
         } else if (elem.msRequestFullscreen) { /* IE/Edge */
           elem.msRequestFullscreen();
           fullscreen = true;
+          document.getElementById("fullscreen").innerText = "fullscreen_exit";
         }
       }
       else {
         if (document.exitFullscreen) {
           document.exitFullscreen();
           fullscreen = false;
+          document.getElementById("fullscreen").innerText = "fullscreen";
         } else if (document.mozCancelFullScreen) { /* Firefox */
           document.mozCancelFullScreen();
           fullscreen = false;
+          document.getElementById("fullscreen").innerText = "fullscreen";
         } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
           document.webkitExitFullscreen();
           fullscreen = false;
+          document.getElementById("fullscreen").innerText = "fullscreen";
         } else if (document.msExitFullscreen) { /* IE/Edge */
           document.msExitFullscreen();
           fullscreen = false;
+          document.getElementById("fullscreen").innerText = "fullscreen";
         }
       }
     }
