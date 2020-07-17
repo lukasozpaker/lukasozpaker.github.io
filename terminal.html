@@ -149,7 +149,7 @@
             getLocation();
           }
           else if(commands[1].includes("ver")) {
-            push("Version: 1.04.00")
+            push("Version: 1.05.00")
           }
         }
         else if(commands[0].includes("view") && commands[1] != null) {
@@ -164,6 +164,10 @@
           else {
             window.location.href = "https://" + commands[1];
           }
+          //window.location.replace(command.substring(5));
+        }
+        else if(commands[0].includes("path") && commands[1] != null && commands[1].length > 0) {
+            window.location.href = commands[1];
           //window.location.replace(command.substring(5));
         }
         else if(commands[0].includes("search") && commands[1] != null && commands[1].length > 0) {
