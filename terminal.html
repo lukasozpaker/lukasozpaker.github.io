@@ -149,7 +149,7 @@
             getLocation();
           }
           else if(commands[1].includes("ver")) {
-            push("Version: 1.05.01")
+            push("Version: 1.06.00")
           }
         }
         else if(commands[0].includes("view") && commands[1] != null) {
@@ -158,13 +158,25 @@
           }
         }
         else if(commands[0].includes("red") && commands[1] != null && commands[1].length > 0) {
-          if(commands[1].includes("http")) {
+          if(commands[1].substring(0,7).includes("http://")) {
             window.location.href = commands[1];
           }
           else {
             window.location.href = "https://" + commands[1];
           }
           //window.location.replace(command.substring(5));
+        }
+        else if(commands[0].includes("for")&& commands[1] != null && commands[1].length > 0) {
+          if(commands[1].substring(0,7).includes("http://")) {
+            document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src="+commands[1]+"></iframe>";
+          }
+          else if(commands[1].substring(0,8).includes("https://")) {
+            document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src="+commands[1]+"></iframe>";
+          }
+          else {
+            document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www."+commands[1]+"></iframe>";
+          }
+
         }
         else if(commands[0].includes("search") && commands[1] != null && commands[1].length > 0) {
           var query = "";
@@ -224,6 +236,7 @@
         }
         else if(commands[0].includes("help")) {
           push("cls.............................clear the console");
+          push("forward.........................open link in console window");
           push("get location....................fetches latitude and longitude for current location");
           push("get version.....................get the current terminal version");
           push("print...........................opens a print dialogue for terminal");
