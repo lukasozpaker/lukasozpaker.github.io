@@ -157,7 +157,7 @@
           getLocation();
         }
         else if(commands[1].includes("ver")) {
-          push("Version: 1.08.00")
+          push("Version: 1.08.50")
         }
       }
       else if(commands[0].includes("view") && commands[1] != null) {
@@ -248,7 +248,7 @@
       else if(commands[0].includes("print")) {
         window.print();
       }
-      else if(commands[0].includes("win")) {
+      else if(commands[0].includes("win") && commands[1] != null) {
         if(commands[1].includes("close")) {
           document.getElementById("displaybox").innerHTML="";
         }
@@ -260,6 +260,9 @@
         push("Output working: test successful");
       }
       else if(commands[0].includes("help")) {
+        push("url queries (?commands=)........begin each command with '>'");
+        push("&nbsp;&nbsp;&nbsp;example......................ozpaker.org/terminal?commands=>help>get location");
+        push("&nbsp;");
         push("cls.............................clear the console");
         push("forward.........................open link in console window");
         push("get location....................fetches latitude and longitude for current location");
