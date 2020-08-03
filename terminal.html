@@ -52,7 +52,6 @@
         font-family: 'Consolas', 'Menlo', monospace;
         font-size: 16px;
         border: none;
-        width: 40%;
         text-align: left;
         margin: 0;
         box-sizing: border-box;
@@ -118,7 +117,7 @@
       <ul id="log"></ul>
       <div id="inputline">
         <div id="prompt"></div>
-        <input id="input" autofocus />
+        <input id="input" autofocus autocomplete="off"/>
       </div>
 
     </div>
@@ -149,7 +148,7 @@
             getLocation();
           }
           else if(commands[1].includes("ver")) {
-            push("Version: 1.06.00")
+            push("Version: 1.07.00")
           }
         }
         else if(commands[0].includes("view") && commands[1] != null) {
@@ -215,6 +214,21 @@
               //window.location.href = "https://www.bing.com/search?q=" + query;
             }
           }
+
+          else if(commands[1].includes("urban") && commands[2] != null && commands[2].length > 0) {
+            for(let i=2;i<commands.length;i++) {
+              query += commands[i] + "%20";
+            }
+            query = query.substring(0, query.length-3);
+            document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www.urbandictionary.com/define.php?term="+query+"></iframe>";
+          }
+          else if(commands[1].includes("ud") && commands[2] != null && commands[2].length > 0) {
+            for(let i=2;i<commands.length;i++) {
+              query += commands[i] + "%20";
+            }
+            query = query.substring(0, query.length-3);
+            document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www.urbandictionary.com/define.php?term="+query+"></iframe>";
+          }
           else {
             for(let i=1;i<commands.length;i++) {
               query += commands[i] + " ";
@@ -247,6 +261,8 @@
           push("search bing images [query]......searches question on bing");
           push("search google [query]...........searches question on google");
           push("search google images [query]....searches question on google");
+          push("search ud [term]................searches urban dictionary for term");
+          push("search urbandictionary [term]...searches urban dictionary for term");
           push("test............................tests output system");
           push("view log........................prints the raw array of command and output data");
           push("window.close....................closes window panel");
