@@ -60,6 +60,7 @@
         width: 100%;
         margin-left:0;
         padding-left:0;
+        cursor: text;
       }
       #inputline{
         color: #ffffff;
@@ -67,6 +68,7 @@
         font-size: 16px;
         width: 100%;
         display: flex;
+
       }
       #output {
         color: #ffffff;
@@ -157,10 +159,10 @@
           getLocation();
         }
         else if(commands[1].includes("ver")) {
-          push("Version: 1.08.50")
+          push("Version: 1.09.00")
         }
       }
-      else if(commands[0].includes("view") && commands[1] != null) {
+      else if(commands[0].includes("view")&& commands[1] != null) {
         if(commands[1].includes("log")) {
           push(log);
         }
@@ -174,7 +176,7 @@
         }
         //window.location.replace(command.substring(5));
       }
-      else if(commands[0].includes("for")&& commands[1] != null && commands[1].length > 0) {
+      else if(commands[0].includes("for") && commands[1] != null && commands[1].length > 0) {
         if(commands[1].substring(0,7).includes("http://")) {
           document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src="+commands[1]+"></iframe>";
         }
@@ -253,6 +255,13 @@
           document.getElementById("displaybox").innerHTML="";
         }
       }
+      else if(commands[0].includes("script") && commands[1] != null) {
+        var script = "";
+        for(let i=1;i<commands.length;i++) {
+            script += commands[i]+" ";
+        }
+        eval(script);
+      }
       else if(commands[0].includes("rel")) {
         location.reload();
       }
@@ -262,6 +271,10 @@
       else if(commands[0].includes("help")) {
         push("url queries (?commands=)........begin each command with '>'");
         push("&nbsp;&nbsp;&nbsp;example......................ozpaker.org/terminal?commands=>help>get location");
+        push("&nbsp;");
+        push("script..........................allows for terminal-based scripting")
+        push('&nbsp;&nbsp;&nbsp;com("command")...............com() allows scripts to execute terminal commands');
+        push('&nbsp;&nbsp;&nbsp;example......................for(i=0;i<3;i++) com("get version")');
         push("&nbsp;");
         push("cls.............................clear the console");
         push("forward.........................open link in console window");
@@ -288,6 +301,11 @@
       update();
       document.getElementById("input").value = "";
       console.log("command executed");
+    }
+
+    function com(command){
+      document.getElementById("input").value = command;
+      execute();
     }
 
 
