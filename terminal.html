@@ -159,7 +159,7 @@
           getLocation();
         }
         else if(commands[1].includes("ver")) {
-          push("Version: 1.11.01")
+          push("Version: 1.11.02")
         }
       }
       else if(commands[0].includes("view")&& commands[1] != null) {
@@ -202,14 +202,17 @@
               window.open("https://www.google.com/search?tbm=isch&q=" + query, "_blank");
             }
           }
-          else if(!commands[1].includes(".") && commands[2].includes("for") && commands[3] != null) {
-            for(var i=3;i<commands.length;i++) {
-              query += commands[i] + "%20";
+          else if (commands[2] != null){
+            if(!commands[1].includes(".") && commands[2].includes("for") && commands[3] != null) {
+              for(var i=3;i<commands.length;i++) {
+                query += commands[i] + "%20";
+              }
+              query = query.substring(0, query.length-3);
+              // window.location.href = "https://www.google.com/search?q=" + query;
+              window.open("https://www.google.com/search?q=" + query, "_blank");
             }
-            query = query.substring(0, query.length-3);
-            // window.location.href = "https://www.google.com/search?q=" + query;
-            window.open("https://www.google.com/search?q=" + query, "_blank");
           }
+
         }
 
 
@@ -225,19 +228,21 @@
               //window.location.href = "https://www.bing.com/images/search?q=" + query;
             }
           }
-          else if(!commands[1].includes(".") && commands[2].includes("for") && commands[3] != null) {
-            for(var i=3;i<commands.length;i++) {
-              query += commands[i] + "%20";
+          if(commands[2] != null) {
+            if(!commands[1].includes(".") && commands[2].includes("for") && commands[3] != null) {
+              for(var i=3;i<commands.length;i++) {
+                query += commands[i] + "%20";
+              }
+              query = query.substring(0, query.length-3);
+              document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www.bing.com/search?q="+query+"></iframe>";
+              //window.location.href = "https://www.bing.com/search?q=" + query;
             }
-            query = query.substring(0, query.length-3);
-            document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www.bing.com/search?q="+query+"></iframe>";
-            //window.location.href = "https://www.bing.com/search?q=" + query;
           }
         }
 
         //urbandictionary
         else if(commands[1].includes("ud") || commands[1].includes("urban") && commands[2] != null) {
-          if(commands[2].includes("for") && commands[3] != null) {
+          if(commands[2] === "for" && commands[3] != null) {
             for(var i=3;i<commands.length;i++) {
               query += commands[i] + "%20";
             }
