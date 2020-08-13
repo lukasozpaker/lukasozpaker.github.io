@@ -159,7 +159,7 @@
           getLocation();
         }
         else if(commands[1].includes("ver")) {
-          push("Version: 1.10.01")
+          push("Version: 1.11.00")
         }
       }
       else if(commands[0].includes("view")&& commands[1] != null) {
@@ -167,7 +167,7 @@
           push(log);
         }
       }
-      else if(commands[0].includes("red") && commands[1] != null && commands[1].length > 0) {
+      else if(commands[0].includes("red") && commands[1] != null) {
         if(commands[1].substring(0,7).includes("http://")) {
           window.location.href = commands[1];
         }
@@ -176,7 +176,7 @@
         }
         //window.location.replace(command.substring(5));
       }
-      else if(commands[0].includes("for") && commands[1] != null && commands[1].length > 0) {
+      else if(commands[0].includes("for") && commands[1] != null) {
         if(commands[1].substring(0,7).includes("http://")) {
           document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src="+commands[1]+"></iframe>";
         }
@@ -188,36 +188,43 @@
         }
 
       }
-      else if(commands[0].includes("search") && commands[1] != null && commands[1].length > 0) {
+      else if(commands[0].includes("search") && commands[1] != null) {
         var query = "";
         //google
-        if(commands[1].includes("google") && commands[2] != null && commands[2].length > 0) {
-          if(commands[2].includes("images") && commands[3] != null && commands[3].length > 0) {
-            for(let i=3;i<commands.length;i++) {
-              query += commands[i] + " ";
+        if(commands[1].includes("google") || commands[1].substring(0,1)==="g" && commands[2] != null) {
+          if(commands[1].substring(1).includes(".i") && commands[2] != null) {
+            if(commands[2].includes("for") && commands[3] != null) {
+              for(let i=3;i<commands.length;i++) {
+                query += commands[i] + "%20";
+              }
+              query = query.substring(0, query.length-3);
+              window.location.href = "https://www.google.com/search?tbm=isch&q=" + query;
             }
-            window.location.href = "https://www.google.com/search?tbm=isch&q=" + query;
           }
-          else {
-            for(let i=2;i<commands.length;i++) {
-              query += commands[i] + " ";
+          else if(!commands[1].includes(".") && commands[2].includes("for") && commands[3] != null) {
+            for(var i=3;i<commands.length;i++) {
+              query += commands[i] + "%20";
             }
+            query = query.substring(0, query.length-3);
             window.location.href = "https://www.google.com/search?q=" + query;
           }
         }
 
+
         //bing
-        else if(commands[1].includes("bing") && commands[2] != null && commands[2].length > 0) {
-          if(commands[2].includes("images") && commands[3] != null && commands[3].length > 0) {
-            for(let i=3;i<commands.length;i++) {
-              query += commands[i] + "%20";
+        else if(commands[1].includes("bing") || commands[1].substring(0,1)==="b" && commands[2] != null) {
+          if(commands[1].substring(1).includes(".i") && commands[2] != null) {
+            if(commands[2].includes("for") && commands[3] != null) {
+              for(let i=3;i<commands.length;i++) {
+                query += commands[i] + "%20";
+              }
+              query = query.substring(0, query.length-3);
+              document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www.bing.com/images/search?q="+query+"></iframe>";
+              //window.location.href = "https://www.bing.com/images/search?q=" + query;
             }
-            query = query.substring(0, query.length-3);
-            document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www.bing.com/images/search?q="+query+"></iframe>";
-            //window.location.href = "https://www.bing.com/images/search?q=" + query;
           }
-          else {
-            for(let i=2;i<commands.length;i++) {
+          else if(!commands[1].includes(".") && commands[2].includes("for") && commands[3] != null) {
+            for(var i=3;i<commands.length;i++) {
               query += commands[i] + "%20";
             }
             query = query.substring(0, query.length-3);
@@ -226,25 +233,26 @@
           }
         }
 
-        else if(commands[1].includes("urban") && commands[2] != null && commands[2].length > 0) {
-          for(let i=2;i<commands.length;i++) {
-            query += commands[i] + "%20";
+        //urbandictionary
+        else if(commands[1].includes("ud") || commands[1].includes("urban") && commands[2] != null) {
+          if(commands[2].includes("for") && commands[3] != null) {
+            for(var i=3;i<commands.length;i++) {
+              query += commands[i] + "%20";
+            }
+            query = query.substring(0, query.length-3);
+            document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www.urbandictionary.com/define.php?term="+query+"></iframe>";
           }
-          query = query.substring(0, query.length-3);
-          document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www.urbandictionary.com/define.php?term="+query+"></iframe>";
         }
-        else if(commands[1].includes("ud") && commands[2] != null && commands[2].length > 0) {
-          for(let i=2;i<commands.length;i++) {
-            query += commands[i] + "%20";
-          }
-          query = query.substring(0, query.length-3);
-          document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www.urbandictionary.com/define.php?term="+query+"></iframe>";
-        }
+
+        //no engine
         else {
-          for(let i=1;i<commands.length;i++) {
-            query += commands[i] + " ";
+          if(commands[1].includes("for") && commands[2] != null) {
+            for(let i=2;i<commands.length;i++) {
+              query += commands[i] + "%20";
+            }
+            query = query.substring(0, query.length-3);
+            window.location.href = "https://www.google.com/search?q=" + query;
           }
-          window.location.href = "https://www.google.com/search?q=" + query;
         }
       }
       else if(commands[0].includes("print")) {
@@ -287,7 +295,7 @@
         push("Output working: test successful");
       }
       else if(commands[0].includes("help")) {
-        push("url queries (?c=)........begin each command with '>'");
+        push("url queries (?c=)...............begin each command with '>'");
         push("&nbsp;&nbsp;&nbsp;example......................ozpaker.org/terminal?c=>help>get location");
         push("&nbsp;");
         push("script..........................allows for terminal-based scripting")
@@ -301,13 +309,12 @@
         push("print...........................opens a print dialogue for terminal");
         push("redirect [url]..................redirect terminal to another url");
         push("reload..........................reload the page");
-        push("search [query]..................searches question on google by default");
-        push("search bing [query].............searches question on bing");
-        push("search bing images [query]......searches question on bing");
-        push("search google [query]...........searches question on google");
-        push("search google images [query]....searches question on google");
-        push("search ud [term]................searches urban dictionary for term");
-        push("search urbandictionary [term]...searches urban dictionary for term");
+        push("search [engine] for [query].....searches query on google if engine is blank");
+        push("&nbsp;&nbsp;&nbsp;google || g");
+        push("&nbsp;&nbsp;&nbsp;google.images || google.i || g.i");
+        push("&nbsp;&nbsp;&nbsp;bing || b");
+        push("&nbsp;&nbsp;&nbsp;bing.images || bing.i || b.i");
+        push("&nbsp;&nbsp;&nbsp;urbandictionary || ud");
         push("test............................tests output system");
         push("view log........................prints the raw array of command and output data");
         push("window close....................closes window panel");
