@@ -159,7 +159,7 @@
           getLocation();
         }
         else if(commands[1].includes("ver")) {
-          push("Version: 1.11.02")
+          push("Version: 1.12.02")
         }
       }
       else if(commands[0].includes("view")&& commands[1] != null) {
@@ -299,7 +299,27 @@
       else if(commands[0].includes("rel")) {
         location.reload();
       }
-      else if(commands[0].includes("test")) {
+      else if(commands[0] === "nato" && commands[1] != null) {
+        var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        var number = ["Zero","One","Two", "Three", "Four","Five","Six","Seven","Eight","Niner"];
+        var phonetic = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf",
+        "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa",
+        "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee", "Zulu"];
+        //-1 because of "nato" command
+        var line = "";
+        for(let i=1;i<commands.length;i++){
+          for(let j=0;j<commands[i].length;j++){
+            if(!isNaN(commands[i].substring(j,j+1))) {
+              line += number[commands[i].substring(j,j+1)] + " ";
+            }
+            else line += phonetic[alphabet.indexOf(commands[i].substring(j,j+1))] + " ";
+          }
+          push(line);
+          line = "";
+        }
+
+      }
+      else if(commands[0] === "test") {
         push("Output working: test successful");
       }
       else if(commands[0].includes("help")) {
@@ -314,15 +334,15 @@
         push("forward.........................open link in console window");
         push("get location....................fetches latitude and longitude for current location");
         push("get version.....................get the current terminal version");
+        push("nato [text].....................converts word and numbers into the nato phonetic alphabet")
         push("print...........................opens a print dialogue for terminal");
         push("redirect [url]..................redirect terminal to another url");
         push("reload..........................reload the page");
         push("search [engine] for [query].....searches query on google if engine is blank");
-        push("&nbsp;&nbsp;&nbsp;google || g");
-        push("&nbsp;&nbsp;&nbsp;google.images || google.i || g.i");
-        push("&nbsp;&nbsp;&nbsp;bing || b");
-        push("&nbsp;&nbsp;&nbsp;bing.images || bing.i || b.i");
-        push("&nbsp;&nbsp;&nbsp;urbandictionary || ud");
+        push("&nbsp;&nbsp;&nbsp;google/g");
+        push("&nbsp;&nbsp;&nbsp;bing/b");
+        push("&nbsp;&nbsp;&nbsp;urbandictionary/ud");
+        push("&nbsp;&nbsp;&nbsp;add .images/.i to search for images");
         push("test............................tests output system");
         push("view log........................prints the raw array of command and output data");
         push("window close....................closes window panel");
@@ -448,6 +468,10 @@
           document.getElementById("fullscreen").innerText = "fullscreen";
         }
       }
+    }
+    window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
+      alert("Error: " + errorMsg);
+      return false;
     }
 
     </script>
