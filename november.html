@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      /***FONTS **/
+      @import url(https://fonts.googleapis.com/css?family=Montserrat:900|Raleway:400,400i,700,700i);
+      /*** VARIABLES ***/
+      /* Colors */
+      /*** EXTEND ***/
+      /* box-shadow */
+      ol.gradient-list > li, ol.gradient-list > li::before {
+        box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+      }
+      /** STYLE **/
+      *, *:before, *:after {
+        box-sizing: border-box;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #fafafa;
+        color: #1d1f20;
+        font-family: 'Raleway', sans-serif;
+      }
+      main {
+        display: block;
+        margin: 0 auto;
+        max-width: 40rem;
+        padding: 1rem;
+      }
+      h{
+        font-weight: bold;
+        font-size: 3em;
+      }
+      ol.gradient-list {
+        counter-reset: gradient-counter;
+        list-style: none;
+        margin: 1.75rem 0;
+        padding-left: 1rem;
+      }
+      ol.gradient-list > li {
+        background: white;
+        border-radius: 0 0.5rem 0.5rem 0.5rem;
+        counter-increment: gradient-counter;
+        margin-top: 1rem;
+        min-height: 3rem;
+        padding: 1rem 1rem 1rem 3rem;
+        position: relative;
+      }
+      ol.gradient-list > li::before, ol.gradient-list > li::after {
+        background: linear-gradient(135deg, rgba(255, 10, 86, 1) 0%, rgba(255, 150, 90, 1) 100%);
+        border-radius: 1rem 1rem 1rem 1rem;
+        content: '';
+        height: 3rem;
+        left: -1rem;
+        overflow: hidden;
+        position: absolute;
+        top: -1rem;
+        width: 3rem;
+      }
+      ol.gradient-list > li::before {
+        align-items: flex-end;
+        content: counter(gradient-counter);
+        color: #1d1f20;
+        display: flex;
+        font: 900 1.5em/1 'Montserrat';
+        justify-content: flex-end;
+        padding: 0.125em 0.25em;
+        z-index: 1;
+      }
+      ol.gradient-list > li:nth-child(10n+1):before {
+        background: linear-gradient(135deg, rgba(162, 237, 86, 0) 0%, rgba(253, 220, 50, 0) 100%);
+      }
+      ol.gradient-list > #done:before {
+        background: linear-gradient(135deg, #83e4e2 0%, #a2ed56 100%);
+      }
+      ol.gradient-list > li + li {
+        margin-top: 2rem;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main>
+      <h>November Checklist</h>
+      <ol class="gradient-list">
+        <li>Sillytix Election Night Special</li>
+        <li>Bet on election</li>
+        <li>Make tacos with Felix and Can</li>
+        <li>Camping with Juan and Miki</li>
+        <li>Walk to DC with Felix and Can</li>
+        <li>Go back to gym</li>
+        <li>Lukas Juan bet site</li>
+        <li>Continuum website with quiz</li>
+        <li>Get to MG in CS:GO</li>
+        <li>Valorant</li>
+        <li>Short Gamestop</li>
+        <li>Forex (lira)</li>
+        <li>TD Ameritrade Account</li>
+        <li>Robinhood Account</li>
+        <li>Biergarten with Esteban, Juan, Pawl, Can, and Felix</li>
+        <li>Paypal Cash Account</li>
+        <li>Online grade calculator with ads</li>
+        <li>Haircut</li>
+        <li>New shoes</li>
+        <li>Credit Card</li>
+        <li id="done">Co-op game with Miki</li>
+        <li id="done">Find out when Esteban and Paul do homework</li>
+        <!-- <li></li> -->
+      </ol>
+    </main>
+  </body>
+</html>
