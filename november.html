@@ -1,15 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <link href='https://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=DM+Sans' rel='stylesheet'>
-    <style media="screen">
-      @font-face {
-        font-family: GilroyLight;
-        src: url("https://www.ozpaker.org/Gilroy-Light.otf") format("opentype");
-      }
+    <title>November</title>
+    <style>
       @font-face {
         font-family: GilroyBold;
         src: url("https://www.ozpaker.org/Gilroy-ExtraBold.otf") format("opentype");
@@ -47,7 +41,6 @@
       h{
         font-weight: bold;
         font-size: 3.5em;
-        width: 80%;
       }
       ol.gradient-list {
         counter-reset: gradient-counter;
@@ -66,9 +59,9 @@
         font-size: 20px;
         border-radius: 20px;
       }
-      ol.gradient-list > li::before, ol.gradient-list > li::after {
+      ol.gradient-list > li::before {
         /* background: linear-gradient(135deg, rgba(255, 10, 86, 1) 0%, rgba(255, 150, 90, 1) 100%); */
-        border-radius: 30px;
+        border-radius: 100%;
         content: '';
         height: 2em;
         left: -0.75em;
@@ -81,16 +74,13 @@
         color: #000000;
         display: flex;
         font-weight: 900;
-        font-size: 1.5em;
+        font-size: 35px;
         font-family: 'ObjectSans';
         justify-content: center;
         padding-left: 0.1em;
         align-items: center;
         justify-content: middle;
         z-index: 1;
-      }
-      ol.gradient-list > li:nth-child(10n+1):before {
-        background: linear-gradient(135deg, rgba(162, 237, 86, 0) 0%, rgba(253, 220, 50, 0) 100%);
       }
       ol.gradient-list > #done:before {
         background: linear-gradient(135deg, #83e4e2 0%, #a2ed56 100%);
