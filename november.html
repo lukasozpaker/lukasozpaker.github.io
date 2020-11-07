@@ -3,15 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=DM+Sans' rel='stylesheet'>
     <style media="screen">
-      /***FONTS **/
-      @import url(https://fonts.googleapis.com/css?family=Montserrat:900|Raleway:400,400i,700,700i);
-      /*** VARIABLES ***/
-      /* Colors */
-      /*** EXTEND ***/
+      @font-face {
+        font-family: GilroyLight;
+        src: url("https://www.ozpaker.org/Gilroy-Light.otf") format("opentype");
+      }
+      @font-face {
+        font-family: GilroyBold;
+        src: url("https://www.ozpaker.org/Gilroy-ExtraBold.otf") format("opentype");
+      }
+      @font-face {
+        font-family: ObjectSans;
+        src: url("https://www.ozpaker.org/ObjectSans-Regular.otf") format("opentype");
+      }
       /* box-shadow */
-      ol.gradient-list > li, ol.gradient-list > li::before {
-        box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+      ol.gradient-list > li {
+        box-shadow: 0.25em 0.25em 0.6em rgba(0, 0, 0, 0.05), 0 0.5em 1.125em rgba(75, 0, 0, 0.05);
+      }
+      ol.gradient-list > li::before {
+        box-shadow: 0.25em 0.25em 0.6em rgba(0, 0, 0, 0.15), 0 0.5em 1.125em rgba(75, 0, 0, 0.15);
       }
       /** STYLE **/
       *, *:before, *:after {
@@ -23,53 +35,58 @@
       }
       body {
         background-color: #fafafa;
-        color: #1d1f20;
-        font-family: 'Raleway', sans-serif;
+        color: #000000;
+        font-family: 'GilroyBold', sans-serif;
       }
       main {
         display: block;
         margin: 0 auto;
-        max-width: 40rem;
-        padding: 1rem;
+        max-width: 40em;
+        padding: 1em;
       }
       h{
         font-weight: bold;
-        font-size: 3em;
+        font-size: 3.5em;
+        width: 80%;
       }
       ol.gradient-list {
         counter-reset: gradient-counter;
         list-style: none;
-        margin: 1.75rem 0;
-        padding-left: 1rem;
+        margin: 2em 2em;
+        padding-left: 1em;
       }
       ol.gradient-list > li {
         background: white;
-        border-radius: 0 0.5rem 0.5rem 0.5rem;
         counter-increment: gradient-counter;
-        margin-top: 1rem;
-        min-height: 3rem;
-        padding: 1rem 1rem 1rem 3rem;
+        margin-bottom: 2em;
+        min-height: 3em;
+        padding: 1em 1em 1em 3em;
         position: relative;
+        font-family: roboto, sans-serif;
+        font-size: 20px;
+        border-radius: 20px;
       }
       ol.gradient-list > li::before, ol.gradient-list > li::after {
-        background: linear-gradient(135deg, rgba(255, 10, 86, 1) 0%, rgba(255, 150, 90, 1) 100%);
-        border-radius: 1rem 1rem 1rem 1rem;
+        /* background: linear-gradient(135deg, rgba(255, 10, 86, 1) 0%, rgba(255, 150, 90, 1) 100%); */
+        border-radius: 30px;
         content: '';
-        height: 3rem;
-        left: -1rem;
-        overflow: hidden;
+        height: 2em;
+        left: -0.75em;
         position: absolute;
-        top: -1rem;
-        width: 3rem;
+        top: -0.90em;
+        width: 2em;
       }
       ol.gradient-list > li::before {
-        align-items: flex-end;
         content: counter(gradient-counter);
-        color: #1d1f20;
+        color: #000000;
         display: flex;
-        font: 900 1.5em/1 'Montserrat';
-        justify-content: flex-end;
-        padding: 0.125em 0.25em;
+        font-weight: 900;
+        font-size: 1.5em;
+        font-family: 'ObjectSans';
+        justify-content: center;
+        padding-left: 0.1em;
+        align-items: center;
+        justify-content: middle;
         z-index: 1;
       }
       ol.gradient-list > li:nth-child(10n+1):before {
@@ -78,9 +95,7 @@
       ol.gradient-list > #done:before {
         background: linear-gradient(135deg, #83e4e2 0%, #a2ed56 100%);
       }
-      ol.gradient-list > li + li {
-        margin-top: 2rem;
-      }
+
 
     </style>
   </head>
@@ -88,8 +103,8 @@
     <main>
       <h>November Checklist</h>
       <ol class="gradient-list">
-        <li>Sillytix Election Night Special</li>
-        <li>Bet on election</li>
+        <li id="done">Sillytix Election Night Special</li>
+        <li id="done">Bet on election</li>
         <li>Make tacos with Felix and Can</li>
         <li>Spotify Premium</li>
         <li>Camping with Juan and Miki</li>
@@ -97,17 +112,15 @@
         <li>Return to the gym (LA Fitness)</li>
         <li>Lukas Juan bet site</li>
         <li>SPIS Continuum website</li>
-        <li>Get to MG in CS:GO</li>
+        <li id="done">CS:GO</li>
         <li>Valorant</li>
-        <li>Short Gamestop</li>
-        <li>Forex (lira)</li>
         <li>TD Ameritrade Account</li>
         <li>Robinhood Account</li>
         <li>Biergarten with Esteban, Juan, Pawl, Can, and Felix</li>
         <li>Paypal Cash Account</li>
         <li>Online grade calculator with ads</li>
         <li>Haircut</li>
-        <li>New shoes</li>
+        <li id="done">New shoes</li>
         <li>Credit Card</li>
         <li id="done">Co-op game with Miki</li>
         <li id="done">Find out when Esteban and Paul do homework</li>
