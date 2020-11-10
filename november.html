@@ -118,6 +118,7 @@
     <main>
       <div id="headwrapper">
         <h>November Checklist</h>
+        <p id="number">number</p>
       </div>
       <ol class="gradient-list">
         <li id="done">Sillytix Election Night Special</li>
@@ -143,7 +144,6 @@
         <li>Watch Penguins of Madagascar with Can, Felix, Alp</li>
         <li id="prog">Listen to Esteban's World Renowned "Rap Compendium"</li>
         <li>Listen to Can's Jazz Playlist</li>
-        <li id="done">Outperform Miki in a game of basketball</li>
         <li>New shoes v2</li>
         <!-- <li></li> -->
       </ol>
@@ -151,5 +151,8 @@
 
   </body>
   <script>
+    var length = document.querySelectorAll("ol li").length;
+    var complete = document.querySelectorAll("ol #done").length;
+    document.getElementById("number").textContent = complete + " of " + length + " complete";
   </script>
 </html>
