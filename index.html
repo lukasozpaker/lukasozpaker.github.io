@@ -178,18 +178,8 @@
         color: #ffffff;
         background-color: #000a12;
         box-shadow: 0 0 30px rgba(0,10,18,0.5);
-        /* height: 15em; */
-        -webkit-transition-duration: 0.2s; /* safari */
-        transition: all 0.2s ease;
-        /* border-radius: 20px; */
-        /* height: 10em; */
-        /* font-size: 1.1em; */
       }
       #projects > a:hover .tcard{
-        -webkit-transition-duration: 0.2s; /* safari */
-        transition: all 0.2s ease;
-        /* transform: translateY(-10%); */
-        font-size: 2.2em;
         color: #ffffff;
       }
       #projects > a:hover .underneath{
@@ -206,6 +196,16 @@
         font-size: 1em;
       }
       .tcard{
+        margin: 0;
+        position: relative;
+        font-size: 2em;
+        border-radius: 20px;
+        padding-top: 1.4em;
+        padding-left: 1em;
+        padding-right: 1em;
+        padding-bottom: 0;
+      }
+      .dtcard{
         margin: 0;
         position: relative;
         font-size: 2em;
@@ -231,9 +231,9 @@
       }
       #p2{
         /* instagram follow back */
-        background: #ed2f8b;
-        background: -webkit-linear-gradient(0deg, #f59149, #ed2f8b);
-        background: linear-gradient(0deg, #f59149, #ed2f8b);
+        background: #e64592;
+        background: -webkit-linear-gradient(0deg, #f59149, #e64592);
+        background: linear-gradient(0deg, #f59149, #e64592);
 
         background-size: 400% 400%;
         animation: gradient 15s ease infinite;
@@ -265,11 +265,7 @@
 
         background-size: 400% 400%;
         animation: gradient 15s ease infinite;
-
       }
-      /* #p5:hover {
-        background-position: 100px;
-      } */
       #p6 {
         /* terminal */
         background: #222;
@@ -462,12 +458,12 @@
       </a>
       <a class="card" id="p3" href="https://play.google.com/store/apps/details?id=org.ozpaker.minimalgradecalculator">
         <p class="type">android</p>
-        <p class="tcard">minimal grade<br>calculator</p>
+        <p class="dtcard">minimal grade<br>calculator</p>
         <p class="underneath">calculate your grades</p>
       </a>
       <a class="card" id="p2" href="https://www.ozpaker.org/instagram">
         <p class="type">web</p>
-        <p class="tcard">instagram<br>follow back</p>
+        <p class="dtcard">instagram<br>follow back</p>
         <p class="underneath">who's not following you back?</p>
       </a>
       <a class="card" id="p1" href="https://www.ozpaker.org/bruh">
@@ -481,7 +477,7 @@
       </a> -->
     </div>
     <footer id="footer">
-      <span class="vers">1.4.0</span>
+      <span class="vers">1.4.1</span>
       <span class="info">Lukas Ozpaker 2020</span>
     </footer>
     <audio id="hoversound" src="https://web-cdn.with.in/WEBPLAYER/v1/audio/hover-96k.mp3"></audio>
