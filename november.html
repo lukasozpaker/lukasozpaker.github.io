@@ -111,7 +111,9 @@
       #poor {
         background: linear-gradient(100deg, #d22d56 -10%, #e394a2 5%, #fff 30%);
       }
-
+      #fail {
+        background: linear-gradient(100deg, #d22d56 -10%, #e394a2 30%);
+      }
       @media screen and (max-width: 40em) {
         main {
 
@@ -124,35 +126,36 @@
     <main>
       <div id="headwrapper">
         <h>November Checklist</h>
-        <p id="number">number</p>
+        <p id="complete">number</p>
+        <p id="failed">number</p>
       </div>
       <ol class="gradient-list">
         <li id="done">Sillytix Election Night Special</li>
         <li id="done">Bet on election</li>
-        <li>Make tacos with Felix and Can</li>
-        <li>Spotify Premium</li>
-        <li id="poor">Camping with Juan and Miki</li>
-        <li>Walk to DC with Felix and Can</li>
-        <li id="poor">Return to Gym (LA Fitness)</li>
+        <li id="poor">Make tacos with Felix and Can</li>
+        <li id="fail">Spotify Premium</li>
+        <li id="fail">Camping with Juan and Miki</li>
+        <li id="poor">Walk to DC with Felix and Can</li>
+        <li id="fail">Return to Gym (LA Fitness)</li>
         <li id="prog">SPIS Continuum Website</li>
         <li id="done">CS:GO</li>
-        <li>Valorant</li>
-        <li>TD Ameritrade Account</li>
+        <li id="poor">Valorant</li>
+        <li id="prog">TD Ameritrade Account</li>
         <li>Robinhood Account</li>
         <li id="poor">Biergarten with Esteban, Juan, Pawl, Can, and Felix</li>
         <li id="done">Paypal Cash Account</li>
-        <li>Online Grade Calculator</li>
+        <li id="poor">Online Grade Calculator</li>
         <li id="done">Haircut</li>
         <li id="done">New shoes</li>
-        <li>Credit Card</li>
+        <li id="done">Credit Card</li>
         <li id="done">Co-op game with Miki</li>
         <li id="done">Find out when Esteban and Pawl do homework</li>
-        <li>Watch Penguins of Madagascar with Can, Felix, Alp</li>
-        <li id="prog">Listen to Esteban's World Renowned "Rap Compendium"</li>
-        <li>Listen to Can's Jazz Playlist</li>
-        <li>New shoes v2</li>
-        <li>External HDD</li>
-        <li>New Headset</li>
+        <li id="done">Watch Penguins of Madagascar with Can, Felix, Alp</li>
+        <li id="poor">Listen to Esteban's World Renowned "Rap Compendium"</li>
+        <li id="poor">Listen to Can's Jazz Playlist</li>
+        <li id="poor">New shoes v2</li>
+        <li id="poor">External HDD</li>
+        <li id="poor">New Headset</li>
         <!-- <li></li> -->
       </ol>
     </main>
@@ -160,7 +163,9 @@
   </body>
   <script>
     var length = document.querySelectorAll("ol li").length;
-    var complete = document.querySelectorAll("ol #done").length;
-    document.getElementById("number").textContent = complete + " of " + length + " complete";
+    var completed = document.querySelectorAll("ol #done").length;
+    var failed = document.querySelectorAll("ol #fail").length;
+    document.getElementById("complete").textContent = completed + " of " + length + " complete";
+    document.getElementById("failed").textContent = failed + " of " + length + " failed";
   </script>
 </html>
