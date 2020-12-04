@@ -207,9 +207,9 @@
     var numvotes; // number of votes today
     var date;
     var day;
-    var mapVotes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var mapVotes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     var mapNames = ['Mirage','Inferno','Overpass','Vertigo','Nuke', 'Train',
-    'Dust II', 'Anubis', 'Cache', 'Agency', 'Office'];
+    'Dust II', 'Anubis', 'Cache', 'Agency', 'Office', 'Ancient', 'Engage', 'Apollo'];
     var todayMapIndexes; //index of maps to be played today
 
     var ctx = document.getElementById('results').getContext('2d');
@@ -233,7 +233,11 @@
                 mapVotes[7],
                 mapVotes[8],
                 mapVotes[9],
-                mapVotes[10]],
+                mapVotes[10],
+                mapVotes[11],
+                mapVotes[12],
+                mapVotes[13]
+              ],
           backgroundColor: [],
           borderColor: [],
           borderWidth: 3
@@ -290,7 +294,7 @@
       numvotes = 0;
       date = new Date();
       day = date.getDate();
-      mapVotes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      mapVotes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       todayMapIndexes = [];
       resetinnerHTML();
 
@@ -374,7 +378,10 @@
                 mapVotes[7],
                 mapVotes[8],
                 mapVotes[9],
-                mapVotes[10]],
+                mapVotes[10],
+                mapVotes[11],
+                mapVotes[12],
+                mapVotes[13]],
 
           backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -387,7 +394,10 @@
           '#b71c1c33',
           '#304ffe33',
           '#d500f933',
-          '#004d4033'
+          '#004d4033',
+          "#86f52633",
+          "#fb8c0022",
+          '#09679933'
           ],
           borderColor: [
           'rgba(255, 99, 132, 1)',
@@ -400,7 +410,10 @@
           '#b71c1c',
           '#304ffe',
           '#d500f9',
-          '#004d40'
+          '#004d40',
+          "#388e3c",
+          "#fb8c00",
+          "#096799"
           ],
           borderWidth: 3
         }]
