@@ -176,6 +176,10 @@
         }
         //window.location.replace(command.substring(5));
       }
+      else if(commands[0].includes("$") && commands[1] != null) {
+        let base = "https://www.ozpaker.org/";
+        window.location.href = base += commands[1];
+      }
       else if(commands[0].includes("for") && commands[1] != null) {
         if(commands[1].substring(0,7).includes("http://")) {
           document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src="+commands[1]+"></iframe>";
@@ -346,6 +350,7 @@
         push("test............................tests output system");
         push("view log........................prints the raw array of command and output data");
         push("window close....................closes window panel");
+        push("$ [app].........................launches ozpaker.org web apps by their name");
       }
 
 
