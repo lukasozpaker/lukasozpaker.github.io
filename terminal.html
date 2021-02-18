@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width" />
+  <meta name="theme-color" content="#000000"/>
+  <link rel="manifest" href="/terminal-manifest.json">
   <link rel="apple-touch-icon" sizes="180x180" href="/index/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/index/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/index/favicon-16x16.png">
@@ -25,7 +27,6 @@
     body {
       margin: 0;
       background-color: #000000;
-
     }
 
     ul {
@@ -143,6 +144,11 @@
   <div id="displaybox"></div>
 
   <script src="terminal.js"> </script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/terminal-service-worker.js");
+    }
+  </script>
 </body>
 
 </html>
