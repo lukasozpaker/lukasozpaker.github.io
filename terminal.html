@@ -336,7 +336,7 @@
         }
 
       }
-      else if (commands[0].includes("$") && commands[1] != null) {
+      else if (commands[0].includes("o") && commands[1] != null) {
         let base = "https://www.ozpaker.org/";
         window.location.href = base += commands[1];
       }
@@ -345,7 +345,6 @@
         for (let i = log.length-1-1; i >= 0; i--) {
           if (log[i].substring(0, 1) == ">") {
             command = log[i].substring(1).toLowerCase();
-
             
             console.log("log" + command);
             let base = "https://www.ozpaker.org/terminal?c=>"
@@ -360,14 +359,7 @@
 
             push(base + urlc);
 
-
-
-
             break;
-
-
-
-
           }
           if (i == 0 && command == "") {
             push("no command found: no url generated");
@@ -403,7 +395,7 @@
         push("test............................tests output system");
         push("view log........................prints the raw array of command and output data");
         push("window close....................closes window panel");
-        push("$ [app].........................launches ozpaker.org web apps by their name");
+        push("o [app].........................launches ozpaker.org web apps by their name");
       }
 
 
@@ -418,11 +410,6 @@
       document.getElementById("input").value = command;
       execute();
     }
-
-
-
-
-
 
 
 
@@ -447,18 +434,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     function getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(savePosition);
@@ -466,6 +441,7 @@
         push("GEOLOCATION IS NOT SUPPORTED BY CLIENT");
       }
     }
+    
     function savePosition(position) {
       push("Latitude: " + position.coords.latitude);
       push("Longitude: " + position.coords.longitude);
