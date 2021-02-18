@@ -1,139 +1,156 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/index/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/index/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/index/favicon-16x16.png">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--------------------------------------------->
-    <title>Terminal</title>
-    <style>
-      ::selection{
-        color: #000000;
-        background-color: rgba(255,255,255,0.99);
-      }
-      html{
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-      }
-      body{
-        margin: 0;
-        background-color: #000000;
 
-      }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/index/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/index/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/index/favicon-16x16.png">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--------------------------------------------->
+  <title>Terminal</title>
+  <style>
+    ::selection {
+      color: #000000;
+      background-color: rgba(255, 255, 255, 0.99);
+    }
 
-      ul {
-        list-style-type: none;
-        margin: auto;
-        padding: 0;
-        color: #26a69a;
-      }
+    html {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      background: #000000;
+      background-color: #000000;
+    }
 
-      *{
-        transition: ease-out 0.3s;
-        box-sizing: border-box;
-        outline: none;
-        outline: 0;
-        cursor: default;
-      }
-      #container{
-        overflow-wrap: break-word;
-        margin-top: 2em;
-        margin-left: 2em;
-      }
-      #log {
-        font-family: 'Consolas', 'Menlo', monospace;
-        font-size: 16px;
-        color: #ffffff;
-        width: 100%;
-      }
-      input {
-        font-family: 'Consolas', 'Menlo', monospace;
-        font-size: 16px;
-        border: none;
-        text-align: left;
-        margin: 0;
-        box-sizing: border-box;
-        background-color: #000000;
-        color: #ffffff;
-        width: 100%;
-        margin-left:0;
-        padding-left:0;
-        cursor: text;
-      }
-      #inputline{
-        color: #ffffff;
-        font-family: 'Consolas', 'Menlo', monospace;
-        font-size: 16px;
-        width: 100%;
-        display: flex;
+    body {
+      margin: 0;
+      background-color: #000000;
 
-      }
-      #output {
-        color: #ffffff;
-        font-family: 'Consolas', 'Menlo', monospace;
-        font-size: 16px;
-      }
-      #prompt{
-        user-select: none;
-        font-size: 16px;
-        margin: auto;
-        margin-right:0;
-        padding-right:0;
-      }
+    }
 
-      #fullscreen {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 0.25em;
-        color: #ffffff;
+    ul {
+      list-style-type: none;
+      margin: auto;
+      padding: 0;
+    }
+    span {
+      color: #26a69a;
+    }
 
-        cursor: pointer;
-        -webkit-user-select: none;  /* Chrome all / Safari all */
-        -moz-user-select: none;     /* Firefox all */
-        -ms-user-select: none;      /* IE 10+ */
-        user-select: none;          /* Likely future */
-      }
-      #displaybox{
-        margin: auto;
-        width: 90%;
-      }
-      iframe {
-        width: 100%;
-        height: 50em;
-        margin-bottom: 2em;
-      }
-      @media print {
-        * {
-          color: #000000 !important;
-          background: #ffffff !important;
-        }
-      }
-      </style>
-  </head>
-  <body id="body">
-    <i id="fullscreen" class="material-icons" onclick="fullscreenControl()" style="font-size:30px">fullscreen</i>
-    <div id="container">
-      <ul id="log"></ul>
-      <div id="inputline">
-        <div id="prompt"></div>
-        <input id="input" autofocus autocomplete="off"/>
-      </div>
+    * {
+      transition: ease-out 0.3s;
+      box-sizing: border-box;
+      outline: none;
+      outline: 0;
+      cursor: default;
+    }
 
+    #container {
+      overflow-wrap: break-word;
+      margin-top: 2em;
+      margin-left: 2em;
+    }
+
+    #log {
+      font-family: 'Consolas', 'Menlo', monospace;
+      font-size: 16px;
+      color: #ffffff;
+      width: 100%;
+    }
+
+    input {
+      font-family: 'Consolas', 'Menlo', monospace;
+      font-size: 16px;
+      border: none;
+      text-align: left;
+      margin: 0;
+      box-sizing: border-box;
+      background-color: #000000;
+      color: #ffffff;
+      width: 100%;
+      margin-left: 0;
+      padding-left: 0;
+      cursor: text;
+    }
+
+    #inputline {
+      color: #ffffff;
+      font-family: 'Consolas', 'Menlo', monospace;
+      font-size: 16px;
+      width: 100%;
+      display: flex;
+
+    }
+
+    #output {
+      color: #ffffff;
+      font-family: 'Consolas', 'Menlo', monospace;
+      font-size: 16px;
+    }
+
+    #prompt {
+      user-select: none;
+      font-size: 16px;
+      margin: auto;
+      margin-right: 0;
+      padding-right: 0;
+    }
+
+    #fullscreen {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0.25em;
+      color: #ffffff;
+
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    #displaybox {
+      margin: auto;
+      width: 90%;
+    }
+
+    iframe {
+      width: 100%;
+      height: 50em;
+      margin-bottom: 2em;
+    }
+
+    @media print {
+      * {
+        color: #000000 !important;
+        background: #ffffff !important;
+      }
+    }
+  </style>
+</head>
+
+<body id="body">
+  <i id="fullscreen" class="material-icons" onclick="fullscreenControl()" style="font-size:30px">fullscreen</i>
+  <div id="container">
+    <ul id="log"></ul>
+    <div id="inputline">
+      <div id="prompt"></div>
+      <input id="input" autofocus autocomplete="off" />
     </div>
-    <div id="displaybox"></div>
 
-    <script type="text/javascript">
+  </div>
+  <div id="displaybox"></div>
+
+  <script type="text/javascript">
     var elem = document.documentElement;
     var fullscreen = false;
     var prompt = document.getElementById("prompt");
     var log = [];
     var commands = [];
-
+    
     prompt.textContent = "‎‎‎‎‎>";
-    document.getElementById("input").addEventListener("keydown", function(event) {
+    document.getElementById("input").addEventListener("keydown", function (event) {
       // Number 13 = "Enter" key
       if (event.keyCode === 13) {
         execute();
@@ -144,31 +161,31 @@
       }
     });
 
-    function execute(){
+    function execute() {
       log.push(">" + document.getElementById("input").value);
       //takes log, gets lastest entry from log.push and sorts into array seperated by spaces
-      commands = log[log.length-1].substring(1).toLowerCase().split(" ");
+      commands = log[log.length - 1].substring(1).toLowerCase().split(" ");
 
-      if(commands[0].includes("cls")) {
+      if (commands[0].includes("cls")) {
         log = [];
         document.getElementById("log").textContent = log;
-        document.getElementById("displaybox").innerHTML="";
+        document.getElementById("displaybox").innerHTML = "";
       }
-      else if(commands[0].includes("get") && commands[1] != null) {
-        if(commands[1].includes("loc")) {
+      else if (commands[0].includes("get") && commands[1] != null) {
+        if (commands[1].includes("loc")) {
           getLocation();
         }
-        else if(commands[1].includes("ver")) {
-          push("Version: 1.13.0")
+        else if (commands[1].includes("ver")) {
+          push("Version: 1.13.1")
         }
       }
-      else if(commands[0].includes("view")&& commands[1] != null) {
-        if(commands[1].includes("log")) {
+      else if (commands[0].includes("view") && commands[1] != null) {
+        if (commands[1].includes("log")) {
           push(log);
         }
       }
-      else if(commands[0].includes("red") && commands[1] != null) {
-        if(commands[1].substring(0,7).includes("http://")) {
+      else if (commands[0].includes("red") && commands[1] != null) {
+        if (commands[1].substring(0, 7).includes("http://")) {
           window.location.href = commands[1];
         }
         else {
@@ -176,42 +193,38 @@
         }
         //window.location.replace(command.substring(5));
       }
-      else if(commands[0].includes("$") && commands[1] != null) {
-        let base = "https://www.ozpaker.org/";
-        window.location.href = base += commands[1];
-      }
-      else if(commands[0].includes("for") && commands[1] != null) {
-        if(commands[1].substring(0,7).includes("http://")) {
-          document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src="+commands[1]+"></iframe>";
+      else if (commands[0].includes("for") && commands[1] != null) {
+        if (commands[1].substring(0, 7).includes("http://")) {
+          document.getElementById("displaybox").innerHTML = "<iframe frameBorder='0' src=" + commands[1] + "></iframe>";
         }
-        else if(commands[1].substring(0,8).includes("https://")) {
-          document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src="+commands[1]+"></iframe>";
+        else if (commands[1].substring(0, 8).includes("https://")) {
+          document.getElementById("displaybox").innerHTML = "<iframe frameBorder='0' src=" + commands[1] + "></iframe>";
         }
         else {
-          document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www."+commands[1]+"></iframe>";
+          document.getElementById("displaybox").innerHTML = "<iframe frameBorder='0' src=https://www." + commands[1] + "></iframe>";
         }
 
       }
-      else if(commands[0].includes("search") && commands[1] != null) {
+      else if (commands[0].includes("search") && commands[1] != null) {
         var query = "";
         //google
-        if(commands[1].includes("google") || commands[1].substring(0,1)==="g" && commands[2] != null) {
-          if(commands[1].substring(1).includes(".i") && commands[2] != null) {
-            if(commands[2].includes("for") && commands[3] != null) {
-              for(let i=3;i<commands.length;i++) {
+        if (commands[1].includes("google") || commands[1].substring(0, 1) === "g" && commands[2] != null) {
+          if (commands[1].substring(1).includes(".i") && commands[2] != null) {
+            if (commands[2].includes("for") && commands[3] != null) {
+              for (let i = 3; i < commands.length; i++) {
                 query += commands[i] + "%20";
               }
-              query = query.substring(0, query.length-3);
+              query = query.substring(0, query.length - 3);
               // window.location.href = "https://www.google.com/search?tbm=isch&q=" + query;
               window.open("https://www.google.com/search?tbm=isch&q=" + query, "_blank");
             }
           }
-          else if (commands[2] != null){
-            if(!commands[1].includes(".") && commands[2].includes("for") && commands[3] != null) {
-              for(var i=3;i<commands.length;i++) {
+          else if (commands[2] != null) {
+            if (!commands[1].includes(".") && commands[2].includes("for") && commands[3] != null) {
+              for (var i = 3; i < commands.length; i++) {
                 query += commands[i] + "%20";
               }
-              query = query.substring(0, query.length-3);
+              query = query.substring(0, query.length - 3);
               // window.location.href = "https://www.google.com/search?q=" + query;
               window.open("https://www.google.com/search?q=" + query, "_blank");
             }
@@ -221,66 +234,66 @@
 
 
         //bing
-        else if(commands[1].includes("bing") || commands[1].substring(0,1)==="b" && commands[2] != null) {
-          if(commands[1].substring(1).includes(".i") && commands[2] != null) {
-            if(commands[2].includes("for") && commands[3] != null) {
-              for(let i=3;i<commands.length;i++) {
+        else if (commands[1].includes("bing") || commands[1].substring(0, 1) === "b" && commands[2] != null) {
+          if (commands[1].substring(1).includes(".i") && commands[2] != null) {
+            if (commands[2].includes("for") && commands[3] != null) {
+              for (let i = 3; i < commands.length; i++) {
                 query += commands[i] + "%20";
               }
-              query = query.substring(0, query.length-3);
-              document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www.bing.com/images/search?q="+query+"></iframe>";
+              query = query.substring(0, query.length - 3);
+              document.getElementById("displaybox").innerHTML = "<iframe frameBorder='0' src=https://www.bing.com/images/search?q=" + query + "></iframe>";
               //window.location.href = "https://www.bing.com/images/search?q=" + query;
             }
           }
-          if(commands[2] != null) {
-            if(!commands[1].includes(".") && commands[2].includes("for") && commands[3] != null) {
-              for(var i=3;i<commands.length;i++) {
+          if (commands[2] != null) {
+            if (!commands[1].includes(".") && commands[2].includes("for") && commands[3] != null) {
+              for (var i = 3; i < commands.length; i++) {
                 query += commands[i] + "%20";
               }
-              query = query.substring(0, query.length-3);
-              document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www.bing.com/search?q="+query+"></iframe>";
+              query = query.substring(0, query.length - 3);
+              document.getElementById("displaybox").innerHTML = "<iframe frameBorder='0' src=https://www.bing.com/search?q=" + query + "></iframe>";
               //window.location.href = "https://www.bing.com/search?q=" + query;
             }
           }
         }
 
         //urbandictionary
-        else if(commands[1].includes("ud") || commands[1].includes("urban") && commands[2] != null) {
-          if(commands[2] === "for" && commands[3] != null) {
-            for(var i=3;i<commands.length;i++) {
+        else if (commands[1].includes("ud") || commands[1].includes("urban") && commands[2] != null) {
+          if (commands[2] === "for" && commands[3] != null) {
+            for (var i = 3; i < commands.length; i++) {
               query += commands[i] + "%20";
             }
-            query = query.substring(0, query.length-3);
-            document.getElementById("displaybox").innerHTML="<iframe frameBorder='0' src=https://www.urbandictionary.com/define.php?term="+query+"></iframe>";
+            query = query.substring(0, query.length - 3);
+            document.getElementById("displaybox").innerHTML = "<iframe frameBorder='0' src=https://www.urbandictionary.com/define.php?term=" + query + "></iframe>";
           }
         }
 
         //no engine
         else {
-          if(commands[1].includes("for") && commands[2] != null) {
-            for(let i=2;i<commands.length;i++) {
+          if (commands[1].includes("for") && commands[2] != null) {
+            for (let i = 2; i < commands.length; i++) {
               query += commands[i] + "%20";
             }
-            query = query.substring(0, query.length-3);
+            query = query.substring(0, query.length - 3);
             // window.location.href = "https://www.google.com/search?q=" + query;
             window.open("https://www.google.com/search?q=" + query, "_blank");
           }
         }
       }
-      else if(commands[0].includes("print")) {
+      else if (commands[0].includes("print")) {
         window.print();
       }
-      else if(commands[0].includes("win") && commands[1] != null) {
-        if(commands[1].includes("close")) {
-          document.getElementById("displaybox").innerHTML="";
+      else if (commands[0].includes("win") && commands[1] != null) {
+        if (commands[1].includes("close")) {
+          document.getElementById("displaybox").innerHTML = "";
         }
       }
-      else if(commands[0].includes("script") && commands[1] != null) {
+      else if (commands[0].includes("script") && commands[1] != null) {
         var script = "";
-        for(let i=1;i<commands.length;i++) {
-            script += commands[i]+" ";
+        for (let i = 1; i < commands.length; i++) {
+          script += commands[i] + " ";
         }
-        script = script.slice(0,-1);
+        script = script.slice(0, -1);
         try {
           eval(script);
         }
@@ -288,45 +301,85 @@
           if (e instanceof SyntaxError) {
             push("SyntaxError: " + e.message);
             update();
-            document.getElementById("input").value="script " + script;
+            document.getElementById("input").value = "script " + script;
             console.log("script syntax error");
             return;
           }
           push("Error: " + e.message);
           update();
-          document.getElementById("input").value="script " + script;
+          document.getElementById("input").value = "script " + script;
           console.log("script unknown error");
           return;
         }
 
       }
-      else if(commands[0].includes("rel")) {
+      else if (commands[0].includes("rel")) {
         location.reload();
       }
-      else if(commands[0] === "nato" && commands[1] != null) {
-        var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-        var number = ["Zero","One","Two", "Three", "Four","Five","Six","Seven","Eight","Niner"];
+      else if (commands[0] === "nato" && commands[1] != null) {
+        var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        var number = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Niner"];
         var phonetic = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf",
-        "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa",
-        "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee", "Zulu"];
+          "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa",
+          "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee", "Zulu"];
         //-1 because of "nato" command
         var line = "";
-        for(let i=1;i<commands.length;i++){
-          for(let j=0;j<commands[i].length;j++){
-            if(!isNaN(commands[i].substring(j,j+1))) {
-              line += number[commands[i].substring(j,j+1)] + " ";
+        for (let i = 1; i < commands.length; i++) {
+          for (let j = 0; j < commands[i].length; j++) {
+            if (!isNaN(commands[i].substring(j, j + 1))) {
+              line += number[commands[i].substring(j, j + 1)] + " ";
             }
-            else line += phonetic[alphabet.indexOf(commands[i].substring(j,j+1))] + " ";
+            else line += phonetic[alphabet.indexOf(commands[i].substring(j, j + 1))] + " ";
           }
           push(line);
           line = "";
         }
 
       }
-      else if(commands[0] === "test") {
+      else if (commands[0].includes("$") && commands[1] != null) {
+        let base = "https://www.ozpaker.org/";
+        window.location.href = base += commands[1];
+      }
+      else if (commands[0].includes("gen")) {
+        let command = "";
+        for (let i = log.length-1-1; i >= 0; i--) {
+          if (log[i].substring(0, 1) == ">") {
+            command = log[i].substring(1).toLowerCase();
+
+            
+            console.log("log" + command);
+            let base = "https://www.ozpaker.org/terminal?c=>"
+            let urlc = "";
+            let array = command.toLowerCase().split(" ");
+            for (let i = 0; i < array.length; i++) {
+              console.log(urlc);
+              urlc += array[i] + "+";
+
+            }
+            urlc = urlc.substring(0, urlc.length - 1);
+
+            push(base + urlc);
+
+
+
+
+            break;
+
+
+
+
+          }
+          if (i == 0 && command == "") {
+            push("no command found: no url generated");
+          }
+        }
+
+
+      }
+      else if (commands[0] === "test") {
         push("Output working: test successful");
       }
-      else if(commands[0].includes("help")) {
+      else if (commands[0].includes("help")) {
         push("url queries (?c=)...............begin each command with '>'");
         push("&nbsp;&nbsp;&nbsp;example......................ozpaker.org/terminal?c=>help>get location");
         push("&nbsp;");
@@ -361,7 +414,7 @@
       console.log("command executed");
     }
 
-    function com(command){
+    function com(command) {
       document.getElementById("input").value = command;
       execute();
     }
@@ -376,20 +429,20 @@
 
 
     //URL query string
-    if(window.location.search) {
+    if (window.location.search) {
       var params = new URLSearchParams(window.location.search);
       var urlCommands = params.get("c").split(">");
       urlCommands.shift();
       console.log(urlCommands);
-      for(let i=0;i<urlCommands.length;i++) {
+      for (let i = 0; i < urlCommands.length; i++) {
         document.getElementById("input").value = urlCommands[i];
         execute();
       }
     }
 
     //restore focus to input line
-    document.getElementById("body").addEventListener("focusout", function(event){
-        document.getElementById("input").focus();
+    document.getElementById("body").addEventListener("focusout", function (event) {
+      document.getElementById("input").focus();
     });
 
 
@@ -425,9 +478,11 @@
     }
     function update() {
       document.getElementById("log").innerHTML = "";
-      for (var i = 0; i < log.length; i++)
-      {
-        logList = "<li>" + log[i] + "</li>";
+      for (var i = 0; i < log.length; i++) {
+        if(log[i].substring(0,1) == ">") {
+          logList = "<li><span>" + log[i] + "</span></li>";
+        }
+        else logList = "<li>" + log[i] + "</li>";
         document.getElementById("log").innerHTML += logList;
       }
       //document.getElementById("log").textContent = log;
@@ -435,7 +490,7 @@
 
     //fullscreen controls
     function fullscreenControl() {
-      if(fullscreen == false) {
+      if (fullscreen == false) {
         if (elem.requestFullscreen) {
           elem.requestFullscreen();
           fullscreen = true;
@@ -479,6 +534,7 @@
       return false;
     }
 
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>
