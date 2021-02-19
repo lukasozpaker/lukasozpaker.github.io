@@ -1,7 +1,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/6.0.2/workbox-sw.js");
 
 
-const staticCache = 'site-static-v2';
+const staticCache = 'site-static-v1';
 // const dynamicCache = 'site-dynamic-v1';
 
 
@@ -34,7 +34,7 @@ self.addEventListener("install", e => {
 });
 
 self.addEventListener("activate", e => {
-    // console.log("service worker activated");
+    console.log("service worker activated");
     //check if other caches are stored. if they don't match current, delete.
     e.waitUntil(
         caches.keys().then(keys => {
