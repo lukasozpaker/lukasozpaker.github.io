@@ -10,7 +10,7 @@
             "purpose": "maskable any"
         }
     ],
-    "start_url": "terminal.html",
+    "start_url": "terminal",
     "theme_color": "#000000",
     "display": "standalone",
     "prefer_related_applications":true,
