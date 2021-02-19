@@ -1,7 +1,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/6.0.2/workbox-sw.js");
 
 
-const staticCache = 'site-static-v1';
+const staticCache = 'site-static-v2';
 // const dynamicCache = 'site-dynamic-v1';
 
 
