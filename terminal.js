@@ -31,7 +31,7 @@ function execute() {
             getLocation();
         }
         else if (commands[1].includes("ver")) {
-            push("Version: 1.20.0")
+            push("Version: 2.00")
         }
     }
     else if (commands[0].includes("view") && commands[1] != null) {
@@ -191,7 +191,7 @@ function execute() {
         }
 
     }
-    else if (commands[0].includes("o") && commands[1] != null) {
+    else if (commands[0] === "o" && commands[1] != null) {
         let base = "https://www.ozpaker.org/";
         window.location.href = base += commands[1];
     }
