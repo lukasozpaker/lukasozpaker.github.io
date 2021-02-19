@@ -31,7 +31,7 @@ function execute() {
             getLocation();
         }
         else if (commands[1].includes("ver")) {
-            push("Version: 1.13.2")
+            push("Version: 1.20.0")
         }
     }
     else if (commands[0].includes("view") && commands[1] != null) {

@@ -2,7 +2,18 @@
     "short_name": "Terminal",
     "name": "Terminal",
     "background_color": "#000000",
-    "start_url": "https://www.ozpaker.org/terminal",
-    "theme_color": "#000000"
+    "icons":[
+        {
+            "src": "terminal/terminal512.png",
+            "sizes": "512x512",
+            "type":"image/png",
+            "purpose": "maskable any"
+        }
+    ],
+    "start_url": "terminal.html",
+    "theme_color": "#000000",
+    "display": "standalone",
+    "prefer_related_applications":true,
+    "orientation": "portrait-primary"
 
 }
