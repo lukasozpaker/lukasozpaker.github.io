@@ -9,7 +9,6 @@ const assets = [
     "terminal.html",
     "terminal.js",
     "terminalmanifest.json",
-    "terminalsw.js",
     "terminal/terminal512.png",
     "https://fonts.googleapis.com/icon?family=Material+Icons",
     "https://fonts.gstatic.com/s/materialicons/v77/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2"
