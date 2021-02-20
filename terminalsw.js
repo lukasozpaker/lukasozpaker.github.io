@@ -12,7 +12,8 @@ const assets = [
     "terminal/terminal512.png",
     "https://fonts.googleapis.com/icon?family=Material+Icons",
     "https://fonts.gstatic.com/s/materialicons/v77/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2",
-    "https://storage.googleapis.com/workbox-cdn/releases/6.0.2/workbox-sw.js"
+    "https://storage.googleapis.com/workbox-cdn/releases/6.0.2/workbox-sw.js",
+    "https://storage.googleapis.com/workbox-cdn/releases/6.0.2"
 ];
 
 
