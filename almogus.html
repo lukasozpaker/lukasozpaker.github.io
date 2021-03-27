@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al Mogus Countdown</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0 auto;
+      -webkit-transition: opacity .5s ease-in-out;
+      -moz-transition: opacity .5s ease-in-out;
+      -ms-transition: opacity .5s ease-in-out;
+      -o-transition: opacity .5s ease-in-out;
+      transition: opacity .5s ease-in-out;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 2em;
+      font-weight: normal;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .v-header {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      color: #fff;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .container {
+      text-align: center;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin: auto;
+    }
+
+    .fullscreen-video-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+
+    .header-overlay {
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      z-index: 1;
+      background: #000;
+      opacity: 0.90;
+    }
+
+    .header-content {
+      z-index: 2;
+    }
+
+    .header-content p {
+      display: block;
+      padding-bottom: 2rem;
+      font-size: 1.5em;
+    }
+
+    #para3 {
+      color: #e53835;
+      opacity: 0;
+    }
+
+    #demo {
+      font-size: 3.5em;
+      font-weight: bold;
+      opacity: 0;
+    }
+
+    /* @media(max-width:960px) {
+      .container {
+        padding-right: 3rem;
+        padding-left: 3rem;
+      }
+    } */
+  </style>
+</head>
+
+<body>
+  <header class="v-header container">
+    <div class="fullscreen-video-wrap">
+      <img
+        src="https://media.discordapp.net/attachments/699637776035086477/825122720631095348/IMG_20210326_174257.jpg?width=507&height=676">
+    </div>
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <h1>THE AL MOGUS UPDATE</h1>
+      <h1>IS CURRENTLY
+            <p id="para3">&nbsp;</p>
+      </h1>
+      <p1>COUNTDOWN</p1>
+      <p id="demo">&nbsp;</p>
+    </div>
+
+  </header>
+  <script src="almogus.js"></script>
+</body>
+
+</html>
