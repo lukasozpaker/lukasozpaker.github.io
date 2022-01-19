@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Privacy Policy</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/index/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/index/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/index/favicon-16x16.png">
+    <link rel="manifest" href="/index/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Long+Cang&display=swap" rel="stylesheet">
+
+    <style>
+      ::selection{
+        color: #ffffff;
+        background-color: rgba(0,10,18,0.99);
+      }
+      html{
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        height: 100%;
+        margin: 0;        
+      }
+      header{
+        min-height:100%;
+      }
+      *:focus {
+        outline: 0;
+        outline: none;
+      }
+      *{
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      body{
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        letter-spacing: normal;
+        color: #000a12;
+        background-color: #ffffff;
+        height: 100%;
+      }
+      h1{
+        margin: 0;
+      }
+      a{
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+      #name{
+        font-family: "Carrois Gothic SC", "DM Sans", Montserrat, Roboto, Arial, sans-serif;
+        padding-top: 10%;
+        padding-bottom: 5%;
+        text-shadow: 0 0 40px rgba(0,10,18,0.2);
+        margin-bottom: 6rem;
+      }
+      .names{
+        letter-spacing: 0.5em;
+        padding-left: 0.5em;
+        overflow-wrap: break-word;
+        font-size: 35px;
+      }
+      #text{
+        font-family: "Inconsolata", Consolas, Tahoma, Geneva, Verdana, sans-serif;
+        padding-left: 20%;
+        padding-right: 20%;
+        padding-bottom: 0.5em;
+      }
+      #at{
+        font-family: 'Long Cang', cursive;
+        padding-bottom: 0em;
+        font-size: 1.4em;
+      }
+      
+      
+      
+      @keyframes gradient {
+        0% {
+          background-position: 0% 0%;
+        }
+        50% {
+          background-position: 0% 100%;
+        }
+        100% {
+          background-position: 0% 0%;
+        }
+      }
+      footer {
+        font-family: Inconsolata, Consolas, Tahoma, Geneva, Verdana, sans-serif;
+        left: 0;
+        bottom: 0;
+        text-align: center;
+        padding: 0.5em 3em 1.25em 3em;
+        overflow: auto;
+        margin-top: -70px;
+      }
+      .vers {
+        float: left;
+        padding-left: 10px;
+      }
+      .info {
+        float: right;
+        padding-right: 10px;
+      }
+      @media screen and (max-width: 35em) {
+        #projects{
+          grid-template-columns: 100%;
+        }
+      }
+      @media screen and (min-width: 90em) {
+        #projects{
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        ::selection{
+          color:#000a12;
+          background-color:rgba(255,255,255,0.99);
+        }
+        body{
+          color: #ffffff;
+          background-color: #000a12;
+        }
+        #name{
+          /* text-shadow: 0 0 40px rgba(255,255,255,0.5); */
+          /* text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FA1C16;
+          color: #FED128; */
+          animation: neon 5s ease infinite;
+          -moz-animation: neon 5s ease infinite;
+          -webkit-animation: neon 5s ease infinite;
+        }
+
+        @keyframes neon {
+          0% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+          15% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+          20% {
+            text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B;
+            color: #806914;
+          }
+          30% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+          70% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+          73% {
+            text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B;
+            color: #806914;
+          }
+          75% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+          90% {
+            text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B;
+            color: #806914;
+          }
+          95% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+          100% {
+            text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128;
+            color: #FED128;
+          }
+
+        }
+        #at {
+          text-shadow: 0 0 0.1vw #ccc, 0 0 .3vw #ccc, 0 0 1vw #ccc, 0 0 1vw #ccc, 0 0 0.1vw #ccc;
+          color: #fff;
+        }
+        
+        
+
+      }
+    </style>
+  </head>
+  <body id="body">
+
+    <header id="header">
+      <h1 id="name">
+        <span class="names">PRIVACY</span>
+        <span class="names">POLICY</span>
+      </h1>
+      <p id="text">WE DO NOT COLLECT OR STORE ANY DATA, PERIOD.</p>
+      <p id="text">This app does not connect to any servers, so there is 
+        no way we could or would store any of your data even if we wanted to. Your data is safe.
+      </p>
+      <p id="at">thank you</p>
+      
+    </header>
+    
+    
+    
+
+
+    <script type="text/javascript">
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      }
+      else {
+      }
+
+      var hover = document.getElementById("hoversound");
+      function hoverOn() {
+        hover.play();
+      }
+    </script>
+    <footer id="footer">
+      <span class="vers">1.0.0</span>
+      <span class="info">Privacy Policy</span>
+    </footer>
+  </body>
+  
+</html>
