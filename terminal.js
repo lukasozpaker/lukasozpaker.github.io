@@ -3,7 +3,8 @@ var fullscreen = false;
 var prompt = document.getElementById("prompt");
 var log = [];
 var commands = [];
-
+var dir = "root:/";
+var head = ">";
 prompt.textContent = "‎‎‎‎‎>";
 document.getElementById("input").addEventListener("keydown", function (event) {
     // Number 13 = "Enter" key
@@ -17,29 +18,37 @@ document.getElementById("input").addEventListener("keydown", function (event) {
 });
 
 function execute() {
-    log.push(">" + document.getElementById("input").value);
+    log.push(dir + head + "&nbsp;" + document.getElementById("input").value);
     //takes log, gets lastest entry from log.push and sorts into array seperated by spaces
     commands = log[log.length - 1].substring(1).toLowerCase().split(" ");
 
-    if (commands[0].includes("cls")) {
+    if (commands[0].includes("clear")) {
         log = [];
         document.getElementById("log").textContent = log;
         document.getElementById("displaybox").innerHTML = "";
     }
-    else if (commands[0].includes("get") && commands[1] != null) {
-        if (commands[1].includes("loc")) {
-            getLocation();
-        }
-        else if (commands[1].includes("ver")) {
-            push("Version: 2.2.2")
-        }
+    else if(commands[0].includes("ls")){
+        push("version");
+        push("location");
+        push("/directory1");
     }
-    else if (commands[0].includes("view") && commands[1] != null) {
-        if (commands[1].includes("log")) {
-            push(log);
-        }
+    else if(commands[0].includes("cd") && commands[1] != null){
+        push("NOT IMPLEMENTED");
+
     }
-    else if (commands[0].includes("red") && commands[1] != null) {
+    else if(commands[0].includes("login") && commands[1] != null){
+        if(commands[1] === "lukas" || commands[1] === "admin"){
+            push("p:")
+        }
+
+    }
+    else if(commands[0].includes("version")){
+        push("Version: 3.0");
+    }
+    else if (commands[0].includes("location")) {
+        getLocation();
+    }
+    else if (commands[0].includes("rdr") && commands[1] != null) {
         if (commands[1].substring(0, 7).includes("http://")) {
             window.location.href = commands[1];
         }
@@ -234,13 +243,13 @@ function execute() {
         push('&nbsp;&nbsp;&nbsp;com("command")...............com() allows scripts to execute terminal commands');
         push('&nbsp;&nbsp;&nbsp;example......................for(i=0;i<3;i++) com("get version")');
         push("&nbsp;");
-        push("cls.............................clear the console");
+        push("clear...........................clear the console");
         push("forward.........................open link in console window");
-        push("get location....................fetches latitude and longitude for current location");
-        push("get version.....................get the current terminal version");
+        push("location........................fetches latitude and longitude for current location");
+        push("version.........................get the current terminal version");
         push("nato [text].....................converts word and numbers into the nato phonetic alphabet")
         push("print...........................opens a print dialogue for terminal");
-        push("redirect [url]..................redirect terminal to another url");
+        push("rdr [url].......................redirect terminal to another url");
         push("reload..........................reload the page");
         push("search [engine] for [query].....searches query on google if engine is blank");
         push("&nbsp;&nbsp;&nbsp;google/g");
