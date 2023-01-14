@@ -180,7 +180,7 @@ function execute() {
     else if (commands[0].includes("rel")) {
         location.reload();
     }
-    else if (commands[0] === "nato" && commands[1] != null) {
+    else if (commands[0].includes("nato") && commands[1] != null) {
         var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
         var number = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Niner"];
         var phonetic = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf",
@@ -200,7 +200,7 @@ function execute() {
         }
 
     }
-    else if (commands[0] === "o" && commands[1] != null) {
+    else if (commands[0].includes("o") && commands[1] != null) {
         let base = "https://www.ozpaker.org/";
         window.location.href = base += commands[1];
     }
@@ -232,7 +232,7 @@ function execute() {
 
 
     }
-    else if (commands[0] === "test") {
+    else if (commands[0].includes("test")) {
         push("Output working: test successful");
     }
     else if (commands[0].includes("help")) {
