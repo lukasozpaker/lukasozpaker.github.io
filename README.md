@@ -1,2 +1,3 @@
-# lukasozpaker.github.io
+# Repo for ozpaker.org
+
 Welcome
