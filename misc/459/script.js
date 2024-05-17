@@ -52,12 +52,14 @@ function func(distance){
     // var thres = document.getElementsByName("distance")[0].value;
     var thres = document.getElementById("in").value;
     console.log(thres);
+    console.log(distance);
 
 
     if(distance > thres){
       // check the selector for the sound
       var e = document.getElementById("sound");
-      var sound = e.options[e.selectedIndex].value;
+      var sound = 0;
+      sound = e.options[e.selectedIndex].value;
       if(sound == 0){
         if(!sound1.playing){
           sound1.play();
