@@ -1,4 +1,4 @@
-alert("Version 5");
+alert("Version 6");
 
 var sound1 = new Audio('https://ozpaker.org/misc/459/sound1.mp3');
 var sound2 = new Audio('https://ozpaker.org/misc/459/sound2.mp3');
@@ -49,7 +49,9 @@ function drawGraph(ls) {
 }
 
 function func(distance){
-    var thres = document.getElementById("distance").value;
+    var thres = document.getElementsByName("distance")[0].value;
+    console.log(thres);
+
 
     if(distance > thres){
       // check the selector for the sound
