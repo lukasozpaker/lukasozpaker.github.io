@@ -49,7 +49,8 @@ function drawGraph(ls) {
 }
 
 function func(distance){
-    var thres = document.getElementsByName("distance")[0].value;
+    // var thres = document.getElementsByName("distance")[0].value;
+    var thres = document.getElementById("in").value;
     console.log(thres);
 
 
