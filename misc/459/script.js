@@ -1,4 +1,4 @@
-alert("Version 3");
+alert("Version 4");
 
 const canvas = document.createElement('canvas');
 canvas.width = 300;
@@ -46,6 +46,6 @@ function drawGraph(ls) {
 
 
 
-const title = document.createElement('h1');
+const title = document.createElement('h3');
 title.textContent = 'Time of Flight Distance (mm) over last 30s';
 document.body.insertBefore(title, canvas);
