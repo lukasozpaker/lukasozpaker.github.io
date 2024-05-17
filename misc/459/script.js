@@ -1,4 +1,4 @@
-alert("Version 6");
+alert("Version 7");
 
 var sound1 = new Audio('https://ozpaker.org/misc/459/sound1.mp3');
 var sound2 = new Audio('https://ozpaker.org/misc/459/sound2.mp3');
@@ -64,8 +64,8 @@ function func(distance){
       var sound = 0;
       sound = e.options[e.selectedIndex].value;
       if(sound == 0){
-        if(!sound1.playing){
-          sound1.play();
+        if(!sound3.playing){
+          sound3.play();
         }
       }
       else if(sound == 1){
@@ -74,8 +74,8 @@ function func(distance){
         }
       }
       else if(sound == 2){
-        if(!sound3.playing){
-          sound3.play();
+        if(!sound1.playing){
+          sound1.play();
         }
       }
     }
