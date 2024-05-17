@@ -1,4 +1,4 @@
-alert("Version 2");
+alert("Version 3");
 
 const canvas = document.createElement('canvas');
 canvas.width = 300;
@@ -35,6 +35,9 @@ function drawGraph(ls) {
 
 
     ctx.font = '20px Arial';
+    ctx.fillText(max, canvas.width - 40, 20);
+    ctx.fillText(min, canvas.width - 40, canvas.height - 20);
+    ctx.fillText('TOF Distance (mm) over last 30s', 0, 20);
 
     ctx.fillText(new Date().toLocaleTimeString(), 0, 40);
 
