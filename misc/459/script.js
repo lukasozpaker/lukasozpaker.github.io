@@ -1,4 +1,4 @@
-alert("Version 7");
+alert("Version 8");
 
 var sound1 = new Audio('https://ozpaker.org/misc/459/sound1.mp3');
 var sound2 = new Audio('https://ozpaker.org/misc/459/sound2.mp3');
@@ -58,6 +58,7 @@ function drawGraph(ls) {
 function func(distance){
     var sensor = document.getElementById("ron").checked;
     if(!sensor){
+      document.getElementById("az").innerHTML = "NO OBJECT DETECTED"
       return;
     }
 
