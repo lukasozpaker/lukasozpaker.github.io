@@ -60,6 +60,13 @@ function func(distance){
     if(!sensor){
       return;
     }
+    var para = document.createElement("p");
+    var node = document.createTextNode("OBJECT DETECTED");
+    para.appendChild(node);
+    var element = document.getElementById("tof");
+    element.appendChild(para);
+
+    
     // var thres = document.getElementsByName("distance")[0].value;
     var thres = document.getElementById("in").value;
     console.log(thres);
