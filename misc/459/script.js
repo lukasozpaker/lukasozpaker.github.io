@@ -12,6 +12,10 @@ document.body.appendChild(canvas);
 const ctx = canvas.getContext('2d');
 
 function drawGraph(ls) {
+    var sensor = document.getElementsById("sensor").checked;
+    if(!sensor){
+      return;
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // const min = Math.min(...ls);
@@ -49,6 +53,10 @@ function drawGraph(ls) {
 }
 
 function func(distance){
+    var sensor = document.getElementsById("sensor").checked;
+    if(!sensor){
+      return;
+    }
     // var thres = document.getElementsByName("distance")[0].value;
     var thres = document.getElementById("in").value;
     console.log(thres);
