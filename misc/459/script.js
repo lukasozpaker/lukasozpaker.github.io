@@ -54,6 +54,9 @@ function func(distance){
     console.log(thres);
     console.log(distance);
 
+    distance = Number(distance);
+    thres = Number(thres);
+
 
     if(distance > thres){
       // check the selector for the sound
