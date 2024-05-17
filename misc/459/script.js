@@ -14,6 +14,7 @@ const ctx = canvas.getContext('2d');
 function drawGraph(ls) {
     var sensor = document.getElementById("ron").checked;
     if(!sensor){
+      document.getElementById("tof").innerHTML = "Distance (ToF): OFF"
       return;
     }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
