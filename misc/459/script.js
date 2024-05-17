@@ -1,4 +1,4 @@
-alert("Version 8");
+// alert("Version 8");
 
 var sound1 = new Audio('https://ozpaker.org/misc/459/sound1.mp3');
 var sound2 = new Audio('https://ozpaker.org/misc/459/sound2.mp3');
