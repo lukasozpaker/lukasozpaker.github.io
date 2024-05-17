@@ -12,7 +12,7 @@ document.body.appendChild(canvas);
 const ctx = canvas.getContext('2d');
 
 function drawGraph(ls) {
-    var sensor = document.getElementsById("sensor").checked;
+    var sensor = document.getElementById("ron").checked;
     if(!sensor){
       return;
     }
@@ -53,7 +53,7 @@ function drawGraph(ls) {
 }
 
 function func(distance){
-    var sensor = document.getElementsById("sensor").checked;
+    var sensor = document.getElementById("ron").checked;
     if(!sensor){
       return;
     }

@@ -53,9 +53,9 @@ select {
     margin-bottom: 10px;
 } */
 
-input[type="checkbox"] {
+input[type="radio"] {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    margin: 10px 0;
+    margin: 10px 2px;
 }
