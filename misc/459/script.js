@@ -1,4 +1,8 @@
-alert("Version 4");
+alert("Version 5");
+
+var sound1 = new Audio('https://ozpaker.org/misc/459/sound1.mp3');
+var sound2 = new Audio('https://ozpaker.org/misc/459/sound2.mp3');
+var sound3 = new Audio('https://ozpaker.org/misc/459/sound3.mp3');
 
 const canvas = document.createElement('canvas');
 canvas.width = 300;
@@ -44,6 +48,31 @@ function drawGraph(ls) {
 
 }
 
+function func(distance){
+    var thres = document.getElementById("distance").value;
+
+    if(distance > thres){
+      // check the selector for the sound
+      var e = document.getElementById("sound");
+      var sound = e.options[e.selectedIndex].value;
+      if(sound == 0){
+        if(!sound1.playing){
+          sound1.play();
+        }
+      }
+      else if(sound == 1){
+        if(!sound2.playing){
+          sound2.play();
+        }
+      }
+      else if(sound == 2){
+        if(!sound3.playing){
+          sound3.play();
+        }
+      }
+    }
+  
+  }
 
 
 const title = document.createElement('h3');
